@@ -5,6 +5,7 @@ use axum::{
 use sea_orm::{Database, DatabaseConnection};
 use sea_orm_migration::prelude::*;
 use shuttle_runtime::SecretStore;
+use tower_http::cors::{ Any, CorsLayer };
 
 mod dto;
 mod entities;
@@ -63,13 +64,19 @@ async fn main(
         jwt_secret,
     };
 
+    let cors = CorsLayer::new()
+        .allow_origin(Any)
+        .allow_methods(Any)
+        .allow_headers(Any);
+
     // Create router
     let router = Router::new()
         .route("/", get(hello_world))
         .route("/health", get(health_check))
         .route("/api/auth/register", post(routes::auth::register))
         .route("/api/auth/login", post(routes::auth::login))
-        .with_state(state);
+        .with_state(state)
+        .layer(cors);
 
     tracing::info!("Server starting...");
 

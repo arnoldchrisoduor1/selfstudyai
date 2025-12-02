@@ -1,26 +1,99 @@
 @import "tailwindcss";
 
 :root {
+  /* Primary Color Palette */
+  --primary: #3b82f6;
+  --primary-dark: #2563eb;
+  --primary-light: #60a5fa;
+  
+  /* Secondary Color Palette */
+  --secondary: #8b5cf6;
+  --secondary-dark: #7c3aed;
+  --secondary-light: #a78bfa;
+  
+  /* Neutral Colors */
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #0f172a;
+  --card: #ffffff;
+  --card-foreground: #0f172a;
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+  --border: #e2e8f0;
+  --input: #ffffff;
+  --ring: #3b82f6;
+  
+  /* Status Colors */
+  --success: #10b981;
+  --error: #ef4444;
+  --warning: #f59e0b;
+  
+  /* Radius */
+  --radius: 0.5rem;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.dark {
+  --background: #0f172a;
+  --foreground: #f8fafc;
+  --card: #1e293b;
+  --card-foreground: #f8fafc;
+  --muted: #334155;
+  --muted-foreground: #94a3b8;
+  --border: #334155;
+  --input: #1e293b;
+  --ring: #3b82f6;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+/* globals.css */
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}
+/* Primary Palette */
+.bg-primary { background-color: var(--primary); }
+.bg-primary-dark { background-color: var(--primary-dark); }
+.bg-primary-light { background-color: var(--primary-light); }
+
+.text-primary { color: var(--primary); }
+.text-primary-dark { color: var(--primary-dark); }
+.text-primary-light { color: var(--primary-light); }
+
+/* Secondary Palette */
+.bg-secondary { background-color: var(--secondary); }
+.bg-secondary-dark { background-color: var(--secondary-dark); }
+.bg-secondary-light { background-color: var(--secondary-light); }
+
+.text-secondary { color: var(--secondary); }
+.text-secondary-dark { color: var(--secondary-dark); }
+.text-secondary-light { color: var(--secondary-light); }
+
+/* Neutral Colors */
+.bg-background { background-color: var(--background); }
+.bg-card { background-color: var(--card); }
+.bg-muted { background-color: var(--muted); }
+
+.text-foreground { color: var(--foreground); }
+.text-card-foreground { color: var(--card-foreground); }
+.text-muted-foreground { color: var(--muted-foreground); }
+
+.border-default { border-color: var(--border); }
+.input-bg { background-color: var(--input); }
+.ring-default { --tw-ring-color: var(--ring); }
+
+/* Status Colors */
+.text-success { color: var(--success); }
+.text-error { color: var(--error); }
+.text-warning { color: var(--warning); }
+
+/* Radius */
+.rounded-default { border-radius: var(--radius); }
+
+/* Dark mode overrides */
+.dark .bg-background { background-color: var(--background); }
+.dark .bg-card { background-color: var(--card); }
+.dark .bg-muted { background-color: var(--muted); }
+
+.dark .text-foreground { color: var(--foreground); }
+.dark .text-card-foreground { color: var(--card-foreground); }
+.dark .text-muted-foreground { color: var(--muted-foreground); }
+
+.dark .border-default { border-color: var(--border); }
+.dark .input-bg { background-color: var(--input); }
+.dark .ring-default { --tw-ring-color: var(--ring); }
+
