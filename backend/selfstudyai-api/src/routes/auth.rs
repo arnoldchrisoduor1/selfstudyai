@@ -6,7 +6,7 @@ use axum::{
 };
 use validator::Validate;
 
-use crate::dto::auth::{AuthResponse, ErrorResponse, LoginRequest, RegisterRequest};
+use crate::dto::auth::{ErrorResponse, LoginRequest, RegisterRequest};
 use crate::services::auth::AuthService;
 use crate::AppState;
 

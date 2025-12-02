@@ -1,14 +1,16 @@
 use axum::{
+    middleware::from_fn_with_state,
     routing::{get, post},
     Router,
 };
 use sea_orm::{Database, DatabaseConnection};
 use sea_orm_migration::prelude::*;
 use shuttle_runtime::SecretStore;
-use tower_http::cors::{ Any, CorsLayer };
+use tower_http::cors::{Any, CorsLayer};
 
 mod dto;
 mod entities;
+mod middleware;
 mod migrations;
 mod routes;
 mod services;
@@ -64,19 +66,34 @@ async fn main(
         jwt_secret,
     };
 
+    // CORS configuration
     let cors = CorsLayer::new()
         .allow_origin(Any)
         .allow_methods(Any)
         .allow_headers(Any);
 
-    // Create router
-    let router = Router::new()
+    // Protected routes (require authentication)
+    let protected_routes = Router::new()
+        .route("/api/documents", post(routes::document::upload_document))
+        .route("/api/documents", get(routes::document::get_documents))
+        .layer(from_fn_with_state(
+            state.clone(),
+            middleware::auth::auth_middleware,
+        ));
+
+    // Public routes
+    let public_routes = Router::new()
         .route("/", get(hello_world))
         .route("/health", get(health_check))
         .route("/api/auth/register", post(routes::auth::register))
-        .route("/api/auth/login", post(routes::auth::login))
-        .with_state(state)
-        .layer(cors);
+        .route("/api/auth/login", post(routes::auth::login));
+
+    // Combine routes
+    let router = Router::new()
+        .merge(public_routes)
+        .merge(protected_routes)
+        .layer(cors)
+        .with_state(state);
 
     tracing::info!("Server starting...");
 
