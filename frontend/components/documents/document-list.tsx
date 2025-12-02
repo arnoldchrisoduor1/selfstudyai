@@ -1,15 +1,36 @@
-'use client';
+"use client";
 
-import { useEffect } from 'react';
-import { useDocumentStore } from '@/lib/store/document-store';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { File, Download, Trash2, Calendar, FileText, AlertCircle } from 'lucide-react';
-import { Alert, AlertDescription } from '@/components/ui/alert';
-import { Skeleton } from '@/components/ui/skeleton';
+import { useEffect } from "react";
+import { useDocumentStore } from "@/lib/store/document-store";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import {
+  File,
+  Download,
+  Trash2,
+  Calendar,
+  FileText,
+  AlertCircle,
+} from "lucide-react";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Skeleton } from "@/components/ui/skeleton";
+import { Badge } from "../ui/badge";
 
 export function DocumentList() {
-  const { documents, isLoading, error, fetchDocuments, deleteDocument, clearError } = useDocumentStore();
+  const {
+    documents,
+    isLoading,
+    error,
+    fetchDocuments,
+    deleteDocument,
+    clearError,
+  } = useDocumentStore();
 
   useEffect(() => {
     fetchDocuments();
@@ -17,27 +38,27 @@ export function DocumentList() {
 
   // Ensure documents is always an array
   const safeDocuments = Array.isArray(documents) ? documents : [];
-  
+
   const formatFileSize = (bytes: number) => {
-    if (bytes === 0) return '0 Bytes';
+    if (bytes === 0) return "0 Bytes";
     const k = 1024;
-    const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+    const sizes = ["Bytes", "KB", "MB", "GB"];
     const i = Math.floor(Math.log(bytes) / Math.log(k));
-    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + " " + sizes[i];
   };
 
   const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit',
+    return new Date(dateString).toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
     });
   };
 
   const handleDownload = (url: string, fileName: string) => {
-    const link = document.createElement('a');
+    const link = document.createElement("a");
     link.href = url;
     link.download = fileName;
     document.body.appendChild(link);
@@ -65,7 +86,10 @@ export function DocumentList() {
         <CardContent>
           <div className="space-y-4">
             {[1, 2, 3].map((i) => (
-              <div key={i} className="flex items-center space-x-4 p-4 border rounded">
+              <div
+                key={i}
+                className="flex items-center space-x-4 p-4 border rounded"
+              >
                 <Skeleton className="h-12 w-12 rounded" />
                 <div className="space-y-2 flex-1">
                   <Skeleton className="h-4 w-3/4" />
@@ -85,7 +109,8 @@ export function DocumentList() {
       <CardHeader>
         <CardTitle>Your Documents</CardTitle>
         <CardDescription>
-          {safeDocuments.length} document{safeDocuments.length !== 1 ? 's' : ''} uploaded
+          {safeDocuments.length} document{safeDocuments.length !== 1 ? "s" : ""}{" "}
+          uploaded
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -93,9 +118,9 @@ export function DocumentList() {
           <Alert variant="destructive" className="mb-4">
             <AlertDescription>
               {error}
-              <Button 
-                variant="ghost" 
-                size="sm" 
+              <Button
+                variant="ghost"
+                size="sm"
                 onClick={clearError}
                 className="ml-2"
               >
@@ -110,9 +135,9 @@ export function DocumentList() {
             <AlertCircle className="h-4 w-4 mr-2" />
             <AlertDescription>
               Invalid documents data received from server
-              <Button 
-                variant="ghost" 
-                size="sm" 
+              <Button
+                variant="ghost"
+                size="sm"
                 onClick={() => fetchDocuments()}
                 className="ml-2"
               >
@@ -143,10 +168,11 @@ export function DocumentList() {
                   </div>
                   <div className="flex-1">
                     <h4 className="font-medium mb-1">{document.title}</h4>
+                    // Add processing status display in the document item
                     <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
                       <div className="flex items-center">
                         <File className="h-3 w-3 mr-1" />
-                        {document.file_name}
+                        <span>{document.file_name}</span>
                       </div>
                       <div className="flex items-center">
                         <FileText className="h-3 w-3 mr-1" />
@@ -154,17 +180,38 @@ export function DocumentList() {
                       </div>
                       <div className="flex items-center">
                         <Calendar className="h-3 w-3 mr-1" />
-                        {formatDate(document.uploaded_at)}
+                        {formatDate(document.created_at)}
+                      </div>
+                      {document.page_count && (
+                        <div className="flex items-center">
+                          <span>{document.page_count} pages</span>
+                        </div>
+                      )}
+                      <div className="flex items-center">
+                        <Badge
+                          variant={
+                            document.processing_status === "completed"
+                              ? "default"
+                              : document.processing_status === "processing"
+                              ? "secondary"
+                              : "outline"
+                          }
+                          className="text-xs"
+                        >
+                          {document.processing_status}
+                        </Badge>
                       </div>
                     </div>
                   </div>
                 </div>
-                
+
                 <div className="flex space-x-2 self-end sm:self-auto">
                   <Button
                     variant="outline"
                     size="sm"
-                    onClick={() => handleDownload(document.file_url, document.file_name)}
+                    onClick={() =>
+                      handleDownload(document.file_url, document.file_name)
+                    }
                   >
                     <Download className="h-4 w-4 mr-2" />
                     Download

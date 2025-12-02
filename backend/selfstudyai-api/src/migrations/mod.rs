@@ -3,6 +3,8 @@ use sea_orm_migration::prelude::*;
 pub mod m20240101_000001_create_users_table;
 pub mod m20240102_000002_create_documents_table;
 pub mod m20240102_000003_create_document_chunks_table;
+pub mod m20240103_000004_create_quizzes_table;
+pub mod m20240103_000005_create_quiz_attempts_table;
 
 pub struct Migrator;
 
@@ -13,6 +15,8 @@ impl MigratorTrait for Migrator {
             Box::new(m20240101_000001_create_users_table::Migration),
             Box::new(m20240102_000002_create_documents_table::Migration),
             Box::new(m20240102_000003_create_document_chunks_table::Migration),
+            Box::new(m20240103_000004_create_quizzes_table::Migration),
+            Box::new(m20240103_000005_create_quiz_attempts_table::Migration),
         ]
     }
 }

@@ -24,3 +24,28 @@ pub struct DocumentResponse {
 pub struct DocumentListResponse {
     pub documents: Vec<DocumentResponse>,
 }
+
+#[derive(Debug, Deserialize)]
+pub struct SearchRequest {
+    pub query: String,
+    pub document_id: Option<String>, // Optional: search within specific document
+    #[serde(default = "default_limit")]
+    pub limit: u64,
+}
+
+fn default_limit() -> u64 {
+    5
+}
+
+#[derive(Debug, Serialize)]
+pub struct SearchResponse {
+    pub results: Vec<SearchResultItem>,
+}
+
+#[derive(Debug, Serialize)]
+pub struct SearchResultItem {
+    pub document_id: String,
+    pub chunk_id: String,
+    pub content: String,
+    pub score: f32,
+}

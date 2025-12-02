@@ -46,3 +46,5 @@ lopdf = "0.38.0"
 # HTTP Client (for downloading from Vercel Blob)
 reqwest = { version = "0.12.24", features = ["json", "stream"] }
 bytes = "1.5"
+
+qdrant-client = "1.11"

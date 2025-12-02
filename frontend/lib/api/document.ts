@@ -1,5 +1,5 @@
 import axios from "axios";
-import { DocumentResponse, DocumentsResponse, DocumentUploadRequest } from "../types/document";
+import { DocumentResponse, DocumentsResponse, DocumentUploadRequest, SearchRequest, SearchResponse } from "../types/document";
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
 
@@ -59,7 +59,20 @@ const documentApi = {
   deleteDocument: async (id: string): Promise<void> => {
     await api.delete(`/api/documents/${id}`);
   },
+
+  searchDocuments: async (data: SearchRequest): Promise<SearchResponse> => {
+    const response = await api.post<SearchResponse>('/api/search', data);
+    return response.data;
+  },
+
+  // Optional: Get a single document by ID
+  getDocumentById: async (id: string): Promise<DocumentResponse> => {
+    const response = await api.get<DocumentResponse>(`/api/documents/${id}`);
+    return response.data;
+  },
 };
+
+
 
 // Update export
 export { documentApi };

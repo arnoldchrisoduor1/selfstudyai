@@ -16,15 +16,19 @@ mod routes;
 mod services;
 
 use migrations::Migrator;
+use services::embeddings::EmbeddingsService;
+use services::vector_db::VectorDbService;
 
 #[derive(Clone)]
 pub struct AppState {
     pub db: DatabaseConnection,
     pub jwt_secret: String,
+    pub embeddings_service: EmbeddingsService,
+    pub vector_db: VectorDbService,
 }
 
 async fn hello_world() -> &'static str {
-    "StudyBuddy API v1.0"
+    "StudyBuddy API v1.0 - with RAG!"
 }
 
 async fn health_check() -> &'static str {
@@ -45,6 +49,18 @@ async fn main(
         .get("JWT_SECRET")
         .expect("JWT_SECRET must be set in Secrets.toml");
 
+    let huggingface_api_key = secrets
+        .get("HUGGINGFACE_API_KEY")
+        .expect("HUGGINGFACE_API_KEY must be set in Secrets.toml");
+
+    let qdrant_url = secrets
+        .get("QDRANT_URL")
+        .expect("QDRANT_URL must be set in Secrets.toml");
+
+    let qdrant_api_key = secrets
+        .get("QDRANT_API_KEY")
+        .expect("QDRANT_API_KEY must be set in Secrets.toml");
+
     // Connect to database
     tracing::info!("Connecting to database...");
     let db: DatabaseConnection = Database::connect(&database_url)
@@ -60,10 +76,28 @@ async fn main(
         .expect("Failed to run migrations");
     tracing::info!("Migrations completed successfully!");
 
+    // Initialize embeddings service
+    tracing::info!("Initializing embeddings service...");
+    let embeddings_service = EmbeddingsService::new(huggingface_api_key);
+
+    // Initialize vector database
+    tracing::info!("Initializing vector database...");
+    let vector_db = VectorDbService::new(qdrant_url, qdrant_api_key)
+        .await
+        .expect("Failed to initialize vector database");
+
+    vector_db
+        .initialize_collection()
+        .await
+        .expect("Failed to initialize Qdrant collection");
+    tracing::info!("Vector database initialized!");
+
     // Create app state
     let state = AppState {
         db,
         jwt_secret,
+        embeddings_service,
+        vector_db,
     };
 
     // CORS configuration
@@ -76,6 +110,7 @@ async fn main(
     let protected_routes = Router::new()
         .route("/api/documents", post(routes::document::upload_document))
         .route("/api/documents", get(routes::document::get_documents))
+        .route("/api/search", post(routes::document::search_documents))
         .layer(from_fn_with_state(
             state.clone(),
             middleware::auth::auth_middleware,
@@ -95,7 +130,7 @@ async fn main(
         .layer(cors)
         .with_state(state);
 
-    tracing::info!("Server starting...");
+    tracing::info!("Server starting with RAG capabilities...");
 
     Ok(router.into())
 }

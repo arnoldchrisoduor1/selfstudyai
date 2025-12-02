@@ -4,7 +4,9 @@ use sea_orm::{ActiveModelTrait, DatabaseConnection, EntityTrait, Set, QueryFilte
 use uuid::Uuid;
 
 use crate::entities::{document, document_chunk};
+use crate::services::embeddings::EmbeddingsService;
 use crate::services::pdf::PdfService;
+use crate::services::vector_db::VectorDbService;
 
 pub struct DocumentService;
 
@@ -39,9 +41,11 @@ impl DocumentService {
         Ok(document)
     }
 
-    /// Process PDF: extract text and create chunks
+    /// Process PDF: extract text, create chunks, and generate embeddings
     pub async fn process_pdf(
         db: &DatabaseConnection,
+        embeddings_service: &EmbeddingsService,
+        vector_db: &VectorDbService,
         document_id: Uuid,
         pdf_bytes: &[u8],
     ) -> Result<()> {
@@ -65,12 +69,19 @@ impl DocumentService {
         // Chunk text (500 words per chunk, 50 word overlap)
         let chunks = PdfService::chunk_text(&text, 500, 50);
 
-        // Save chunks to database
-        for (index, chunk_content) in chunks.iter().enumerate() {
+        // Generate embeddings for all chunks
+        tracing::info!("Generating embeddings for {} chunks", chunks.len());
+        let embeddings = embeddings_service.generate_embeddings(chunks.clone()).await?;
+
+        // Save chunks to database and prepare for vector storage
+        let mut chunk_data = Vec::new();
+
+        for (index, (chunk_content, embedding)) in chunks.iter().zip(embeddings.iter()).enumerate() {
             let token_count = PdfService::estimate_tokens(chunk_content);
+            let chunk_id = Uuid::new_v4();
 
             let new_chunk = document_chunk::ActiveModel {
-                id: Set(Uuid::new_v4()),
+                id: Set(chunk_id),
                 document_id: Set(document_id),
                 chunk_index: Set(index as i32),
                 content: Set(chunk_content.clone()),
@@ -79,7 +90,13 @@ impl DocumentService {
             };
 
             new_chunk.insert(db).await?;
+
+            chunk_data.push((chunk_id, chunk_content.clone(), embedding.clone()));
         }
+
+        // Store embeddings in Qdrant
+        tracing::info!("Storing embeddings in Qdrant");
+        vector_db.store_chunks(document_id, chunk_data).await?;
 
         // Mark as completed
         let doc = document::Entity::find_by_id(document_id)
@@ -91,6 +108,8 @@ impl DocumentService {
         doc.processing_status = Set("completed".to_string());
         doc.updated_at = Set(Utc::now().naive_utc());
         doc.update(db).await?;
+
+        tracing::info!("Document processing completed successfully");
 
         Ok(())
     }
@@ -121,5 +140,27 @@ impl DocumentService {
             .await?;
 
         Ok(document)
+    }
+
+    /// Delete a document and its chunks
+    pub async fn delete_document(
+        db: &DatabaseConnection,
+        vector_db: &VectorDbService,
+        document_id: Uuid,
+        user_id: Uuid,
+    ) -> Result<()> {
+        // Verify ownership
+        let document = Self::get_document_by_id(db, document_id, user_id)
+            .await?
+            .ok_or_else(|| anyhow::anyhow!("Document not found or access denied"))?;
+
+        // Delete from vector database
+        vector_db.delete_document_chunks(document_id).await?;
+
+        // Delete from PostgreSQL (cascades to chunks)
+        let doc: document::ActiveModel = document.into();
+        doc.delete(db).await?;
+
+        Ok(())
     }
 }
