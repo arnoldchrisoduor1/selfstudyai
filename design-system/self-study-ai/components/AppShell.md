@@ -1,3 +1,5 @@
+> **Deprecated.** Retired purple system. Use `docs/design/tokens.md`. See `DEPRECATED.md`.
+
 # AppShell
 
 - Sidebar + column: TopBar slot + main. `data-testid="app-shell"`.

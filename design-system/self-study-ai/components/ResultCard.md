@@ -1,3 +1,5 @@
+> **Deprecated.** Retired purple system. Use `docs/design/tokens.md`. See `DEPRECATED.md`.
+
 # ResultCard
 
 Search hit card showing chunk text, source, topic, and page reference.

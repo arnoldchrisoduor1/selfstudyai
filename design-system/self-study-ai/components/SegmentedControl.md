@@ -1,3 +1,5 @@
+> **Deprecated.** Retired purple system. Use `docs/design/tokens.md`. See `DEPRECATED.md`.
+
 # SegmentedControl
 
 Mutually exclusive option group (notes vs online, etc).

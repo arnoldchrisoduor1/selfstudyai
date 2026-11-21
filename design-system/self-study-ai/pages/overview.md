@@ -1,3 +1,5 @@
+> **Deprecated.** Retired purple system. Use `docs/design/tokens.md`. See `DEPRECATED.md`.
+
 # Overview
 
 Learning dashboard at `/overview/`. Full width of the main column. One surface, not a stack of loose cards.

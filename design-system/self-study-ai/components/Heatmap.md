@@ -1,3 +1,5 @@
+> **Deprecated.** Retired purple system. Use `docs/design/tokens.md`. See `DEPRECATED.md`.
+
 # Heatmap
 
 Calendar grid of activity intensity (~12 weeks).

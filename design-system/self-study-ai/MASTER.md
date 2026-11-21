@@ -1,3 +1,5 @@
+> **Deprecated.** Retired purple system. Use `docs/design/tokens.md`, `docs/design/components.md`, and `docs/design/responsive.md`. See `DEPRECATED.md`.
+
 # Design System Master File
 
 > **LOGIC:** When building a specific page, first check `design-system/self-study-ai/pages/[page-name].md`.

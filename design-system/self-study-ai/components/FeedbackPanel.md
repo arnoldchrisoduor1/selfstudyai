@@ -1,3 +1,5 @@
+> **Deprecated.** Retired purple system. Use `docs/design/tokens.md`. See `DEPRECATED.md`.
+
 # FeedbackPanel
 
 Post-answer feedback: verdict, score, corrections, additions, model answer, citations.

@@ -27,18 +27,19 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   resetDelay?: number;
 }
 
-const idleGradient: Record<Exclude<ButtonVariant, "quiet" | "quiet-destructive">, string> = {
-  primary: "from-secondary via-primary to-primary",
-  secondary: "from-secondary via-primary to-primary",
-  accent: "from-accent via-accent to-accent",
-  destructive: "from-destructive via-destructive to-destructive",
+const variants: Record<ButtonVariant, string> = {
+  primary: "border border-primary bg-primary text-primary-foreground hover:bg-primary-hover",
+  secondary: "border border-border bg-transparent text-secondary hover:bg-muted",
+  accent: "border border-status-strong bg-status-strong text-primary-foreground hover:opacity-90",
+  destructive: "border border-destructive bg-destructive text-destructive-foreground hover:opacity-90",
+  quiet: "border border-transparent bg-transparent text-text-muted hover:bg-muted",
+  "quiet-destructive": "border border-transparent bg-transparent text-destructive hover:bg-destructive/10",
 };
 
-const idleShadow: Record<Exclude<ButtonVariant, "quiet" | "quiet-destructive">, string> = {
-  primary: "shadow-primary/30 hover:shadow-primary/35",
-  secondary: "shadow-primary/30 hover:shadow-primary/35",
-  accent: "shadow-accent/30 hover:shadow-accent/35",
-  destructive: "shadow-destructive/30 hover:shadow-destructive/35",
+const statusClass: Record<Exclude<ButtonStatus, "idle">, string> = {
+  loading: "border-primary bg-primary text-primary-foreground",
+  success: "border-status-strong bg-status-strong text-primary-foreground",
+  error: "border-destructive bg-destructive text-destructive-foreground",
 };
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(
@@ -88,7 +89,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
     resetTimer.current = setTimeout(() => {
       if (mounted.current) setInternal("idle");
     }, resetDelay);
-  }, [status, onAction, resetDelay]);
+  }, [onAction, resetDelay, status]);
 
   const isBusy = status === "loading";
   const isIdle = status === "idle";
@@ -101,48 +102,17 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
           ? errorLabel
           : (idleLabel ?? children);
 
-  if (variant === "quiet" || variant === "quiet-destructive") {
-    return (
-      <button
-        ref={ref}
-        type={type}
-        disabled={disabled}
-        onClick={onClick}
-        className={cn(
-          "inline-flex h-9 min-h-9 cursor-pointer items-center justify-center rounded-lg px-3 text-sm font-semibold",
-          "bg-transparent shadow-none transition-colors duration-200",
-          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
-          "disabled:cursor-not-allowed disabled:opacity-50",
-          variant === "quiet"
-            ? "text-primary hover:bg-muted"
-            : "text-destructive hover:bg-destructive/10",
-          className,
-        )}
-        {...props}
-      >
-        {children}
-      </button>
-    );
-  }
-
-  const fill =
-    status === "loading"
-      ? "from-primary via-secondary to-primary"
-      : status === "success"
-        ? "from-accent via-accent to-accent"
-        : status === "error"
-          ? "from-destructive via-destructive to-destructive"
-          : idleGradient[variant];
+  const quiet = variant === "quiet" || variant === "quiet-destructive";
 
   return (
     <button
       ref={ref}
       type={type}
-      aria-busy={isBusy}
-      aria-disabled={!isIdle || disabled}
-      disabled={disabled || (!isIdle && Boolean(onAction))}
+      aria-busy={!quiet && isBusy}
+      aria-disabled={!quiet && (!isIdle || disabled)}
+      disabled={disabled || (!quiet && !isIdle && Boolean(onAction))}
       onClick={(event) => {
-        if (onAction) {
+        if (!quiet && onAction) {
           event.preventDefault();
           void runAction();
           return;
@@ -150,42 +120,31 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
         onClick?.(event);
       }}
       className={cn(
-        "relative inline-flex cursor-pointer select-none items-center justify-center overflow-hidden font-semibold text-primary-foreground",
-        size === "sm" ? "h-9 min-h-9 min-w-0 rounded-lg px-3 text-sm" : "h-12 min-h-11 rounded-xl px-6",
-        "shadow-md transition-[opacity,box-shadow] duration-300",
-        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
-        "hover:opacity-95 hover:shadow-lg",
-        idleShadow[variant],
+        "inline-flex min-h-11 cursor-pointer select-none items-center justify-center gap-sm rounded-md font-semibold",
+        size === "sm" ? "px-sm text-label-sm" : "px-md text-label-md",
+        "transition-colors duration-fast ease-standard",
+        "focus-visible:outline-none focus-visible:shadow-focus",
+        "disabled:cursor-not-allowed disabled:opacity-50",
         isBusy && "cursor-wait",
-        (!isIdle || disabled) && !isBusy && "cursor-default opacity-90",
-        disabled && "cursor-not-allowed opacity-50",
+        status === "idle" || quiet ? variants[variant] : statusClass[status],
         className,
       )}
       {...props}
     >
-      <span aria-hidden="true" className={cn("pointer-events-none absolute inset-0 bg-gradient-to-r", fill)} />
-      {status === "loading" ? (
-        <span
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 motion-safe:animate-[btn-shimmer_1.4s_linear_infinite] bg-[linear-gradient(110deg,transparent_25%,rgba(255,255,255,0.35)_50%,transparent_75%)]"
-        />
+      {!quiet && status === "loading" ? (
+        <span className="flex items-center gap-xs" aria-hidden="true">
+          {[0, 1, 2].map((i) => (
+            <span
+              key={i}
+              className="h-xs w-xs rounded-full bg-primary-foreground motion-safe:animate-[dot-bounce_0.6s_ease-in-out_infinite]"
+              style={{ animationDelay: `${i * 0.15}s` }}
+            />
+          ))}
+        </span>
       ) : null}
-      <span className="relative z-10 flex items-center justify-center gap-2" role="status" aria-live="polite">
-        {status === "loading" ? (
-          <span className="flex items-center gap-1" aria-hidden="true">
-            {[0, 1, 2].map((i) => (
-              <span
-                key={i}
-                className="h-1.5 w-1.5 rounded-full bg-primary-foreground motion-safe:animate-[dot-bounce_0.6s_ease-in-out_infinite]"
-                style={{ animationDelay: `${i * 0.15}s` }}
-              />
-            ))}
-          </span>
-        ) : null}
-        {status === "success" ? <IconCheck className="h-4 w-4" strokeWidth={3} /> : null}
-        {status === "error" ? <IconX className="h-4 w-4" strokeWidth={3} /> : null}
-        <span>{label}</span>
-      </span>
+      {!quiet && status === "success" ? <IconCheck className="h-md w-md" strokeWidth={3} /> : null}
+      {!quiet && status === "error" ? <IconX className="h-md w-md" strokeWidth={3} /> : null}
+      <span className="inline-flex items-center gap-sm">{quiet ? children : label}</span>
     </button>
   );
 });

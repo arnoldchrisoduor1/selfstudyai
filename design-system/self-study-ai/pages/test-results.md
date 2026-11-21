@@ -1,3 +1,5 @@
+> **Deprecated.** Retired purple system. Use `docs/design/tokens.md`. See `DEPRECATED.md`.
+
 # Test results
 
 Results at `/tests/results/?id=` after submit or expire.

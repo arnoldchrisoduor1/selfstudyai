@@ -1,3 +1,5 @@
+> **Deprecated.** Retired purple system. Use `docs/design/tokens.md`. See `DEPRECATED.md`.
+
 # SecretInput
 
 Password-style field for API keys. Never displays a saved raw key; shows a masked hint when one exists.

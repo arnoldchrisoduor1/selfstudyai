@@ -50,7 +50,28 @@ export function DataTable<T>({
       )}
       data-testid={props["data-testid"]}
     >
-      <div className="max-h-[36rem] overflow-auto">
+      <ul className="flex flex-col gap-sm p-sm md:hidden">
+        {rows.length === 0 ? (
+          <li className="px-md py-lg text-center">
+            <p className="text-body-md font-medium text-foreground">{emptyTitle}</p>
+            <p className="mt-xs text-body-sm text-text-muted">{emptyMessage}</p>
+          </li>
+        ) : (
+          rows.map((row) => (
+            <li key={getRowId(row)} className="rounded-lg border border-border bg-surface p-md">
+              {columns.map((column) => (
+                <div key={column.key} className="flex flex-col gap-xs border-b border-border py-sm last:border-b-0">
+                  <span className="text-label-sm uppercase text-text-muted">{column.header}</span>
+                  <div className={cn("text-body-md text-foreground", column.align === "right" && "text-right")}>
+                    {column.cell(row)}
+                  </div>
+                </div>
+              ))}
+            </li>
+          ))
+        )}
+      </ul>
+      <div className="hidden max-h-reading overflow-auto md:block">
         <Table className="min-w-full">
           {caption ? <caption className="sr-only">{caption}</caption> : null}
           <TableHead>

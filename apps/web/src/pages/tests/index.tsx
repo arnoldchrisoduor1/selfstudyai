@@ -6,7 +6,7 @@ export default function TestHistoryPage() {
   return (
     <>
       <Head>
-        <title>Tests</title>
+        <title>Final Tests · Self Study</title>
       </Head>
       <TestHistorySection />
     </>

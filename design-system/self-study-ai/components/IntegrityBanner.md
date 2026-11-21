@@ -1,3 +1,5 @@
+> **Deprecated.** Retired purple system. Use `docs/design/tokens.md`. See `DEPRECATED.md`.
+
 # IntegrityBanner
 
 Warning when focus lost during focus-mode test.

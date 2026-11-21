@@ -1,3 +1,5 @@
+> **Deprecated.** Retired purple system. Use `docs/design/tokens.md`. See `DEPRECATED.md`.
+
 # Sidebar
 
 Quiet product rail. Card surface, right border `border`. Open width 240px (`w-60`); collapsed rail 64px (`w-16`).

@@ -1,0 +1,46 @@
+/** Design sample for analytics fields the API cannot return. */
+
+export const analyticsPlaceholder = {
+  retention: "91.8%",
+  retentionDelta: "+2.3%",
+  concepts: "342",
+  conceptsTotal: "410",
+  coverage: "83.4% coverage",
+  conceptsDue: "68 concepts scheduled for revision",
+  score: "884",
+  scoreTotal: "/ 1,000",
+  scoreTone: "Strong",
+  scoreDetail: "Calculated across practice tests and recall drills",
+  decay: [99, 94, 91, 88, 85, 82],
+  decayLabels: ["Day 1", "Day 3", "Day 7", "Day 14", "Day 21", "Day 30"],
+  decayNote: "Optimal recall preservation threshold is maintained across all 7-day revision cycles.",
+  load: [
+    { label: "Distributed Systems", hours: "42.0 hrs", pct: 50 },
+    { label: "Linear Electronics", hours: "26.0 hrs", pct: 31 },
+    { label: "Machine Learning", hours: "16.5 hrs", pct: 19 },
+  ],
+  modality: [
+    { label: "Active Recall", pct: 62 },
+    { label: "Simulations", pct: 24 },
+    { label: "Ingestion", pct: 14 },
+  ],
+  peak: "Peak retention efficiency occurs in morning sessions (8:00 AM – 11:30 AM) with 94.2% first-pass accuracy on active recall tests.",
+  points: [
+    { label: "Reviews", pct: 50 },
+    { label: "Quizzes", pct: 28 },
+    { label: "Gold questions", pct: 14 },
+    { label: "Streak bonus", pct: 8 },
+  ],
+  samplePoints: 14850,
+  topics: [
+    { title: "Raft Consensus Algorithm", curriculum: "Distributed Systems • Replicated State Machines", mastery: "96%", stability: "42 days (High)", lapses: "0 lapses", status: "Mastered", tone: "strong" as const },
+    { title: "PBFT & Byzantine Quorums", curriculum: "Distributed Systems • Fault Tolerant Networks", mastery: "71%", stability: "4 days (Low)", lapses: "4 lapses", status: "Review Priority", tone: "weak" as const },
+    { title: "Two-Pole Op-Amp Frequency Compensation", curriculum: "Linear Electronics • Feedback Stability", mastery: "68%", stability: "3 days (Low)", lapses: "3 lapses", status: "Review Priority", tone: "weak" as const },
+    { title: "Attention Mechanism Gradients & SRAM Tiling", curriculum: "Machine Learning • Deep Optimization", mastery: "92%", stability: "28 days (High)", lapses: "1 lapse", status: "High Recall", tone: "stable" as const },
+    { title: "Spanner TrueTime & 2PC Invariants", curriculum: "Distributed Systems • Transaction Processing", mastery: "88%", stability: "18 days (Mid)", lapses: "2 lapses", status: "On Track", tone: "review" as const },
+  ],
+  tests: [82, 85, 89, 90, 94],
+  testLabels: ["Midterm 1", "Quiz 3", "Midterm 2", "Comprehensive", "Practice Final"],
+  testDates: ["Oct 12, 2026", "Oct 24, 2026", "Nov 04, 2026", "Nov 10, 2026", "Nov 14, 2026"],
+  testDelta: "+13% average score improvement across timed conditions in Nov 2026",
+};

@@ -1,42 +1,43 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import { useRouter } from "next/router";
 
 import { Button } from "@self-study/ui/Button";
+import { Icon } from "@self-study/ui/Icon";
+import { SearchInput } from "@self-study/ui/SearchInput";
 import { SyncStatusChip } from "@self-study/ui/SyncStatusChip";
-import { cn } from "@self-study/ui/cn";
 
-import { EncouragementTicker } from "@/components/EncouragementTicker";
 import { useAuth } from "@/hooks/useAuth";
 import { useSync } from "@/hooks/useSync";
 import { getActiveSessionId } from "@/lib/active-session";
-import { getDashboard } from "@/lib/api-client";
+import { getCreditsBalance } from "@/lib/api-client";
 import { basePath } from "@/lib/nav";
 
 export function ShellTopBar() {
   const router = useRouter();
   const { me, signedIn } = useAuth();
   const { displayState, message, syncNow, refreshStatus } = useSync(signedIn);
-  const [points, setPoints] = useState<string | null>(null);
-  const [streak, setStreak] = useState<string | null>(null);
+  const [query, setQuery] = useState("");
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [credits, setCredits] = useState<string | null>(null);
   const [activeSessionId, setActive] = useState<string | null>(null);
 
   useEffect(() => {
+    if (!signedIn) {
+      setCredits(null);
+      return;
+    }
     let live = true;
-    getDashboard()
-      .then((data) => {
-        if (!live) return;
-        setPoints(String(data.total_points));
-        setStreak(String(data.streak.current));
+    getCreditsBalance()
+      .then((balance) => {
+        if (live) setCredits(String(balance.available));
       })
       .catch(() => {
-        if (!live) return;
-        setPoints(null);
-        setStreak(null);
+        if (live) setCredits(null);
       });
     return () => {
       live = false;
     };
-  }, []);
+  }, [signedIn]);
 
   useEffect(() => {
     const read = () => setActive(getActiveSessionId());
@@ -52,65 +53,96 @@ export function ShellTopBar() {
     };
   }, [router.asPath]);
 
-  const studyLabel = activeSessionId ? "Continue studying" : "Start studying";
+  const studyLabel = activeSessionId ? "Continue review" : "Start review";
   const studyHref = activeSessionId
     ? `${basePath}/study/session/?id=${activeSessionId}`
     : `${basePath}/study/`;
 
+  function submitSearch(event: FormEvent) {
+    event.preventDefault();
+    const trimmed = query.trim();
+    if (!trimmed) return;
+    setSearchOpen(false);
+    router.push(`${basePath}/sources/?q=${encodeURIComponent(trimmed)}`);
+  }
+
+  const searchField = (testId: string) => (
+    <form onSubmit={submitSearch} className="min-w-0 flex-1" role="search">
+      <SearchInput
+        label="Search notes and books"
+        labelHidden
+        placeholder="Search notes and books"
+        value={query}
+        onChange={(event) => setQuery(event.target.value)}
+        data-testid={testId}
+      />
+    </form>
+  );
+
   return (
-    <div className="flex w-full min-w-0 items-center gap-md" data-testid="shell-top-bar">
-      <div className="hidden shrink-0 items-center gap-sm md:flex">
-        {streak !== null ? (
-          <span
-            className="inline-flex items-center gap-1 rounded-full bg-primary/10 px-3 py-1.5 text-xs font-semibold tabular-nums text-primary"
-            data-testid="header-streak"
-          >
-            Streak {streak}
-          </span>
-        ) : null}
-        {points !== null ? (
-          <span
-            className="inline-flex items-center gap-1 rounded-full bg-accent/15 px-3 py-1.5 text-xs font-semibold tabular-nums text-foreground"
-            data-testid="header-points"
-          >
-            Pts {points}
-          </span>
-        ) : null}
-      </div>
-
-      <div className="hidden min-w-0 flex-1 justify-center px-md lg:flex">
-        <EncouragementTicker className="max-w-md rounded-full bg-muted/80 px-4 py-1.5" />
-      </div>
-
-      <div className="ml-auto flex min-w-0 flex-wrap items-center justify-end gap-sm sm:gap-md">
-        <SyncStatusChip
-          state={displayState}
-          message={displayState === "error" ? message : null}
-          className="!flex-row items-center gap-sm"
-          onRetry={() => {
-            if (signedIn) syncNow().catch(() => refreshStatus());
-            else refreshStatus();
-          }}
-          data-testid="header-sync"
-        />
-
-        {signedIn && me ? (
-          <span
-            className="hidden max-w-[10rem] truncate text-sm font-medium text-foreground sm:inline"
-            data-testid="header-user"
-            title={me.user.email}
-          >
-            {me.user.email}
-          </span>
-        ) : null}
-
+    <div className="flex w-full min-w-0 items-center gap-sm" data-testid="shell-top-bar">
+      <div className="hidden min-w-0 flex-1 md:block">{searchField("header-search")}</div>
+      {searchOpen ? (
+        <div className="flex min-w-0 flex-1 items-center gap-sm md:hidden">
+          {searchField("header-search-mobile")}
+          <Button type="button" variant="quiet" onClick={() => setSearchOpen(false)}>
+            Close
+          </Button>
+        </div>
+      ) : (
         <Button
-          className={cn("min-h-10 min-w-0 px-4 text-sm")}
-          data-testid="header-study-cta"
-          onClick={() => router.push(studyHref)}
+          type="button"
+          variant="quiet"
+          className="min-w-11 px-sm md:hidden"
+          aria-label="Search"
+          data-testid="header-search-open"
+          onClick={() => setSearchOpen(true)}
         >
-          {studyLabel}
+          <Icon name="search" />
         </Button>
+      )}
+      <div className={searchOpen ? "hidden md:contents" : "contents"}>
+          <Button
+            type="button"
+            variant="secondary"
+            data-testid="header-add-material"
+            onClick={() => router.push(`${basePath}/sources/`)}
+          >
+            <Icon name="upload_file" size="sm" />
+            <span className="hidden sm:inline">Add material</span>
+          </Button>
+          {credits !== null ? (
+            <span
+              className="hidden items-center gap-xs rounded-full border border-border bg-surface px-sm text-label-sm text-text-muted md:inline-flex"
+              data-testid="header-credits"
+            >
+              <Icon name="bolt" size="sm" />
+              {credits}
+            </span>
+          ) : null}
+          <SyncStatusChip
+            state={displayState}
+            message={displayState === "error" ? message : null}
+            className="!flex-row items-center gap-sm"
+            onRetry={() => {
+              if (signedIn) syncNow().catch(() => refreshStatus());
+              else refreshStatus();
+            }}
+            data-testid="header-sync"
+          />
+          {signedIn && me ? (
+            <span
+              className="hidden max-w-sidebar truncate text-label-md text-foreground lg:inline"
+              data-testid="header-user"
+              title={me.user.email}
+            >
+              {me.user.email}
+            </span>
+          ) : null}
+          <Button data-testid="header-study-cta" onClick={() => router.push(studyHref)}>
+            <Icon name="play_arrow" size="sm" />
+            <span className="hidden sm:inline">{studyLabel}</span>
+          </Button>
       </div>
     </div>
   );

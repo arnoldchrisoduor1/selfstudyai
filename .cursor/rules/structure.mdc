@@ -27,10 +27,12 @@ Learning tool. Notes, books, quizzes, spaced repetition, progress, and points co
 
 ## Design system
 
-Before adding or changing a page or component, edit its entry:
+`design-system/self-study-ai/` is deprecated. Do not follow it.
 
-- Pages: `design-system/self-study-ai/pages/<page>.md`
-- Components: `design-system/self-study-ai/components/<component>.md`
-- Marketing overrides: `design-system/self-study-ai/pages/landing.md`
+Before adding or changing a page or component, follow:
 
-Tokens come from `MASTER.md` through `packages/ui/tailwind.preset.ts`. No raw hex in components. No invented marketing copy.
+- Tokens: `docs/design/tokens.md` (values live only in `packages/ui/tokens.css`)
+- Components: `docs/design/components.md`
+- Responsive: `docs/design/responsive.md`
+
+Tailwind maps those variables in `packages/ui/tailwind.preset.ts`. No raw hex in components. No invented marketing copy.

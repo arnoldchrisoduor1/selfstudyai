@@ -1,3 +1,5 @@
+> **Deprecated.** Retired purple system. Use `docs/design/tokens.md`. See `DEPRECATED.md`.
+
 # Modal
 
 - `role="dialog"`, `aria-modal="true"`, labelled heading.

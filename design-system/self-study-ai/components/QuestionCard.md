@@ -1,3 +1,5 @@
+> **Deprecated.** Retired purple system. Use `docs/design/tokens.md`. See `DEPRECATED.md`.
+
 # QuestionCard
 
 Displays one study question stem with kind/level/grounding badges.

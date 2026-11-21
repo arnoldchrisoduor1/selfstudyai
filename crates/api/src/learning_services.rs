@@ -110,6 +110,8 @@ pub async fn record_learning_outcome(
         .map(|c| c.state.clone())
         .unwrap_or_else(|| CardLearningState::New.as_str().to_owned());
 
+    /* this fuction is used to scheduele the next review for the scheduele*/
+
     let outcome = schedule_with_clock(
         state.scheduler.as_ref(),
         prior.as_ref(),

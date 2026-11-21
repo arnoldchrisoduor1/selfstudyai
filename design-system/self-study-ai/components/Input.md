@@ -1,3 +1,5 @@
+> **Deprecated.** Retired purple system. Use `docs/design/tokens.md`. See `DEPRECATED.md`.
+
 # Input
 
 - Visible label above the field. 16px text so mobile browsers do not zoom.

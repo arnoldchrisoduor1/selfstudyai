@@ -1,3 +1,5 @@
+> **Deprecated.** Retired purple system. Use `docs/design/tokens.md`. See `DEPRECATED.md`.
+
 # Account & sync (Settings tab)
 
 Lives under Settings as tab **Account & sync**.

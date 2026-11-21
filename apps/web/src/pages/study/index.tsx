@@ -6,7 +6,7 @@ export default function StudyPage() {
   return (
     <>
       <Head>
-        <title>Study</title>
+        <title>Reviews · Self Study</title>
       </Head>
       <StudyHomeSection />
     </>

@@ -1,3 +1,5 @@
+> **Deprecated.** Retired purple system. Use `docs/design/tokens.md`. See `DEPRECATED.md`.
+
 # OptionList
 
 MCQ option selector as a vertical list of radio-style buttons.

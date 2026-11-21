@@ -1,3 +1,5 @@
+@import "../../../../packages/ui/tokens.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -10,7 +12,7 @@
 
 .sidebar-scroll {
   scrollbar-width: thin;
-  scrollbar-color: theme("colors.primary.DEFAULT") theme("colors.muted.DEFAULT");
+  scrollbar-color: var(--color-primary) var(--color-surface-dim);
 }
 
 .sidebar-scroll::-webkit-scrollbar {
@@ -18,14 +20,14 @@
 }
 
 .sidebar-scroll::-webkit-scrollbar-track {
-  background: theme("colors.muted.DEFAULT");
-  border-radius: 999px;
+  background: var(--color-surface-dim);
+  border-radius: var(--radius-full);
 }
 
 .sidebar-scroll::-webkit-scrollbar-thumb {
-  background: theme("colors.primary.DEFAULT");
-  border: 2px solid theme("colors.muted.DEFAULT");
-  border-radius: 999px;
+  background: var(--color-primary);
+  border: var(--border-width) solid var(--color-surface-dim);
+  border-radius: var(--radius-full);
 }
 
 @keyframes reveal-up {

@@ -13,7 +13,7 @@ What Self Study AI implements today. This file is the source of truth for produc
 
 - **Sources** — Upload notes or books (`.md`, `.txt`, `.pdf`, `.epub`). Deduped by `content_hash` within a subject. Background ingest with progress and failure states.
 - **Topics and chunks** — Hierarchical topics, ~500-token chunks with overlap, FTS5 keyword index plus stored embeddings.
-- **Hybrid search** — Vector similarity + FTS fused ranking. Filters by subject, source, topic (`POST /search`). Web UI at `/search/` and `/sources/`.
+- **Hybrid search** — Vector similarity + FTS fused ranking. Filters by subject, source, topic (`POST /search`). The library page searches inside documents. The standalone `/search/` page is removed.
 - **AI providers** — OpenAI-compatible HTTP, Ollama, and `MockProvider` for tests. Keys stored server-side; masked in UI. Default chat and embedding models; re-embed when the embedding model changes.
 - **Web search (optional)** — `WebSearchProvider` for online-grounded question generation. Generic HTTP + mock for tests.
 
@@ -23,7 +23,7 @@ What Self Study AI implements today. This file is the source of truth for produc
 
 - **Generation** — Notes mode uses cited chunks; online mode uses search excerpts (labeled `grounding=online`). MCQ and written questions; cognitive levels recall → analyze; configurable mix and burst size.
 - **Study sessions** — Burst-based flow: create/resume session, fetch next burst, submit answers, AI or deterministic grading, feedback panel, grade overrides, flag and gold promotion.
-- **Question bank** — Filter, edit, archive, gold review queue (`/questions/`, `/questions/gold/`).
+- **Gold** — A study session can mark a question gold. The gold-review page is removed. Quizzes live at `/quizzes/`.
 - **Usage tracking** — `usage_events` for generation, grading, embedding (feeds cloud credits accounting).
 
 ## Learning engine (Phase 4)
@@ -54,7 +54,7 @@ Optional. The product remains fully usable without signing in.
 
 ### Cloud AI credits
 
-- Prepaid **credits ledger** (`credits_ledger`, `credit_reservations`). Balance, ledger, top-up start via API.
+- Prepaid **credits ledger** (`credits_ledger`, `credit_reservations`). Balance, ledger, and top-up stay on the API. The header shows the available balance. The `/credits/` page is removed.
 - Cloud provider uses platform keys (`CLOUD_AI_API_KEY`); reserve → call → settle pattern; daily cap (`CREDITS_DAILY_CAP`).
 - **Payments:** `MockPaymentProvider` and admin-only `POST /credits/admin/adjust` when `ADMIN_USER_ID` is set. **No real payment gateway** (Stripe/M-Pesa) — see `Docs/PAYMENTS_TODO.md`.
 
@@ -80,9 +80,8 @@ Optional. The product remains fully usable without signing in.
 | `/subjects/` | Subject list |
 | `/subjects/new/`, `/subjects/edit/` | Subject CRUD |
 | `/sources/`, `/sources/detail/` | Library and topic tree |
-| `/search/` | Hybrid search |
 | `/study/`, `/study/session/` | Study home and session |
-| `/questions/`, `/questions/gold/` | Bank and gold review |
+| `/quizzes/` | Quiz hub |
 | `/overview/` | Dashboard and due items |
 | `/tests/` … | Test list, session, results |
 | `/settings/` | Settings, providers, account/sync when enabled |

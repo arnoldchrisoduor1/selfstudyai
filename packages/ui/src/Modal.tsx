@@ -27,7 +27,7 @@ export function Modal({ open, title, children, onClose, className, ...props }: M
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0 z-40 flex items-center justify-center bg-foreground/40 p-md">
+    <div className="fixed inset-0 z-modal flex items-center justify-center bg-foreground/40 p-md">
       <div
         role="dialog"
         aria-modal="true"

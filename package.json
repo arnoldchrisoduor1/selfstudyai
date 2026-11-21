@@ -13,6 +13,7 @@
     "lint:web": "npm run lint -w @self-study/web",
     "lint:landing": "npm run lint -w @self-study/landing",
     "typecheck": "npm run typecheck -w @self-study/web && npm run typecheck -w @self-study/landing",
+    "check:colors": "node scripts/check-no-hex.mjs",
     "test:e2e": "playwright test",
     "test:e2e:phase5": "playwright test e2e/phase5.spec.ts"
   },

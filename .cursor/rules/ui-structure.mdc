@@ -6,7 +6,7 @@ alwaysApply: false
 
 # UI structure
 
-Static export only (`output: 'export'`). No `getServerSideProps`, no `getInitialProps`, no `pages/api`, no server-only Next APIs. Brand tokens come from `packages/ui/tailwind.preset.ts`, which mirrors `design-system/self-study-ai/MASTER.md`. Landing page rules in `design-system/self-study-ai/pages/landing.md` override the master for that app. No raw hex in components. No invented marketing copy.
+Static export only (`output: 'export'`). No `getServerSideProps`, no `getInitialProps`, no `pages/api`, no server-only Next APIs. Brand tokens come from `packages/ui/tokens.css` through `packages/ui/tailwind.preset.ts`. Specs: `docs/design/tokens.md`, `docs/design/components.md`, `docs/design/responsive.md`. `design-system/self-study-ai/` is deprecated. No raw hex in components. No invented marketing copy.
 
 ## Where files go
 
@@ -36,4 +36,4 @@ Shared controls that must stay reusable: Button, Input, Select, Textarea, Toggle
 
 ## Design system
 
-Create or edit `design-system/self-study-ai/pages/<page>.md` or `components/<component>.md` before changing that UI. Landing overrides live in `pages/landing.md`.
+Read `docs/design/components.md` before changing a shared control, and `docs/design/responsive.md` before changing layout. Add a token in `packages/ui/tokens.css` before using a new color, size, radius, shadow, or space. Do not edit `design-system/self-study-ai/`.

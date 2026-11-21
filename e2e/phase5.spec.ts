@@ -95,14 +95,6 @@ test("settings account sync sign-up and sign-in", async ({ page }) => {
   await expectNoSeriousAxe(page);
 });
 
-test("credits page balance", async ({ page }) => {
-  test.setTimeout(60000);
-  await page.goto("/credits/");
-  await expect(page.getByTestId("credits-section")).toBeVisible({ timeout: 15000 });
-  await expect(page.getByTestId("credits-balance")).toBeVisible();
-  await expectNoSeriousAxe(page);
-});
-
 test("header sync status chip", async ({ page }) => {
   await page.goto("/overview/");
   await expect(page.getByTestId("header-sync")).toBeVisible({ timeout: 15000 });

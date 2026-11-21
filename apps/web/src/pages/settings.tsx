@@ -6,7 +6,7 @@ export default function SettingsPage() {
   return (
     <>
       <Head>
-        <title>Settings</title>
+        <title>Settings · Self Study</title>
       </Head>
       <SettingsSection />
     </>

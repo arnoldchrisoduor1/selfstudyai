@@ -58,7 +58,7 @@ Both apps use `output: 'export'`. No server-only Next.js features.
 
 The product app uses `apps/web/src/lib/api-client.ts`. Default API: `http://127.0.0.1:18080`. Desktop sets `window.__STUDY_API_BASE__`.
 
-**Product routes:** `/subjects/`, `/sources/`, `/search/`, `/study/`, `/questions/`, `/overview/`, `/tests/`, `/settings/`, `/dev/components/`.
+**Product routes:** `/subjects/`, `/sources/`, `/study/`, `/quizzes/`, `/overview/`, `/tests/`, `/settings/`, `/dev/components/`.
 
 **Landing routes:** `/`, `/privacy/`, `/terms/` (legal pages are placeholders).
 

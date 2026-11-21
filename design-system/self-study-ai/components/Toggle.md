@@ -1,3 +1,5 @@
+> **Deprecated.** Retired purple system. Use `docs/design/tokens.md`. See `DEPRECATED.md`.
+
 # Toggle
 
 - `role="switch"` and `aria-checked`. Visible text label, not color alone.

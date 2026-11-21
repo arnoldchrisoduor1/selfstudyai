@@ -1,3 +1,5 @@
+> **Deprecated.** Retired purple system. Use `docs/design/tokens.md`. See `DEPRECATED.md`.
+
 # TrendChart
 
 Area chart on a card, or flush when a parent already provides the surface (`embedded`).

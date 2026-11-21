@@ -1,3 +1,5 @@
+> **Deprecated.** Retired purple system. Use `docs/design/tokens.md`. See `DEPRECATED.md`.
+
 # Button
 
 Heights ≥ 44px. Radius `rounded-xl`. One chrome family (Start studying look).

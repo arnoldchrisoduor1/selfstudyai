@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState, type ReactNode } from "react";
 
-import { Button } from "./Button";
+import { Icon } from "./Icon";
 import { Sidebar, type SidebarItem } from "./Sidebar";
 import { cn } from "./cn";
 
@@ -12,19 +12,6 @@ export interface AppShellProps {
   items: SidebarItem[];
   children: ReactNode;
   header?: ReactNode;
-}
-
-function MenuIcon() {
-  return (
-    <svg aria-hidden="true" viewBox="0 0 20 20" fill="none" width="20" height="20">
-      <path
-        d="M3.5 5.5h13M3.5 10h13M3.5 14.5h13"
-        stroke="currentColor"
-        strokeWidth="1.75"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
 }
 
 export function AppShell({ title, items, children, header }: AppShellProps) {
@@ -81,10 +68,13 @@ export function AppShell({ title, items, children, header }: AppShellProps) {
 
   return (
     <div data-testid="app-shell" className="relative flex h-dvh overflow-hidden bg-background text-foreground">
-      <div
+      <button
+        type="button"
+        aria-label="Close navigation"
         aria-hidden={!mobileOpen}
+        tabIndex={mobileOpen ? 0 : -1}
         className={cn(
-          "fixed inset-0 z-30 bg-foreground/40 transition-opacity duration-200 md:hidden motion-reduce:transition-none",
+          "fixed inset-0 z-dropdown cursor-pointer bg-foreground/40 transition-opacity duration-fast md:hidden motion-reduce:transition-none",
           mobileOpen ? "opacity-100" : "pointer-events-none opacity-0",
         )}
         onClick={closeMobile}
@@ -103,23 +93,24 @@ export function AppShell({ title, items, children, header }: AppShellProps) {
       <div className="relative z-0 flex min-h-0 min-w-0 flex-1 flex-col">
         <header
           data-testid="app-shell-header"
-          className="z-20 flex min-h-16 shrink-0 items-center gap-md border-b border-border bg-card/75 px-md py-sm shadow-sm shadow-primary/5 backdrop-blur-xl md:px-lg"
+          className="relative z-header flex h-header shrink-0 items-center gap-sm border-b border-border bg-surface px-margin"
         >
-          <Button
+          <button
             type="button"
-            variant="secondary"
             aria-expanded={mobileOpen}
             aria-controls={SIDEBAR_ID}
             data-testid="sidebar-mobile-open"
-            className="min-h-11 min-w-0 px-3 md:hidden"
+            className="inline-flex min-h-11 min-w-11 cursor-pointer items-center justify-center rounded-md text-foreground hover:bg-muted md:hidden"
             onClick={() => setMobileOpen(true)}
           >
-            <MenuIcon />
+            <Icon name="menu" />
             <span className="sr-only">Open navigation</span>
-          </Button>
-          <div className="flex min-w-0 flex-1 items-center gap-md">{header}</div>
+          </button>
+          <div className="flex min-w-0 flex-1 items-center gap-sm">{header}</div>
         </header>
-        <main className="min-h-0 min-w-0 flex-1 overflow-y-auto px-lg py-lg">{children}</main>
+        <main className="min-h-0 min-w-0 flex-1 overflow-y-auto overflow-x-hidden p-margin md:p-margin-desktop">
+          {children}
+        </main>
       </div>
     </div>
   );

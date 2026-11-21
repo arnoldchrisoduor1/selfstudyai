@@ -1,3 +1,5 @@
+> **Deprecated.** Retired purple system. Use `docs/design/tokens.md`. See `DEPRECATED.md`.
+
 # SyncStatusChip
 
 Header chip for cloud sync state. Built on StatusChip tones.

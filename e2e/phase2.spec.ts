@@ -16,7 +16,7 @@ async function pickSubject(page: Page, subjectName: string) {
   await select.selectOption({ label: subjectName });
 }
 
-test("upload notes, edit topic, search, provider test", async ({ page }) => {
+test("upload notes, edit topic, library search, provider test", async ({ page }) => {
   test.setTimeout(90000);
   const subjectName = `Phase2 ${Date.now()}`;
   await page.goto("/subjects/new/");
@@ -38,10 +38,11 @@ test("upload notes, edit topic, search, provider test", async ({ page }) => {
   const coreToggle = page.getByTestId(/topic-core-/).first();
   await coreToggle.click();
 
-  await page.goto("/search/");
-  await page.getByTestId("search-query").fill("recall");
-  await page.getByTestId("search-submit").click();
-  await expect(page.getByTestId("search-result").first()).toBeVisible({ timeout: 15000 });
+  await page.goto("/sources/");
+  await expect(page.getByTestId("sources-page")).toBeVisible();
+  await page.getByTestId("library-search-inside").check();
+  await page.getByTestId("library-query").fill("recall");
+  await expect(page.getByRole("link", { name: /sample/i }).first()).toBeVisible({ timeout: 15000 });
 
   await page.goto("/settings/");
   await page.getByRole("tab", { name: "AI providers" }).click();
@@ -54,9 +55,6 @@ test("upload notes, edit topic, search, provider test", async ({ page }) => {
   await expectNoSeriousAxe(page);
   await page.goto("/sources/", { waitUntil: "domcontentloaded" });
   await expect(page.getByTestId("sources-page")).toBeVisible();
-  await expectNoSeriousAxe(page);
-  await page.goto("/search/", { waitUntil: "domcontentloaded" });
-  await expect(page.getByTestId("search-page")).toBeVisible();
   await expectNoSeriousAxe(page);
 });
 

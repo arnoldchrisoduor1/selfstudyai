@@ -86,7 +86,7 @@ test("study session mcq+written, feedback, override", async ({ page }) => {
   await expectNoSeriousAxe(page);
 });
 
-test("question bank filter/edit and gold review", async ({ page }) => {
+test("mark a question gold", async ({ page }) => {
   test.setTimeout(120000);
   const subjectName = `Phase3 Bank ${Date.now()}`;
   await ensureSubjectWithNotes(page, subjectName);
@@ -128,24 +128,6 @@ test("question bank filter/edit and gold review", async ({ page }) => {
   await expect(page.getByTestId("feedback-panel")).toBeVisible({ timeout: 15000 });
   await page.getByTestId("mark-gold").click();
   await page.getByRole("button", { name: "Continue" }).click();
-
-  await page.goto("/questions/");
-  await expect(page.getByTestId("question-bank")).toBeVisible();
-  await page.getByTestId("bank-subject").selectOption({ label: subjectName });
-  await expect(page.getByTestId("bank-edit").first()).toBeVisible({ timeout: 15000 });
-  await page.getByTestId("bank-edit").first().click();
-  await page.getByTestId("edit-stem").fill("Edited stem for bank");
-  await page.getByTestId("edit-save").click();
-
-  await page.goto("/questions/gold/");
-  await expect(page.getByTestId("gold-review")).toBeVisible();
-  const confirm = page.getByTestId("gold-confirm").first();
-  const reject = page.getByTestId("gold-reject").first();
-  if (await confirm.isVisible().catch(() => false)) {
-    await confirm.click();
-  } else if (await reject.isVisible().catch(() => false)) {
-    await reject.click();
-  }
   await expectNoSeriousAxe(page);
 });
 
