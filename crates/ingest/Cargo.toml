@@ -1,0 +1,19 @@
+[package]
+name = "ingest"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+description = "Document parsing and chunking for study sources."
+
+[dependencies]
+thiserror = { workspace = true }
+sha2 = "0.10"
+hex = "0.4"
+pdf-extract = "0.9"
+lopdf = "0.36"
+indexmap = "2"
+epub = "2.1"
+
+[dev-dependencies]
+zip = { version = "2", default-features = false, features = ["deflate"] }

@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"inverse-primary":"#c4c0ff","on-primary-fixed":"#110068","tertiary-fixed-dim":"#ffb95f","on-error-container":"#93000a","tertiary-container":"#925c00","error-container":"#ffdad6","on-secondary":"#ffffff","primary-container":"#5b50e6","on-tertiary":"#ffffff","secondary":"#515f74","primary-fixed":"#e3dfff","tertiary-fixed":"#ffddb8","tertiary":"#714600","outline-variant":"#c8c4d7","primary-fixed-dim":"#c4c0ff","surface-container-high":"#dce9ff","on-secondary-fixed-variant":"#3a485b","background":"#f8f9ff","surface-bright":"#f8f9ff","outline":"#777586","on-tertiary-fixed":"#2a1700","error":"#ba1a1a","secondary-fixed-dim":"#b9c7df","surface":"#f8f9ff","on-secondary-fixed":"#0d1c2e","on-background":"#0b1c30","on-tertiary-container":"#ffe3c6","on-error":"#ffffff","inverse-surface":"#213145","surface-container":"#e5eeff","surface-container-low":"#eff4ff","on-primary":"#ffffff","on-secondary-container":"#57657a","on-primary-fixed-variant":"#3826c5","surface-tint":"#5145dc","on-surface":"#0b1c30","on-surface-variant":"#464555","on-tertiary-fixed-variant":"#653e00","secondary-container":"#d5e3fc","primary":"#4233cd","surface-dim":"#cbdbf5","surface-container-highest":"#d3e4fe","inverse-on-surface":"#eaf1ff","secondary-fixed":"#d5e3fc","surface-variant":"#d3e4fe","surface-container-lowest":"#ffffff","on-primary-container":"#e8e4ff"},borderRadius:{DEFAULT:"0.25rem",lg:"0.5rem",xl:"0.75rem",full:"9999px"},spacing:{"margin":"1rem","margin-desktop":"2rem","space-sm":"0.5rem","gutter":"1rem","space-xs":"0.25rem","space-xl":"2.5rem","space-md":"1rem","gutter-desktop":"1.5rem","space-lg":"1.5rem"},fontFamily:{"body-lg":["Inter"],"headline-lg":["Inter"],"mono-metric":["JetBrains Mono"],"body-sm":["Inter"],"label-md":["Inter"],"headline-md":["Inter"],"label-sm":["Inter"],"body-md":["Inter"],"display-hero-mobile":["Inter"],"display-hero":["Inter"],"headline-sm":["Inter"]},fontSize:{"body-lg":["16px",{lineHeight:"24px",letterSpacing:"-0.005em",fontWeight:"400"}],"headline-lg":["28px",{lineHeight:"36px",letterSpacing:"-0.02em",fontWeight:"600"}],"mono-metric":["13px",{lineHeight:"16px",letterSpacing:"-0.02em",fontWeight:"500"}],"body-sm":["13px",{lineHeight:"18px",letterSpacing:"0em",fontWeight:"400"}],"label-md":["13px",{lineHeight:"16px",letterSpacing:"0em",fontWeight:"500"}],"headline-md":["22px",{lineHeight:"30px",letterSpacing:"-0.015em",fontWeight:"600"}],"label-sm":["11px",{lineHeight:"14px",letterSpacing:"0.04em",fontWeight:"600"}],"body-md":["14px",{lineHeight:"22px",letterSpacing:"0em",fontWeight:"400"}],"display-hero-mobile":["30px",{lineHeight:"38px",letterSpacing:"-0.025em",fontWeight:"600"}],"display-hero":["40px",{lineHeight:"48px",letterSpacing:"-0.03em",fontWeight:"600"}],"headline-sm":["18px",{lineHeight:"26px",letterSpacing:"-0.01em",fontWeight:"600"}]}}}};</script></head><body class="bg-surface font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-64 bg-surface-container-lowest shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-50 flex flex-col justify-between"><div class="flex flex-col"><div class="h-16 px-space-lg flex items-center gap-space-sm"><div class="w-7 h-7 rounded-lg bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[16px]">menu_book</span></div><span class="font-headline-sm text-headline-sm text-on-surface tracking-tight">Self-Study AI</span></div><nav class="flex flex-col gap-space-xs px-space-sm pt-space-xs" data-active-classes="bg-secondary-container text-on-surface font-label-md"><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="overview" href="#"><span class="material-symbols-outlined text-[18px]">dashboard</span><span>Overview</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="subjects" href="#"><span class="material-symbols-outlined text-[18px]">category</span><span>Subjects</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="library" href="#"><span class="material-symbols-outlined text-[18px]">local_library</span><span>Library</span></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="quizzes" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[18px]">quiz</span><span>Quizzes</span></div><span class="font-mono-metric text-mono-metric px-space-xs py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant">12</span></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="reviews" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[18px]">rate_review</span><span>Reviews</span></div><span class="font-mono-metric text-mono-metric px-space-xs py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant">28</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="final-tests" href="#"><span class="material-symbols-outlined text-[18px]">assignment_turned_in</span><span>Final Tests</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="analytics" href="#"><span class="material-symbols-outlined text-[18px]">insights</span><span>Analytics</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="settings" href="#"><span class="material-symbols-outlined text-[18px]">settings</span><span>Settings</span></a></nav></div><div class="flex flex-col gap-space-sm p-space-md bg-surface-container-lowest"><div class="flex items-center justify-between px-space-xs"><div class="flex items-center gap-space-xs text-on-surface-variant font-body-sm text-body-sm"><span class="w-2 h-2 rounded-full bg-primary"></span><span>Synced</span></div><div class="flex items-center gap-space-xs px-space-xs py-0.5 rounded bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm"><span class="material-symbols-outlined text-[12px] text-primary">bolt</span><span class="font-mono-metric text-mono-metric">Cloud AI · 420 credits</span></div></div><div class="flex items-center gap-space-sm p-space-xs rounded-lg hover:bg-surface-container-low transition-colors cursor-pointer"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center flex-shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><div class="flex flex-col min-w-0 flex-1"><span class="font-label-md text-label-md text-on-surface truncate">Arnold</span><span class="font-body-sm text-body-sm text-on-surface-variant truncate">arnold@linear.app</span></div></div></div></aside><div class="pl-64"><header class="fixed top-0 left-64 right-0 h-16 bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-space-lg"><div class="flex items-center flex-1 max-w-md"><div class="relative w-full flex items-center"><span class="material-symbols-outlined absolute left-3 text-outline text-[18px] pointer-events-none">search</span><input class="w-full h-9 pl-9 pr-14 bg-surface-container-lowest rounded-lg font-body-sm text-body-sm text-on-surface placeholder:text-outline outline-none focus:bg-surface-container-low transition-colors" placeholder="Search your notes and books..." type="text"/><div class="absolute right-2 flex items-center"><kbd class="px-1.5 py-0.5 rounded bg-surface-container-high font-mono-metric text-mono-metric text-on-surface-variant">⌘K</kbd></div></div></div><div class="flex items-center gap-space-md"><a class="flex items-center gap-space-xs h-9 px-space-md rounded-lg bg-surface-container-lowest text-on-surface font-label-md text-label-md hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="add-material" href="#"><span class="material-symbols-outlined text-[16px]">add</span><span>Add material</span></a><button class="w-8 h-8 rounded-lg flex items-center justify-center text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">notifications</span></button><button class="flex items-center gap-space-xs h-9 px-space-md rounded-lg bg-primary text-on-primary font-label-md text-label-md hover:bg-primary-container hover:text-on-primary-container transition-colors" type="button"><span class="material-symbols-outlined text-[16px]">play_arrow</span><span>Start review</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></header><main class="w-full pt-16 bg-surface px-space-lg py-space-md"><div class="flex flex-col w-full">
+<div class="w-full max-w-[1280px] mx-auto pb-28 pt-6">
+<!-- Page Header (24px+ below top bar) -->
+<header class="mb-8">
+<!-- Breadcrumbs -->
+<nav aria-label="Breadcrumb" class="flex items-center gap-space-xs text-on-surface-variant font-body-sm text-body-sm mb-2">
+<span class="hover:text-on-surface transition-colors cursor-pointer">Workspace</span>
+<span class="text-outline-variant">/</span>
+<span class="hover:text-on-surface transition-colors cursor-pointer">Library</span>
+<span class="text-outline-variant">/</span>
+<span class="text-on-surface font-label-md text-label-md">Add material</span>
+</nav>
+<!-- H1 on one line -->
+<div class="flex items-baseline justify-between gap-4 flex-wrap">
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Add Material</h1>
+<div class="flex items-center gap-2 text-on-surface-variant font-label-md text-label-md">
+<span class="material-symbols-outlined text-[16px] text-primary">calendar_today</span>
+<span>Friday, Nov 20, 2026</span>
+</div>
+</div>
+<!-- Subtitle -->
+<p class="font-body-md text-body-md text-on-surface-variant mt-1.5 max-w-3xl">
+        Upload lecture slides, textbooks, or web articles to extract sections and generate practice questions.
+      </p>
+</header>
+<!-- Two-Column Main Workspace Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- LEFT COLUMN (~45-50% width -> 5 of 12 cols, or 6 of 12) -->
+<section aria-label="Ingestion sources" class="lg:col-span-5 flex flex-col gap-6">
+<!-- Card 1: Large Drag-and-Drop Area -->
+<div class="bg-surface-container-lowest rounded-xl p-6 shadow-sm border border-[#eaecf0] transition-all">
+<div class="flex items-center justify-between mb-4">
+<span class="font-label-md text-label-md text-on-surface flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[18px]">upload_file</span>
+              Study Documents
+            </span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Direct Upload</span>
+</div>
+<!-- Dropzone Container -->
+<div class="relative rounded-lg p-8 flex flex-col items-center justify-center text-center transition-all cursor-pointer bg-surface hover:bg-surface-container-low border-2 border-dashed border-[#c8c4d7] hover:border-primary group" id="dropzone">
+<input accept=".pdf,.epub,.md,.txt,.docx" class="sr-only" id="file-input" multiple="" type="file"/>
+<!-- Cloud/Folder vector badge -->
+<div class="w-14 h-14 rounded-2xl bg-secondary-container text-primary flex items-center justify-center mb-4 transition-transform group-hover:scale-105">
+<span class="material-symbols-outlined text-[30px]" style="font-variation-settings: 'FILL' 1;">cloud_upload</span>
+</div>
+<!-- Headline -->
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Drag and drop study files here</h2>
+<!-- Subtitle with browse trigger -->
+<p class="font-body-md text-body-md text-on-surface-variant mt-1.5">
+              or <span class="text-primary font-label-md text-label-md underline underline-offset-2 hover:text-on-primary-fixed-variant transition-colors" id="browse-trigger">browse files</span> from your computer
+            </p>
+<!-- Supported formats -->
+<div class="mt-4 px-3 py-1.5 rounded-full bg-surface-container-low text-on-surface-variant font-body-sm text-body-sm">
+              PDF, EPUB, Markdown (.md), TXT, or DOCX · Up to 75 MB per file
+            </div>
+</div>
+<!-- Quick Tip Note -->
+<div class="mt-4 p-3.5 rounded-lg bg-surface-container-low flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-[20px] flex-shrink-0 mt-0.5">auto_stories</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Multi-page PDFs will be automatically divided into topic chapters for focused flashcard generation.
+            </p>
+</div>
+</div>
+<!-- Divider -->
+<div class="flex items-center gap-3 px-2">
+<div class="h-px bg-outline-variant/60 flex-1"></div>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">or import from web</span>
+<div class="h-px bg-outline-variant/60 flex-1"></div>
+</div>
+<!-- Card 2: Import from URL Module -->
+<div class="bg-surface-container-lowest rounded-xl p-6 shadow-sm border border-[#eaecf0]">
+<div class="flex items-center justify-between mb-2">
+<h2 class="font-headline-sm text-headline-sm text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">link</span>
+              Import from Web or ArXiv
+            </h2>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4">
+            Fetch articles, academic papers, documentation, or syllabus websites directly.
+          </p>
+<!-- Input Group -->
+<form class="flex flex-col sm:flex-row items-stretch gap-2" id="url-form" onsubmit="event.preventDefault(); handleUrlFetch();">
+<div class="relative flex-1 flex items-center">
+<span class="material-symbols-outlined text-outline text-[18px] absolute left-3 pointer-events-none">language</span>
+<input class="w-full h-10 pl-9 pr-3 rounded-lg bg-surface text-on-surface font-body-md text-body-md placeholder:text-outline border border-[#e5e7eb] focus:border-primary focus:outline-none transition-colors" id="url-input" placeholder="https://arxiv.org/abs/... or website URL" type="url"/>
+</div>
+<button class="h-10 px-4 rounded-lg bg-surface-container-lowest text-on-surface font-label-md text-label-md border border-[#eaecf0] hover:bg-surface-container-low hover:text-on-surface transition-colors flex items-center justify-center gap-1.5 flex-shrink-0" type="submit">
+<span class="material-symbols-outlined text-[16px]">download</span>
+<span>Fetch page</span>
+</button>
+</form>
+<!-- Quick Suggestion Pills -->
+<div class="mt-4 flex items-center gap-2 flex-wrap">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Quick samples:</span>
+<button class="h-6 px-2.5 rounded-full bg-surface-container-low text-secondary font-label-sm text-label-sm hover:bg-secondary-container hover:text-on-surface transition-colors" onclick="setSampleUrl('https://arxiv.org/abs/2005.14165')" type="button">
+              ArXiv Paper
+            </button>
+<button class="h-6 px-2.5 rounded-full bg-surface-container-low text-secondary font-label-sm text-label-sm hover:bg-secondary-container hover:text-on-surface transition-colors" onclick="setSampleUrl('https://ocw.mit.edu/courses/6-824-spring-2020/syllabus')" type="button">
+              MIT OCW Syllabus
+            </button>
+<button class="h-6 px-2.5 rounded-full bg-surface-container-low text-secondary font-label-sm text-label-sm hover:bg-secondary-container hover:text-on-surface transition-colors" onclick="setSampleUrl('https://pdos.csail.mit.edu/6.824/schedule.html')" type="button">
+              Course Webpage
+            </button>
+</div>
+</div>
+<!-- Material Stats Quick Card -->
+<div class="bg-surface-container-lowest rounded-xl p-5 shadow-sm border border-[#eaecf0] flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">storage</span>
+</div>
+<div>
+<div class="font-label-md text-label-md text-on-surface">Subject Storage Available</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Distributed Systems · 4.8 GB of 10 GB used</div>
+</div>
+</div>
+<div class="w-24 h-2 rounded-full bg-surface-container-low overflow-hidden">
+<div class="w-[48%] h-full bg-primary rounded-full"></div>
+</div>
+</div>
+</section>
+<!-- RIGHT COLUMN (~50-55% width -> 7 of 12 cols) -->
+<section aria-label="Queue and settings" class="lg:col-span-7 flex flex-col gap-6">
+<!-- Configuration Card (Options above queue) -->
+<div class="bg-surface-container-lowest rounded-xl p-6 shadow-sm border border-[#eaecf0]">
+<div class="flex items-center justify-between mb-5 pb-3 border-b border-[#eaecf0]">
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Ingestion Settings</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Applied automatically to files added to this session</p>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant bg-surface-container-low px-2 py-1 rounded">Arnold's Workspace</span>
+</div>
+<div class="flex flex-col gap-5">
+<!-- 1. Assign to Subject -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+<div>
+<label class="font-label-md text-label-md text-on-surface block" for="subject-selector">Assign to Subject</label>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Select destination workspace folder</span>
+</div>
+<div class="sm:w-64">
+<select class="w-full h-10 px-3 bg-surface rounded-lg text-on-surface font-label-md text-label-md border border-[#e5e7eb] focus:border-primary focus:outline-none transition-colors" id="subject-selector">
+<option selected="" value="distributed-systems">Distributed Systems</option>
+<option value="linear-electronics">Linear Electronics</option>
+<option value="machine-learning">Machine Learning</option>
+<option value="__new__">+ Create new subject...</option>
+</select>
+</div>
+</div>
+<!-- 2. Generate questions automatically -->
+<div class="flex items-start justify-between gap-4 pt-3 border-t border-[#eaecf0]">
+<div class="max-w-md">
+<label class="font-label-md text-label-md text-on-surface block cursor-pointer" for="auto-generate-toggle">
+                  Generate questions automatically
+                </label>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+                  Automatically extract flashcards and quiz questions upon ingestion.
+                </p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer flex-shrink-0 mt-0.5">
+<input checked="" class="sr-only peer" id="auto-generate-toggle" type="checkbox"/>
+<div class="w-11 h-6 bg-[#d1d5db] peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<!-- 3. Question source -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-3 border-t border-[#eaecf0]">
+<div>
+<span class="font-label-md text-label-md text-on-surface block">Question source</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Determine reference material bounds</span>
+</div>
+<!-- Segmented Control -->
+<div aria-label="Question source bounds" class="inline-flex rounded-lg bg-surface p-1 border border-[#eaecf0]" role="radiogroup">
+<button aria-checked="true" class="px-3 py-1.5 rounded-md font-label-md text-label-md text-on-surface bg-surface-container-lowest shadow-sm transition-all" id="source-notes" onclick="setSourceMode('notes')" role="radio" type="button">
+                  My notes only
+                </button>
+<button aria-checked="false" class="px-3 py-1.5 rounded-md font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all" id="source-online" onclick="setSourceMode('online')" role="radio" type="button">
+                  Include online reference
+                </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Ingestion Processing Queue -->
+<div class="bg-surface-container-lowest rounded-xl p-6 shadow-sm border border-[#eaecf0]">
+<!-- Queue Header -->
+<div class="flex items-center justify-between mb-5 flex-wrap gap-2">
+<div>
+<div class="flex items-center gap-2">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Processing Queue</h2>
+<span class="px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-fixed-variant font-label-sm text-label-sm">
+                  3 files
+                </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+                1 ready · 1 processing · 1 needs attention
+              </p>
+</div>
+<button class="h-8 px-3 rounded-lg bg-surface text-secondary font-label-md text-label-md border border-[#eaecf0] hover:bg-surface-container hover:text-on-surface transition-colors flex items-center gap-1.5" onclick="clearFinished()" type="button">
+<span class="material-symbols-outlined text-[16px]">clear_all</span>
+<span>Clear finished</span>
+</button>
+</div>
+<!-- Queue Item List -->
+<div class="flex flex-col gap-4" id="queue-container">
+<!-- ITEM 1: COMPLETED STATE -->
+<div class="rounded-lg p-4 bg-surface transition-all border border-[#eaecf0]" id="queue-item-1">
+<div class="flex items-start justify-between gap-3 mb-3">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-10 h-10 rounded-lg bg-error-container/40 text-error flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[22px]">picture_as_pdf</span>
+</div>
+<div class="min-w-0">
+<h3 class="font-label-md text-label-md text-on-surface truncate">MIT-6.824-Lecture05-Raft-Consensus.pdf</h3>
+<div class="flex items-center gap-2 text-on-surface-variant font-body-sm text-body-sm">
+<span>4.2 MB</span>
+<span>·</span>
+<span>PDF Document</span>
+</div>
+</div>
+</div>
+<!-- Action: Ghost button -->
+<button class="h-8 px-3 rounded-lg text-primary hover:bg-surface-container font-label-md text-label-md transition-colors flex items-center gap-1 flex-shrink-0" type="button">
+<span class="material-symbols-outlined text-[16px]">visibility</span>
+<span>Preview cards</span>
+</button>
+</div>
+<!-- Progress Stepper (Horizontal compact stepper - 5 stages) -->
+<div class="py-2.5 px-3 rounded-lg bg-surface-container-lowest border border-[#eaecf0] mb-3">
+<div class="grid grid-cols-5 gap-2 items-center text-center">
+<!-- Stage 1 -->
+<div class="flex flex-col items-center gap-1">
+<div class="w-5 h-5 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center text-[12px] font-bold">✓</div>
+<span class="font-label-sm text-label-sm text-on-surface truncate w-full">Uploading</span>
+</div>
+<!-- Stage 2 -->
+<div class="flex flex-col items-center gap-1">
+<div class="w-5 h-5 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center text-[12px] font-bold">✓</div>
+<span class="font-label-sm text-label-sm text-on-surface truncate w-full">Reading</span>
+</div>
+<!-- Stage 3 -->
+<div class="flex flex-col items-center gap-1">
+<div class="w-5 h-5 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center text-[12px] font-bold">✓</div>
+<span class="font-label-sm text-label-sm text-on-surface truncate w-full">Sections</span>
+</div>
+<!-- Stage 4 -->
+<div class="flex flex-col items-center gap-1">
+<div class="w-5 h-5 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center text-[12px] font-bold">✓</div>
+<span class="font-label-sm text-label-sm text-on-surface truncate w-full">Indexing</span>
+</div>
+<!-- Stage 5 -->
+<div class="flex flex-col items-center gap-1">
+<div class="w-5 h-5 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center text-[12px] font-bold">✓</div>
+<span class="font-label-sm text-label-sm text-on-surface truncate w-full">Questions</span>
+</div>
+</div>
+</div>
+<!-- Success summary badge & detail -->
+<div class="flex items-center justify-between gap-3 flex-wrap">
+<div class="flex items-center gap-2">
+<span class="px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 font-label-md text-label-md flex items-center gap-1">
+<span>✓ 24 cards created</span>
+</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">6 sections indexed · Ready for study review</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Finished in 18s</span>
+</div>
+</div>
+<!-- ITEM 2: IN PROGRESS STATE (60%) -->
+<div class="rounded-lg p-4 bg-surface transition-all border border-[#eaecf0]" id="queue-item-2">
+<div class="flex items-start justify-between gap-3 mb-3">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-10 h-10 rounded-lg bg-secondary-container text-primary flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[22px]">menu_book</span>
+</div>
+<div class="min-w-0">
+<h3 class="font-label-md text-label-md text-on-surface truncate">Tanenbaum_Distributed_Systems_Ch04.epub</h3>
+<div class="flex items-center gap-2 text-on-surface-variant font-body-sm text-body-sm">
+<span>18.6 MB</span>
+<span>·</span>
+<span>EPUB Textbook</span>
+</div>
+</div>
+</div>
+<!-- Action: Ghost button -->
+<button class="h-8 px-3 rounded-lg text-secondary hover:text-error hover:bg-surface-container font-label-md text-label-md transition-colors flex items-center gap-1 flex-shrink-0" onclick="cancelItem('queue-item-2')" type="button">
+<span class="material-symbols-outlined text-[16px]">close</span>
+<span>Cancel</span>
+</button>
+</div>
+<!-- Progress bar and percentage -->
+<div class="mb-3">
+<div class="flex items-center justify-between font-label-sm text-label-sm text-on-surface mb-1.5">
+<span class="flex items-center gap-1.5 text-primary">
+<span class="w-2 h-2 rounded-full bg-primary animate-ping"></span>
+                    Indexing 12 sections and extracting key concepts...
+                  </span>
+<span class="font-label-md text-label-md text-primary">60% completed</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full bg-primary rounded-full transition-all duration-500" style="width: 60%;"></div>
+</div>
+</div>
+<!-- Progress Stepper (Horizontal compact stepper - 5 stages) -->
+<div class="py-2.5 px-3 rounded-lg bg-surface-container-lowest border border-[#eaecf0]">
+<div class="grid grid-cols-5 gap-2 items-center text-center">
+<!-- Stage 1 -->
+<div class="flex flex-col items-center gap-1">
+<div class="w-5 h-5 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center text-[12px] font-bold">✓</div>
+<span class="font-label-sm text-label-sm text-on-surface truncate w-full">Uploading</span>
+</div>
+<!-- Stage 2 -->
+<div class="flex flex-col items-center gap-1">
+<div class="w-5 h-5 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center text-[12px] font-bold">✓</div>
+<span class="font-label-sm text-label-sm text-on-surface truncate w-full">Reading</span>
+</div>
+<!-- Stage 3 -->
+<div class="flex flex-col items-center gap-1">
+<div class="w-5 h-5 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center text-[12px] font-bold">✓</div>
+<span class="font-label-sm text-label-sm text-on-surface truncate w-full">Sections</span>
+</div>
+<!-- Stage 4: ACTIVE -->
+<div class="flex flex-col items-center gap-1">
+<div class="w-5 h-5 rounded-full bg-primary text-on-primary flex items-center justify-center text-[11px] font-bold ring-2 ring-primary/20 animate-pulse">4</div>
+<span class="font-label-sm text-label-sm text-primary font-semibold truncate w-full">Indexing</span>
+</div>
+<!-- Stage 5: PENDING -->
+<div class="flex flex-col items-center gap-1 opacity-50">
+<div class="w-5 h-5 rounded-full bg-surface-container text-on-surface-variant flex items-center justify-center text-[11px]">5</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant truncate w-full">Questions</span>
+</div>
+</div>
+</div>
+</div>
+<!-- ITEM 3: FAILED STATE WITH RETRY -->
+<div class="rounded-lg p-4 bg-rose-50/50 border border-rose-200 transition-all" id="queue-item-3">
+<div class="flex items-start justify-between gap-3 mb-3">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-10 h-10 rounded-lg bg-rose-100 text-rose-700 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[22px]">broken_image</span>
+</div>
+<div class="min-w-0">
+<h3 class="font-label-md text-label-md text-on-surface truncate">Linear_Electronics_Lab_Notes_Scan.pdf</h3>
+<div class="flex items-center gap-2 text-on-surface-variant font-body-sm text-body-sm">
+<span>12.1 MB</span>
+<span>·</span>
+<span>Scanned Document</span>
+</div>
+</div>
+</div>
+<!-- Ghost button: Remove -->
+<button class="h-8 px-2.5 rounded-lg text-on-surface-variant hover:text-error hover:bg-rose-100/50 font-label-md text-label-md transition-colors flex items-center gap-1 flex-shrink-0" onclick="cancelItem('queue-item-3')" title="Remove from queue" type="button">
+<span class="material-symbols-outlined text-[16px]">delete</span>
+<span>Remove</span>
+</button>
+</div>
+<!-- Stepper status with Failure -->
+<div class="py-2.5 px-3 rounded-lg bg-surface-container-lowest border border-rose-200 mb-3">
+<div class="grid grid-cols-5 gap-2 items-center text-center">
+<!-- Stage 1 -->
+<div class="flex flex-col items-center gap-1">
+<div class="w-5 h-5 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center text-[12px] font-bold">✓</div>
+<span class="font-label-sm text-label-sm text-on-surface truncate w-full">Uploading</span>
+</div>
+<!-- Stage 2: FAILED -->
+<div class="flex flex-col items-center gap-1">
+<div class="w-5 h-5 rounded-full bg-rose-600 text-white flex items-center justify-center text-[11px] font-bold">✕</div>
+<span class="font-label-sm text-label-sm text-rose-700 font-semibold truncate w-full">Reading</span>
+</div>
+<!-- Stage 3 -->
+<div class="flex flex-col items-center gap-1 opacity-40">
+<div class="w-5 h-5 rounded-full bg-surface-container text-on-surface-variant flex items-center justify-center text-[11px]">3</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant truncate w-full">Sections</span>
+</div>
+<!-- Stage 4 -->
+<div class="flex flex-col items-center gap-1 opacity-40">
+<div class="w-5 h-5 rounded-full bg-surface-container text-on-surface-variant flex items-center justify-center text-[11px]">4</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant truncate w-full">Indexing</span>
+</div>
+<!-- Stage 5 -->
+<div class="flex flex-col items-center gap-1 opacity-40">
+<div class="w-5 h-5 rounded-full bg-surface-container text-on-surface-variant flex items-center justify-center text-[11px]">5</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant truncate w-full">Questions</span>
+</div>
+</div>
+</div>
+<!-- Error Message Banner & Retry Action -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-1">
+<div class="flex items-start gap-2 text-rose-700 font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[18px] flex-shrink-0 mt-0.5">error_outline</span>
+<span>Unable to read text: scanned image resolution too low for standard extraction.</span>
+</div>
+<button class="h-8 px-3 rounded-lg bg-surface text-on-surface font-label-md text-label-md border border-[#eaecf0] hover:bg-surface-container transition-colors flex items-center gap-1.5 flex-shrink-0" onclick="retryExtraction('queue-item-3')" type="button">
+<span class="material-symbols-outlined text-[16px] text-primary">sync</span>
+<span>Retry with enhanced OCR</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Bottom Sticky / Docked Action Bar -->
+<div class="fixed bottom-0 left-64 right-0 bg-surface/90 backdrop-blur-md border-t border-[#eaecf0] z-30 px-space-lg py-3.5 shadow-lg">
+<div class="max-w-[1280px] mx-auto flex items-center justify-between gap-4">
+<!-- Left Side: Status note -->
+<div class="flex items-center gap-2 min-w-0">
+<span class="w-2.5 h-2.5 rounded-full bg-primary flex-shrink-0"></span>
+<p class="font-body-md text-body-md text-on-surface truncate" id="bottom-status">
+<span class="font-label-md text-label-md text-on-surface">2 files</span> will be added to <span class="font-label-md text-label-md text-primary">Distributed Systems</span> library
+          </p>
+</div>
+<!-- Right Side: Action buttons -->
+<div class="flex items-center gap-3 flex-shrink-0">
+<button class="h-10 px-4 rounded-lg bg-surface-container-lowest text-secondary font-label-md text-label-md border border-[#eaecf0] hover:bg-surface-container hover:text-on-surface transition-colors" onclick="history.back()" type="button">
+            Cancel
+          </button>
+<!-- ONLY ONE filled primary button per section/page -->
+<button class="h-10 px-5 rounded-lg bg-primary text-on-primary font-label-md text-label-md hover:bg-primary-container transition-colors flex items-center gap-2 shadow-sm" id="primary-add-button" onclick="completeLibraryAddition()" type="button">
+<span class="material-symbols-outlined text-[18px]">bookmark_add</span>
+<span>Add to library</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  // Drag & drop dropzone simulation
+  const dropzone = document.getElementById('dropzone');
+  const fileInput = document.getElementById('file-input');
+  const browseTrigger = document.getElementById('browse-trigger');
+
+  if (browseTrigger && fileInput) {
+    browseTrigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      fileInput.click();
+    });
+  }
+
+  if (dropzone && fileInput) {
+    dropzone.addEventListener('click', () => fileInput.click());
+
+    ['dragenter', 'dragover'].forEach(eventName => {
+      dropzone.addEventListener(eventName, (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        dropzone.classList.add('bg-secondary-container/30', 'border-primary');
+      }, false);
+    });
+
+    ['dragleave', 'drop'].forEach(eventName => {
+      dropzone.addEventListener(eventName, (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        dropzone.classList.remove('bg-secondary-container/30', 'border-primary');
+      }, false);
+    });
+
+    dropzone.addEventListener('drop', (e) => {
+      const files = e.dataTransfer.files;
+      if (files.length > 0) {
+        alert('Received ' + files.length + ' file(s) for ingestion into Distributed Systems.');
+      }
+    });
+
+    fileInput.addEventListener('change', (e) => {
+      if (e.target.files && e.target.files.length > 0) {
+        alert('Selected ' + e.target.files.length + ' file(s) to add to queue.');
+      }
+    });
+  }
+
+  // URL input helper
+  function setSampleUrl(url) {
+    const input = document.getElementById('url-input');
+    if (input) {
+      input.value = url;
+      input.focus();
+    }
+  }
+
+  function handleUrlFetch() {
+    const input = document.getElementById('url-input');
+    if (input && input.value) {
+      alert('Fetching content from: ' + input.value);
+      input.value = '';
+    } else {
+      alert('Please enter a valid URL.');
+    }
+  }
+
+  // Question Source Segmented Control
+  function setSourceMode(mode) {
+    const notesBtn = document.getElementById('source-notes');
+    const onlineBtn = document.getElementById('source-online');
+    
+    if (mode === 'notes') {
+      notesBtn.classList.remove('text-on-surface-variant');
+      notesBtn.classList.add('bg-surface-container-lowest', 'text-on-surface', 'shadow-sm');
+      notesBtn.setAttribute('aria-checked', 'true');
+
+      onlineBtn.classList.remove('bg-surface-container-lowest', 'text-on-surface', 'shadow-sm');
+      onlineBtn.classList.add('text-on-surface-variant');
+      onlineBtn.setAttribute('aria-checked', 'false');
+    } else {
+      onlineBtn.classList.remove('text-on-surface-variant');
+      onlineBtn.classList.add('bg-surface-container-lowest', 'text-on-surface', 'shadow-sm');
+      onlineBtn.setAttribute('aria-checked', 'true');
+
+      notesBtn.classList.remove('bg-surface-container-lowest', 'text-on-surface', 'shadow-sm');
+      notesBtn.classList.add('text-on-surface-variant');
+      notesBtn.setAttribute('aria-checked', 'false');
+    }
+  }
+
+  // Subject selector change handler
+  const subjectSelect = document.getElementById('subject-selector');
+  const bottomStatus = document.getElementById('bottom-status');
+
+  if (subjectSelect && bottomStatus) {
+    subjectSelect.addEventListener('change', (e) => {
+      const value = e.target.value;
+      if (value === '__new__') {
+        const newName = prompt('Enter new subject name:');
+        if (newName && newName.trim()) {
+          const opt = document.createElement('option');
+          opt.value = newName.toLowerCase().replace(/\s+/g, '-');
+          opt.textContent = newName;
+          subjectSelect.insertBefore(opt, subjectSelect.lastElementChild);
+          subjectSelect.value = opt.value;
+          bottomStatus.innerHTML = '<span class="font-label-md text-label-md text-on-surface">2 files</span> will be added to <span class="font-label-md text-label-md text-primary">' + newName + '</span> library';
+        } else {
+          subjectSelect.value = 'distributed-systems';
+        }
+      } else {
+        const text = e.target.options[e.target.selectedIndex].text;
+        bottomStatus.innerHTML = '<span class="font-label-md text-label-md text-on-surface">2 files</span> will be added to <span class="font-label-md text-label-md text-primary">' + text + '</span> library';
+      }
+    });
+  }
+
+  // Queue actions
+  function clearFinished() {
+    const item1 = document.getElementById('queue-item-1');
+    if (item1) {
+      item1.style.opacity = '0';
+      setTimeout(() => item1.remove(), 250);
+    }
+  }
+
+  function cancelItem(id) {
+    const el = document.getElementById(id);
+    if (el) {
+      el.style.opacity = '0';
+      setTimeout(() => el.remove(), 250);
+    }
+  }
+
+  function retryExtraction(id) {
+    const el = document.getElementById(id);
+    if (el) {
+      el.innerHTML = `
+        <div class="flex items-center gap-3">
+          <div class="w-5 h-5 rounded-full border-2 border-primary border-t-transparent animate-spin"></div>
+          <span class="font-label-md text-label-md text-primary">Running high-resolution OCR scan on Linear Electronics Lab Notes...</span>
+        </div>
+      `;
+      setTimeout(() => {
+        el.className = 'rounded-lg p-4 bg-surface transition-all border border-[#eaecf0]';
+        el.innerHTML = `
+          <div class="flex items-start justify-between gap-3 mb-2">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-lg bg-error-container/40 text-error flex items-center justify-center flex-shrink-0">
+                <span class="material-symbols-outlined text-[22px]">picture_as_pdf</span>
+              </div>
+              <div>
+                <h3 class="font-label-md text-label-md text-on-surface">Linear_Electronics_Lab_Notes_Scan.pdf</h3>
+                <span class="font-body-sm text-body-sm text-on-surface-variant">12.1 MB · OCR Completed</span>
+              </div>
+            </div>
+            <span class="px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 font-label-md text-label-md">Ready</span>
+          </div>
+          <p class="font-body-sm text-body-sm text-on-surface-variant">Extracted 18 handwritten pages cleanly.</p>
+        `;
+      }, 1500);
+    }
+  }
+
+  function completeLibraryAddition() {
+    const btn = document.getElementById('primary-add-button');
+    if (btn) {
+      btn.innerHTML = '<span class="material-symbols-outlined text-[18px] animate-spin">sync</span><span>Adding to library...</span>';
+      setTimeout(() => {
+        alert('Material successfully added to your Distributed Systems library! Flashcards are ready for review.');
+        btn.innerHTML = '<span class="material-symbols-outlined text-[18px]">check</span><span>Added</span>';
+      }, 1000);
+    }
+  }
+</script></main></div></body></html>

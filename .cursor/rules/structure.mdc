@@ -1,0 +1,36 @@
+---
+description: Self Study structure, reuse, and design-system rule
+globs: crates/**/*.rs,apps/**,packages/ui/**
+alwaysApply: true
+---
+
+# Self Study
+
+Learning tool. Notes, books, quizzes, spaced repetition, progress, and points come later. This phase is the shell, local records, and shared UI.
+
+## Rust
+
+- `core` (`study_core`) holds domain types only. No I/O. No dependency on other workspace crates.
+- `storage` owns SeaORM entities, migrations, and repository traits. SQLite is the default. Postgres uses the same traits and migrations.
+- `ingest` and `ai` stay placeholders.
+- `api` is the only crate that depends on the others. Nothing depends on `api` except the desktop shell.
+- Do not put desktop-only paths, Tauri types, or app-data directories in `core`, `storage`, or `api`.
+
+## UI
+
+- Static export only. No server-only Next.js APIs.
+- `packages/ui/src` is the shared flat component folder. No subfolders. No barrel file.
+- `apps/web` and `apps/landing` never import each other. Share a component only by moving it into `packages/ui`.
+- `sections/` compose components. `pages/` stay thin.
+- Web HTTP goes through `apps/web/src/lib/api-client.ts` only.
+- No raw `button`, `input`, `select`, `textarea`, or `table` in a section or page.
+
+## Design system
+
+Before adding or changing a page or component, edit its entry:
+
+- Pages: `design-system/self-study-ai/pages/<page>.md`
+- Components: `design-system/self-study-ai/components/<component>.md`
+- Marketing overrides: `design-system/self-study-ai/pages/landing.md`
+
+Tokens come from `MASTER.md` through `packages/ui/tailwind.preset.ts`. No raw hex in components. No invented marketing copy.

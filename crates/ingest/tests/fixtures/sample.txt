@@ -1,0 +1,2 @@
+Plain text fixture for the ingest pipeline.
+It should become a single topic with one section.

@@ -1,0 +1,3 @@
+[alias]
+xfmt = "fmt --all"
+xlint = "clippy --workspace --all-targets -- -D warnings"

@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "tertiary-fixed-dim": "#ffb95f",
+          "on-surface": "#0b1c30",
+          "on-primary": "#ffffff",
+          "secondary": "#515f74",
+          "error": "#ba1a1a",
+          "on-tertiary": "#ffffff",
+          "tertiary-fixed": "#ffddb8",
+          "on-primary-fixed-variant": "#3826c5",
+          "surface-container-highest": "#d3e4fe",
+          "surface": "#f8f9ff",
+          "on-secondary-fixed": "#0d1c2e",
+          "tertiary": "#714600",
+          "on-secondary": "#ffffff",
+          "outline": "#777586",
+          "on-secondary-container": "#57657a",
+          "secondary-fixed": "#d5e3fc",
+          "background": "#f8f9ff",
+          "inverse-surface": "#213145",
+          "outline-variant": "#c8c4d7",
+          "on-surface-variant": "#464555",
+          "surface-dim": "#cbdbf5",
+          "surface-container-low": "#eff4ff",
+          "tertiary-container": "#925c00",
+          "inverse-on-surface": "#eaf1ff",
+          "primary-container": "#5b50e6",
+          "surface-container-lowest": "#ffffff",
+          "surface-tint": "#5145dc",
+          "primary-fixed": "#e3dfff",
+          "secondary-fixed-dim": "#b9c7df",
+          "on-error-container": "#93000a",
+          "on-secondary-fixed-variant": "#3a485b",
+          "on-primary-container": "#e8e4ff",
+          "on-tertiary-fixed-variant": "#653e00",
+          "surface-variant": "#d3e4fe",
+          "primary": "#4233cd",
+          "on-background": "#0b1c30",
+          "inverse-primary": "#c4c0ff",
+          "surface-container-high": "#dce9ff",
+          "surface-bright": "#f8f9ff",
+          "on-tertiary-fixed": "#2a1700",
+          "surface-container": "#e5eeff",
+          "on-primary-fixed": "#110068",
+          "on-tertiary-container": "#ffe3c6",
+          "secondary-container": "#d5e3fc",
+          "on-error": "#ffffff",
+          "primary-fixed-dim": "#c4c0ff",
+          "error-container": "#ffdad6"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.25rem",
+          "lg": "0.5rem",
+          "xl": "0.75rem",
+          "full": "9999px"
+        },
+        "spacing": {
+          "margin": "1rem",
+          "gutter": "1rem",
+          "margin-desktop": "2rem",
+          "space-lg": "1.5rem",
+          "gutter-desktop": "1.5rem",
+          "space-md": "1rem",
+          "space-xs": "0.25rem",
+          "space-xl": "2.5rem",
+          "space-sm": "0.5rem"
+        },
+        "fontFamily": {
+          "body-lg": [
+            "Inter"
+          ],
+          "headline-lg": [
+            "Inter"
+          ],
+          "body-sm": [
+            "Inter"
+          ],
+          "label-sm": [
+            "Inter"
+          ],
+          "headline-md": [
+            "Inter"
+          ],
+          "display-hero-mobile": [
+            "Inter"
+          ],
+          "body-md": [
+            "Inter"
+          ],
+          "mono-metric": [
+            "JetBrains Mono"
+          ],
+          "display-hero": [
+            "Inter"
+          ],
+          "headline-sm": [
+            "Inter"
+          ],
+          "label-md": [
+            "Inter"
+          ]
+        },
+        "fontSize": {
+          "body-lg": [
+            "16px",
+            {
+              "lineHeight": "24px",
+              "letterSpacing": "-0.005em",
+              "fontWeight": "400"
+            }
+          ],
+          "headline-lg": [
+            "28px",
+            {
+              "lineHeight": "36px",
+              "letterSpacing": "-0.02em",
+              "fontWeight": "600"
+            }
+          ],
+          "body-sm": [
+            "13px",
+            {
+              "lineHeight": "18px",
+              "letterSpacing": "0em",
+              "fontWeight": "400"
+            }
+          ],
+          "label-sm": [
+            "11px",
+            {
+              "lineHeight": "14px",
+              "letterSpacing": "0.04em",
+              "fontWeight": "600"
+            }
+          ],
+          "headline-md": [
+            "22px",
+            {
+              "lineHeight": "30px",
+              "letterSpacing": "-0.015em",
+              "fontWeight": "600"
+            }
+          ],
+          "display-hero-mobile": [
+            "30px",
+            {
+              "lineHeight": "38px",
+              "letterSpacing": "-0.025em",
+              "fontWeight": "600"
+            }
+          ],
+          "body-md": [
+            "14px",
+            {
+              "lineHeight": "22px",
+              "letterSpacing": "0em",
+              "fontWeight": "400"
+            }
+          ],
+          "mono-metric": [
+            "13px",
+            {
+              "lineHeight": "16px",
+              "letterSpacing": "-0.02em",
+              "fontWeight": "500"
+            }
+          ],
+          "display-hero": [
+            "40px",
+            {
+              "lineHeight": "48px",
+              "letterSpacing": "-0.03em",
+              "fontWeight": "600"
+            }
+          ],
+          "headline-sm": [
+            "18px",
+            {
+              "lineHeight": "26px",
+              "letterSpacing": "-0.01em",
+              "fontWeight": "600"
+            }
+          ],
+          "label-md": [
+            "13px",
+            {
+              "lineHeight": "16px",
+              "letterSpacing": "0em",
+              "fontWeight": "500"
+            }
+          ]
+        }
+      },
+    },
+  }</script></head><body class="bg-surface font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-screen w-64 bg-surface-container-lowest shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-50 flex flex-col justify-between select-none"><div class="flex flex-col"><div class="h-16 px-space-md flex items-center"><div class="flex items-center gap-space-sm whitespace-nowrap"><div class="w-8 h-8 rounded-lg bg-primary-container flex items-center justify-center flex-shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">menu_book</span></div><span class="font-headline-sm text-headline-sm text-on-surface tracking-tight">Self-Study AI</span></div></div><nav class="px-space-sm mt-space-sm flex flex-col gap-space-xs" data-active-classes="bg-primary-fixed text-on-primary-fixed font-semibold rounded-lg"><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="overview" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">grid_view</span><span class="font-body-md text-body-md">Overview</span></div></a><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="subjects" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">category</span><span class="font-body-md text-body-md">Subjects</span></div></a><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="library" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">local_library</span><span class="font-body-md text-body-md">Library</span></div></a><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="quizzes" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">quiz</span><span class="font-body-md text-body-md">Quizzes</span></div><span class="font-mono-metric text-mono-metric px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant">12</span></a><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="reviews" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">history_edu</span><span class="font-body-md text-body-md">Reviews</span></div><span class="font-mono-metric text-mono-metric px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant">28</span></a><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="final-tests" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">assignment_turned_in</span><span class="font-body-md text-body-md">Final Tests</span></div></a><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="analytics" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">insights</span><span class="font-body-md text-body-md">Analytics</span></div></a><a aria-current="page" class="flex items-center justify-between px-space-sm py-2 transition-colors bg-primary-fixed text-on-primary-fixed font-semibold rounded-lg" data-path="settings" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">settings</span><span class="font-body-md text-body-md">Settings</span></div></a></nav></div><div class="p-space-sm flex flex-col gap-space-sm"><div class="flex flex-col gap-space-xs"><div class="flex items-center justify-between px-space-sm py-1.5 rounded bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm"><div class="flex items-center gap-space-xs"><span class="w-2 h-2 rounded-full bg-emerald-500"></span><span>Synced</span></div><span class="material-symbols-outlined text-[16px] text-secondary">check_circle</span></div><div class="flex items-center justify-between px-space-sm py-1.5 rounded bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm"><div class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-[16px] text-primary">auto_awesome</span><span>Cloud AI</span></div><span class="font-mono-metric text-mono-metric text-secondary">420 cr</span></div></div><div class="flex items-center gap-space-sm p-space-xs rounded-lg hover:bg-surface-container-low transition-colors cursor-pointer"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center flex-shrink-0 text-on-primary font-label-md text-label-md font-bold">A</div><div class="flex flex-col min-w-0 flex-1"><span class="font-label-md text-label-md text-on-surface truncate">Arnold</span><span class="font-label-sm text-label-sm text-on-surface-variant truncate">arnold@linear.app</span></div><span class="material-symbols-outlined text-secondary text-[18px]">unfold_more</span></div></div></aside><div class="pl-64 flex flex-col min-h-screen"><header class="fixed top-0 left-64 right-0 h-16 bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-space-lg"><div class="relative w-96 flex items-center"><span class="material-symbols-outlined absolute left-3 text-secondary text-[20px]">search</span><input class="w-full h-10 pl-10 pr-4 rounded-lg bg-surface-container-lowest text-on-surface placeholder:text-secondary font-body-sm text-body-sm outline-none shadow-[0_1px_4px_rgba(0,0,0,0.02)] focus:shadow-[0_0_0_2px_rgba(91,80,230,0.2)] transition-all" placeholder="Search your notes and books... (Cmd+K)" type="text"/></div><div class="flex items-center gap-space-md"><button class="h-9 px-space-md rounded-lg bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface font-label-md text-label-md flex items-center gap-space-xs shadow-[0_1px_4px_rgba(0,0,0,0.02)] transition-colors" type="button"><span class="material-symbols-outlined text-[18px]">upload</span><span>Add material</span></button><button class="relative w-9 h-9 rounded-lg bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface flex items-center justify-center shadow-[0_1px_4px_rgba(0,0,0,0.02)] transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-error ring-2 ring-surface-container-lowest"></span></button><button class="h-9 px-space-md rounded-lg bg-primary text-on-primary hover:bg-primary-container font-label-md text-label-md flex items-center gap-space-xs shadow-sm transition-colors" type="button"><span class="material-symbols-outlined text-[18px]">play_arrow</span><span>Start review</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></header><main class="relative pt-16 bg-surface flex-1 w-full px-space-lg"><div class="flex flex-col w-full pb-16">
+<!-- Page Header -->
+<div class="pt-6 pb-6 flex flex-col gap-space-xs">
+<div class="flex items-center gap-2 text-secondary font-label-md text-label-md">
+<span>Workspace</span>
+<span class="text-outline-variant">/</span>
+<span>Settings</span>
+<span class="text-outline-variant">/</span>
+<span class="text-on-surface font-semibold">AI models</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Settings</h1>
+<p class="font-body-md text-body-md text-secondary">Configure inference providers, API credentials, question sources, and credit balance.</p>
+</div>
+<!-- Two-Column Settings Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
+<!-- Left Sub-Navigation Column -->
+<nav class="lg:col-span-3 flex flex-col gap-1 p-space-sm bg-surface-container-lowest rounded-xl shadow-sm">
+<a class="flex items-center gap-space-sm px-space-md py-2.5 rounded-lg text-secondary hover:text-on-surface hover:bg-surface-container-low transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">tune</span>
+<span class="font-body-md text-body-md">General</span>
+</a>
+<a class="flex items-center gap-space-sm px-space-md py-2.5 rounded-lg text-secondary hover:text-on-surface hover:bg-surface-container-low transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">psychology</span>
+<span class="font-body-md text-body-md">Study (FSRS)</span>
+</a>
+<!-- Active Item: AI models -->
+<a class="flex items-center justify-between px-space-md py-2.5 rounded-lg bg-primary-fixed text-on-primary-fixed font-semibold" href="#">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-[20px] text-primary" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+<span class="font-body-md text-body-md">AI models</span>
+</div>
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+</a>
+<a class="flex items-center gap-space-sm px-space-md py-2.5 rounded-lg text-secondary hover:text-on-surface hover:bg-surface-container-low transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">timer</span>
+<span class="font-body-md text-body-md">Exams &amp; focus mode</span>
+</a>
+<a class="flex items-center gap-space-sm px-space-md py-2.5 rounded-lg text-secondary hover:text-on-surface hover:bg-surface-container-low transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">folder_special</span>
+<span class="font-body-md text-body-md">Library &amp; ingestion</span>
+</a>
+<a class="flex items-center gap-space-sm px-space-md py-2.5 rounded-lg text-secondary hover:text-on-surface hover:bg-surface-container-low transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">devices</span>
+<span class="font-body-md text-body-md">Sync &amp; devices</span>
+</a>
+<a class="flex items-center gap-space-sm px-space-md py-2.5 rounded-lg text-secondary hover:text-on-surface hover:bg-surface-container-low transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">account_balance_wallet</span>
+<span class="font-body-md text-body-md">Account &amp; credits</span>
+</a>
+<a class="flex items-center gap-space-sm px-space-md py-2.5 rounded-lg text-secondary hover:text-on-surface hover:bg-surface-container-low transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">palette</span>
+<span class="font-body-md text-body-md">Appearance</span>
+</a>
+</nav>
+<!-- Right Content Area -->
+<div class="lg:col-span-9 flex flex-col gap-space-lg">
+<!-- Section Title -->
+<div class="flex flex-col gap-1">
+<h2 class="font-headline-md text-headline-md text-on-surface">AI Models &amp; Processing</h2>
+<p class="font-body-md text-body-md text-secondary">Select how study questions, concept breakdowns, and flashcards are generated.</p>
+</div>
+<!-- B. Provider Cards (3 Selectable cards in a 3-column grid) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+<!-- Card 1: Local model -->
+<label class="group relative flex flex-col justify-between p-space-md rounded-xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-all cursor-pointer">
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-start justify-between">
+<div class="w-9 h-9 rounded-lg bg-surface-container flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">laptop_chromebook</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm">Available</span>
+</div>
+<div class="flex flex-col gap-0.5 mt-1">
+<span class="font-headline-sm text-headline-sm text-on-surface">Local model</span>
+<span class="font-label-md text-label-md text-secondary">Runs on device · Private &amp; offline</span>
+</div>
+<p class="font-body-sm text-body-sm text-secondary">Uses your computer's local resources. Zero network latency and total data privacy.</p>
+</div>
+<div class="flex items-center gap-2 mt-4 pt-3 bg-surface-container-lowest">
+<input class="w-4 h-4 text-primary accent-primary" name="ai_provider" type="radio" value="local"/>
+<span class="font-label-md text-label-md text-secondary group-hover:text-on-surface">Select local</span>
+</div>
+</label>
+<!-- Card 2: Cloud AI (my own key) -->
+<label class="group relative flex flex-col justify-between p-space-md rounded-xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-all cursor-pointer">
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-start justify-between">
+<div class="w-9 h-9 rounded-lg bg-surface-container flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">vpn_key</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-low text-secondary font-label-sm text-label-sm">Custom API</span>
+</div>
+<div class="flex flex-col gap-0.5 mt-1">
+<span class="font-headline-sm text-headline-sm text-on-surface">Cloud AI (my own key)</span>
+<span class="font-label-md text-label-md text-secondary">Custom endpoint · Bring your own key</span>
+</div>
+<p class="font-body-sm text-body-sm text-secondary">Connect your personal API key. Direct billing with your provider.</p>
+</div>
+<div class="flex items-center gap-2 mt-4 pt-3 bg-surface-container-lowest">
+<input class="w-4 h-4 text-primary accent-primary" name="ai_provider" type="radio" value="byok"/>
+<span class="font-label-md text-label-md text-secondary group-hover:text-on-surface">Select custom</span>
+</div>
+</label>
+<!-- Card 3: Cloud AI (app credits) · Currently Selected -->
+<label class="relative flex flex-col justify-between p-space-md rounded-xl bg-primary-fixed/20 shadow-md transition-all cursor-pointer ring-2 ring-primary">
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-start justify-between">
+<div class="w-9 h-9 rounded-lg bg-primary-container text-on-primary flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-primary text-on-primary font-label-sm text-label-sm font-semibold">Active</span>
+</div>
+<div class="flex flex-col gap-0.5 mt-1">
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">Cloud AI (app credits)</span>
+<span class="font-label-md text-label-md text-primary font-medium">Managed service · Zero setup</span>
+</div>
+<p class="font-body-sm text-body-sm text-secondary">High-speed cloud processing powered by app credits. Automatic failover and quality checks.</p>
+</div>
+<div class="flex items-center gap-2 mt-4 pt-3">
+<input checked="" class="w-4 h-4 text-primary accent-primary" name="ai_provider" type="radio" value="managed"/>
+<span class="font-label-md text-label-md text-on-surface font-semibold">Currently selected</span>
+</div>
+</label>
+</div>
+<!-- C. API Key & Endpoint Configuration Card -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-on-surface">
+<span class="material-symbols-outlined text-[18px]">lock</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">API Credentials &amp; Connection</h3>
+</div>
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 font-label-sm text-label-sm font-medium">
+<span class="material-symbols-outlined text-[16px] text-emerald-600">check_circle</span>
+<span>Connected &amp; Verified</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-space-md items-end">
+<div class="md:col-span-8 flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface font-medium">Managed Gateway Key</label>
+<div class="relative flex items-center">
+<input class="w-full h-10 px-3.5 rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md outline-none" readonly="" type="password" value="sk-managed-live-vault-8f2a"/>
+<button class="absolute right-2.5 text-secondary hover:text-on-surface font-label-md text-label-md flex items-center gap-1 transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+<span>Show</span>
+</button>
+</div>
+<span class="font-body-sm text-body-sm text-secondary">Stored securely in your local browser keychain. Never shared.</span>
+</div>
+<div class="md:col-span-4 flex items-center justify-end gap-2">
+<button class="h-10 px-space-md rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md transition-colors flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[18px]">key</span>
+<span>Change credentials</span>
+</button>
+<button class="h-10 px-space-md rounded-lg bg-surface-container-low hover:bg-surface-container text-secondary hover:text-on-surface font-label-md text-label-md transition-colors flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[18px]">refresh</span>
+<span>Test ping</span>
+</button>
+</div>
+</div>
+</div>
+<!-- D. Credit Balance & Top-Up Card -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-space-lg">
+<div class="flex flex-col gap-space-xs max-w-md">
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md text-secondary">Available Cloud Credits</span>
+<span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-label-sm text-label-sm font-semibold">Active Tier</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-headline-lg text-headline-lg text-on-surface font-bold">420 credits</span>
+<span class="font-body-sm text-body-sm text-secondary">· Reset scheduled Dec 01, 2026</span>
+</div>
+<p class="font-body-sm text-body-sm text-secondary">Sufficient for ~840 quiz questions or 42 full chapter summaries.</p>
+</div>
+<div class="flex items-center gap-space-sm flex-shrink-0">
+<button class="h-10 px-space-md rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md transition-colors flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[18px]">settings_backup_restore</span>
+<span>Auto-reload settings</span>
+</button>
+<!-- Single Primary Indigo Button for this section -->
+<button class="h-10 px-space-lg rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md shadow-sm transition-colors flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[18px]">add_circle</span>
+<span>Buy credits</span>
+</button>
+</div>
+</div>
+<!-- E. Question Source Default Card -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-md">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-on-surface">
+<span class="material-symbols-outlined text-[18px]">source</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Question Source Default</h3>
+</div>
+<p class="font-body-sm text-body-sm text-secondary">Choose where the system pulls foundational material when creating new practice questions.</p>
+</div>
+<!-- Segmented Switch / Option Blocks -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<!-- Option 1: Selected -->
+<label class="p-space-md rounded-lg bg-primary-fixed/20 shadow-sm cursor-pointer flex items-start gap-space-md">
+<input checked="" class="mt-1 w-4 h-4 text-primary accent-primary" name="source_default" type="radio"/>
+<div class="flex flex-col gap-0.5">
+<span class="font-label-md text-label-md text-on-surface font-semibold">My notes &amp; uploaded books</span>
+<span class="font-body-sm text-body-sm text-secondary">Focus on syllabus and personal files. Keeps evaluations tightly aligned with your curated textbook references.</span>
+</div>
+</label>
+<!-- Option 2: Unselected -->
+<label class="p-space-md rounded-lg bg-surface-container-low hover:bg-surface-container transition-colors cursor-pointer flex items-start gap-space-md">
+<input class="mt-1 w-4 h-4 text-primary accent-primary" name="source_default" type="radio"/>
+<div class="flex flex-col gap-0.5">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Online reference materials</span>
+<span class="font-body-sm text-body-sm text-secondary">Expands context with curated academic sources. Generates supplemental cross-disciplinary practice drills.</span>
+</div>
+</label>
+</div>
+<div class="flex items-center gap-2 pt-1 text-secondary font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[18px] text-primary">info</span>
+<span>You can still override this source selection when creating specific quizzes or exams.</span>
+</div>
+</div>
+<!-- F. Credit Usage History Table -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex flex-col gap-0.5">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Recent credit usage</h3>
+<span class="font-body-sm text-body-sm text-secondary">Audit log of cloud processing activities.</span>
+</div>
+<button class="h-8 px-space-md rounded-lg bg-surface-container-low hover:bg-surface-container text-secondary hover:text-on-surface font-label-md text-label-md transition-colors flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">file_download</span>
+<span>Export CSV</span>
+</button>
+</div>
+<!-- Clean Responsive Table -->
+<div class="w-full overflow-x-auto">
+<table class="w-full text-left font-body-md text-body-md">
+<thead>
+<tr class="text-secondary font-label-md text-label-md bg-surface-container-low/60 rounded-lg">
+<th class="py-3 px-space-md rounded-l-lg">Date</th>
+<th class="py-3 px-space-md">Task</th>
+<th class="py-3 px-space-md">Details</th>
+<th class="py-3 px-space-md text-right rounded-r-lg">Credits</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-transparent">
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-3.5 px-space-md font-body-sm text-body-sm text-secondary whitespace-nowrap">Nov 20, 2026</td>
+<td class="py-3.5 px-space-md font-label-md text-label-md text-on-surface font-medium whitespace-nowrap">Chapter Practice Generation</td>
+<td class="py-3.5 px-space-md font-body-sm text-body-sm text-secondary">Distributed Systems · Ch 4 Paxos</td>
+<td class="py-3.5 px-space-md text-right font-label-md text-label-md font-semibold text-on-surface whitespace-nowrap">-8 credits</td>
+</tr>
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-3.5 px-space-md font-body-sm text-body-sm text-secondary whitespace-nowrap">Nov 18, 2026</td>
+<td class="py-3.5 px-space-md font-label-md text-label-md text-on-surface font-medium whitespace-nowrap">Exam Simulation Builder</td>
+<td class="py-3.5 px-space-md font-body-sm text-body-sm text-secondary">Linear Electronics Midterm Drill</td>
+<td class="py-3.5 px-space-md text-right font-label-md text-label-md font-semibold text-on-surface whitespace-nowrap">-14 credits</td>
+</tr>
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-3.5 px-space-md font-body-sm text-body-sm text-secondary whitespace-nowrap">Nov 15, 2026</td>
+<td class="py-3.5 px-space-md font-label-md text-label-md text-on-surface font-medium whitespace-nowrap">Flashcard Extraction</td>
+<td class="py-3.5 px-space-md font-body-sm text-body-sm text-secondary">Machine Learning Lecture Notes</td>
+<td class="py-3.5 px-space-md text-right font-label-md text-label-md font-semibold text-on-surface whitespace-nowrap">-10 credits</td>
+</tr>
+<tr class="hover:bg-surface-container-low/40 transition-colors bg-emerald-50/50">
+<td class="py-3.5 px-space-md font-body-sm text-body-sm text-secondary whitespace-nowrap">Nov 12, 2026</td>
+<td class="py-3.5 px-space-md font-label-md text-label-md text-emerald-800 font-medium whitespace-nowrap">Credit Purchase</td>
+<td class="py-3.5 px-space-md font-body-sm text-body-sm text-secondary">Standard Pack (+500 credits)</td>
+<td class="py-3.5 px-space-md text-right font-label-md text-label-md font-bold text-emerald-700 whitespace-nowrap">+500 credits</td>
+</tr>
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-3.5 px-space-md font-body-sm text-body-sm text-secondary whitespace-nowrap">Nov 08, 2026</td>
+<td class="py-3.5 px-space-md font-label-md text-label-md text-on-surface font-medium whitespace-nowrap">Concept Breakdown</td>
+<td class="py-3.5 px-space-md font-body-sm text-body-sm text-secondary">Raft Consensus Leader Leases</td>
+<td class="py-3.5 px-space-md text-right font-label-md text-label-md font-semibold text-on-surface whitespace-nowrap">-6 credits</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<!-- G. Sticky Bottom Save Bar -->
+<div class="sticky bottom-4 mt-space-xl p-space-md rounded-xl bg-surface-container-lowest/95 backdrop-blur-md shadow-lg flex items-center justify-between z-30">
+<div class="flex items-center gap-space-sm pl-2">
+<span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+<span class="font-body-md text-body-md text-on-surface">All model preferences are up to date.</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<button class="h-9 px-space-md rounded-lg bg-surface-container-low hover:bg-surface-container text-secondary hover:text-on-surface font-label-md text-label-md transition-colors" type="button">
+        Discard
+      </button>
+<button class="h-9 px-space-lg rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md shadow-sm transition-colors flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[18px]">check</span>
+<span>Save changes</span>
+</button>
+</div>
+</div>
+</div>
+<script>
+  // Simple interaction for tab/radio feedback
+  document.querySelectorAll('input[type="radio"][name="ai_provider"]').forEach(radio => {
+    radio.addEventListener('change', (e) => {
+      document.querySelectorAll('input[type="radio"][name="ai_provider"]').forEach(r => {
+        const card = r.closest('label');
+        if (r.checked) {
+          card.classList.add('bg-primary-fixed/20', 'shadow-md', 'ring-2', 'ring-primary');
+          card.classList.remove('bg-surface-container-lowest');
+        } else {
+          card.classList.remove('bg-primary-fixed/20', 'shadow-md', 'ring-2', 'ring-primary');
+          card.classList.add('bg-surface-container-lowest');
+        }
+      });
+    });
+  });
+</script></main></div></body></html>

@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="web_dashboard" name="shell-type"/>
+<title>Subjects &amp; Curricula - Self-Study AI</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<style>
+    @layer base {
+      html, body { margin: 0; padding: 0; }
+      body { overscroll-behavior: none; }
+      main > :first-child { margin-top: 0 !important; }
+      main > :last-child { margin-bottom: 0 !important; }
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    ::-webkit-scrollbar { display: none; }
+  </style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#6366f1",
+            "primary-hover": "#4f46e5",
+            "primary-subtle": "rgba(99, 102, 241, 0.15)",
+            "primary-border": "rgba(99, 102, 241, 0.3)",
+            background: "#0a0e18",
+            surface: "#171b26",
+            "surface-dim": "#111520",
+            "surface-elevated": "#232838",
+            "surface-border": "#262c3e",
+            "text-main": "#f8faff",
+            "text-muted": "#94a3b8",
+            "text-subtle": "#64748b",
+            emerald: {
+              400: "#34d399",
+              500: "#10b981",
+              900: "#064e3b",
+              950: "rgba(6, 78, 59, 0.3)"
+            },
+            amber: {
+              400: "#fbbf24",
+              500: "#f59e0b",
+              900: "#78350f",
+              950: "rgba(120, 53, 15, 0.3)"
+            },
+            rose: {
+              400: "#fb7185",
+              500: "#f43f5e",
+              900: "#881337",
+              950: "rgba(136, 19, 55, 0.3)"
+            }
+          },
+          fontFamily: {
+            sans: ["Inter", "sans-serif"]
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-[#0a0e18] font-sans text-[#f8faff] text-[14px] leading-relaxed antialiased flex min-h-screen">
+<!-- Left Sidebar (Full Viewport Height & Sticky) -->
+<aside class="sticky top-0 h-screen w-64 bg-[#0d111a] border-r border-[#1e2333] z-50 flex flex-col justify-between flex-shrink-0 select-none">
+<div class="flex flex-col">
+<!-- App Header / Logo strictly one line -->
+<div class="h-16 px-6 flex items-center border-b border-[#1e2333]">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-[#6366f1] flex items-center justify-center text-white shrink-0 shadow-sm">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24">
+<path d="M19 2H6c-1.2 0-2 .8-2 2v16c0 1.2.8 2 2 2h13a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1zm-1 18H6a1 1 0 0 1-1-1V5c0-.6.4-1 1-1h12v16zm-3-8H8V10h7v2zm-2 4H8v-2h5v2z"></path>
+</svg>
+</div>
+<span class="font-bold text-[17px] text-[#f8faff] tracking-tight whitespace-nowrap">Self-Study AI</span>
+</div>
+</div>
+<!-- Navigation Links -->
+<div class="px-3 py-4">
+<div class="text-[12px] font-semibold text-[#64748b] uppercase tracking-wider px-3 mb-2">Workspace</div>
+<nav class="space-y-1">
+<a class="flex items-center justify-between px-3 py-2 rounded-lg text-[#94a3b8] hover:bg-[#171b26] hover:text-[#f8faff] font-medium transition-colors" data-path="overview" href="#">
+<div class="flex items-center gap-3">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24">
+<path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"></path>
+</svg>
+<span>Overview</span>
+</div>
+</a>
+<!-- Active State: Subjects -->
+<a aria-current="page" class="flex items-center justify-between px-3 py-2 rounded-lg bg-[#1f2538] text-[#818cf8] font-semibold transition-colors border border-[rgba(99,102,241,0.25)]" data-path="subjects" href="#">
+<div class="flex items-center gap-3">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24">
+<path d="M12 2l-5.5 9h11L12 2zm0 3.84L13.93 9h-3.87L12 5.84zM17.5 13c-2.49 0-4.5 2.01-4.5 4.5s2.01 4.5 4.5 4.5 4.5-2.01 4.5-4.5-2.01-4.5-4.5-4.5zm0 7c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5zM3 21.5h8v-8H3v8zm2-6h4v4H5v-4z"></path>
+</svg>
+<span>Subjects</span>
+</div>
+<span class="w-1.5 h-1.5 rounded-full bg-[#818cf8]"></span>
+</a>
+<a class="flex items-center justify-between px-3 py-2 rounded-lg text-[#94a3b8] hover:bg-[#171b26] hover:text-[#f8faff] font-medium transition-colors" data-path="library" href="#">
+<div class="flex items-center gap-3">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24">
+<path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z"></path>
+</svg>
+<span>Library</span>
+</div>
+</a>
+<a class="flex items-center justify-between px-3 py-2 rounded-lg text-[#94a3b8] hover:bg-[#171b26] hover:text-[#f8faff] font-medium transition-colors" data-path="quizzes" href="#">
+<div class="flex items-center gap-3">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24">
+<path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14h-2v-2h2v2zm1.07-4.75l-.9.92C11.45 13.9 11 14.3 11 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H7c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"></path>
+</svg>
+<span>Quizzes</span>
+</div>
+<span class="text-[12px] font-semibold px-2 py-0.5 rounded-full bg-[#1c2130] text-[#94a3b8] border border-[#2a3044]">12</span>
+</a>
+<a class="flex items-center justify-between px-3 py-2 rounded-lg text-[#94a3b8] hover:bg-[#171b26] hover:text-[#f8faff] font-medium transition-colors" data-path="reviews" href="#">
+<div class="flex items-center gap-3">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24">
+<path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"></path>
+</svg>
+<span>Reviews</span>
+</div>
+<span class="text-[12px] font-semibold px-2 py-0.5 rounded-full bg-[rgba(245,158,11,0.15)] text-[#fbbf24] border border-[rgba(245,158,11,0.3)]">28</span>
+</a>
+<a class="flex items-center justify-between px-3 py-2 rounded-lg text-[#94a3b8] hover:bg-[#171b26] hover:text-[#f8faff] font-medium transition-colors" data-path="final-tests" href="#">
+<div class="flex items-center gap-3">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24">
+<path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-9 14l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"></path>
+</svg>
+<span>Final Tests</span>
+</div>
+</a>
+<a class="flex items-center justify-between px-3 py-2 rounded-lg text-[#94a3b8] hover:bg-[#171b26] hover:text-[#f8faff] font-medium transition-colors" data-path="analytics" href="#">
+<div class="flex items-center gap-3">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24">
+<path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-5h2v5zm4 0h-2v-9h2v9zm4 0h-2V7h2v10z"></path>
+</svg>
+<span>Analytics</span>
+</div>
+</a>
+<a class="flex items-center justify-between px-3 py-2 rounded-lg text-[#94a3b8] hover:bg-[#171b26] hover:text-[#f8faff] font-medium transition-colors" data-path="settings" href="#">
+<div class="flex items-center gap-3">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24">
+<path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"></path>
+</svg>
+<span>Settings</span>
+</div>
+</a>
+</nav>
+</div>
+</div>
+<!-- Sidebar Footer -->
+<div class="p-4 border-t border-[#1e2333] space-y-3">
+<!-- Sync Status -->
+<div class="flex items-center justify-between px-3 py-1.5 rounded-lg bg-[#111520] border border-[#262c3e] text-[12px]">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.5)]"></span>
+<span class="font-medium text-[#94a3b8]">Synced</span>
+</div>
+<span class="text-[12px] text-[#64748b]">Local safe</span>
+</div>
+<!-- AI Status -->
+<div class="flex items-center justify-between px-3 py-1.5 rounded-lg bg-[#111520] border border-[#262c3e] text-[12px]">
+<span class="font-medium text-[#94a3b8]">Cloud AI · 420 credits</span>
+<svg class="w-3.5 h-3.5 text-[#818cf8]" fill="currentColor" viewbox="0 0 24 24">
+<path d="M21 10.12h-6.78l2.74-2.82c.86-.86.86-2.27 0-3.14s-2.27-.86-3.14 0L7.54 10.45c-.39.39-.62.92-.62 1.48s.23 1.09.62 1.48l6.28 6.29c.86.86 2.27.86 3.14 0s.86-2.27 0-3.14l-2.74-2.82H21c1.1 0 2-.9 2-2s-.9-1.62-2-1.62z"></path>
+</svg>
+</div>
+<!-- User Profile -->
+<div class="flex items-center justify-between pt-1">
+<div class="flex items-center gap-2.5">
+<img alt="Arnold Avatar" class="w-8 h-8 rounded-full object-cover ring-1 ring-[#262c3e] shrink-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKJHH-5GPTzvjZFf_Yh3XaiRwrU_tjeglAwqLUfr48vdqWQ1GN0YnES4yi6_sf3Z-dXzP-QzGyA4soL-6akImGzRfJyew7HINbVghPnWKCY4-r5hmQwSmzkw8L3rKq5TdK0ghrEWNIKVTqmZPPylnT2qP0545OGuGTg8bcj-51PNRkEYPghEkWvSEtUP5pwL42jTqBdzpgS-tjiYrmOjW71d_m2uxJxsl9pmt-i9Ms"/>
+<div class="flex flex-col">
+<span class="font-semibold text-[13px] text-[#f8faff] leading-tight">Arnold</span>
+<span class="text-[12px] text-[#64748b] leading-tight">arnold@linear.app</span>
+</div>
+</div>
+<button class="p-1 rounded text-[#64748b] hover:text-[#f8faff] transition-colors" title="Switch profile" type="button">
+<svg class="w-4 h-4 fill-current" viewbox="0 0 24 24">
+<path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z"></path>
+</svg>
+</button>
+</div>
+</div>
+</aside>
+<!-- Main Content Wrapper -->
+<div class="flex-1 flex flex-col min-w-0">
+<!-- Top Sticky Header -->
+<header class="sticky top-0 z-40 h-16 bg-[#0d111a]/90 backdrop-blur-md border-b border-[#1e2333] flex items-center justify-between px-8">
+<!-- Search Input -->
+<div class="flex-1 max-w-xl">
+<div class="relative flex items-center">
+<svg class="w-4 h-4 absolute left-3.5 text-[#64748b] fill-current pointer-events-none" viewbox="0 0 24 24">
+<path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+</svg>
+<input class="w-full h-9 pl-10 pr-14 rounded-lg bg-[#161b26] border border-[#2a3044] text-[13px] text-[#f8faff] placeholder:text-[#64748b] focus:outline-none focus:border-[#6366f1] focus:ring-1 focus:ring-[#6366f1] shadow-sm transition-colors" placeholder="Search your notes and books... (Cmd+K)" type="text"/>
+<span class="text-[12px] font-medium text-[#94a3b8] bg-[#111520] border border-[#2a3044] px-1.5 py-0.5 rounded absolute right-2.5 pointer-events-none">Cmd+K</span>
+</div>
+</div>
+<!-- Action Items on Right -->
+<div class="flex items-center gap-3">
+<!-- Add Material CTA -->
+<button class="h-9 px-3.5 rounded-lg border border-[#2a3044] bg-[#171b26] text-[#cbd5e1] hover:bg-[#1f2538] hover:text-white font-medium text-[13px] flex items-center gap-2 shadow-sm transition-colors" onclick="document.getElementById('bulk-upload-input').click()" type="button">
+<svg class="w-4 h-4 text-[#94a3b8] fill-current" viewbox="0 0 24 24">
+<path d="M9 16h6v-6h4l-7-7-7 7h4v6zm-4 2h14v2H5v-2z"></path>
+</svg>
+<span>Add material</span>
+</button>
+<!-- Notification Bell with Red Badge -->
+<button class="relative p-2 rounded-lg border border-[#2a3044] bg-[#171b26] text-[#94a3b8] hover:text-[#f8faff] hover:bg-[#1f2538] shadow-sm transition-colors" title="Notifications" type="button">
+<svg class="w-4 h-4 fill-current" viewbox="0 0 24 24">
+<path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"></path>
+</svg>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-[#f43f5e] shadow-[0_0_6px_rgba(244,63,94,0.6)]"></span>
+</button>
+<!-- Start Review Button (Ghost / Secondary) -->
+<button class="h-9 px-3.5 rounded-lg border border-[#2a3044] bg-[#171b26] text-[#cbd5e1] hover:bg-[#1f2538] hover:text-white font-medium text-[13px] flex items-center gap-2 shadow-sm transition-colors" type="button">
+<svg class="w-4 h-4 text-[#818cf8] fill-current" viewbox="0 0 24 24">
+<path d="M8 5v14l11-7z"></path>
+</svg>
+<span>Start review</span>
+</button>
+</div>
+</header>
+<!-- Page Body -->
+<main class="w-full px-8 py-7 pb-20 max-w-7xl mx-auto space-y-6">
+<!-- Command & Title Bar -->
+<section class="flex flex-col lg:flex-row lg:items-end justify-between gap-5">
+<div class="space-y-1 max-w-2xl">
+<h1 class="text-[26px] font-bold text-[#f8faff] tracking-tight leading-snug">Subjects &amp; Curricula</h1>
+<p class="text-[14px] text-[#94a3b8] leading-relaxed">Structured study paths based on your uploaded course materials and notes.</p>
+</div>
+<!-- Controls: Search / View switcher / New Subject -->
+<div class="flex flex-wrap items-center gap-2.5">
+<div class="relative flex items-center min-w-[220px]">
+<span class="material-symbols-outlined absolute left-3 text-[17px] text-[#64748b] pointer-events-none">filter_list</span>
+<input class="w-full h-9 pl-9 pr-3 rounded-lg bg-[#161b26] border border-[#2a3044] text-[13px] text-[#f8faff] placeholder:text-[#64748b] focus:outline-none focus:border-[#6366f1] focus:ring-1 focus:ring-[#6366f1] shadow-sm transition-colors" id="subject-search-input" placeholder="Filter subjects or topics…" type="text"/>
+</div>
+<!-- View Switcher -->
+<div class="flex items-center h-9 p-0.5 bg-[#111520] rounded-lg border border-[#2a3044]">
+<button class="flex items-center justify-center h-8 w-8 rounded-md bg-[#232838] text-white shadow-xs transition-all" id="view-grid-btn" title="Grid View" type="button">
+<span class="material-symbols-outlined text-[17px]">grid_view</span>
+</button>
+<button class="flex items-center justify-center h-8 w-8 rounded-md text-[#94a3b8] hover:text-[#f8faff] transition-colors" id="view-list-btn" title="List View" type="button">
+<span class="material-symbols-outlined text-[17px]">view_agenda</span>
+</button>
+</div>
+<!-- New Subject CTA (Primary Filled) -->
+<button class="flex items-center gap-1.5 h-9 px-4 rounded-lg bg-[#6366f1] hover:bg-[#4f46e5] text-white font-semibold text-[13px] shadow-md transition-colors" id="modal-open-trigger" type="button">
+<span class="material-symbols-outlined text-[17px]">add</span>
+<span>+ New Subject</span>
+</button>
+</div>
+</section>
+<!-- Top Stat Row: 4 Equal Height Cards -->
+<section class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
+<!-- Stat 1: Total Mastery Coverage -->
+<div class="p-5 rounded-xl bg-[#171b26] border border-[#23293b] shadow-sm flex flex-col justify-between hover:border-[rgba(99,102,241,0.3)] transition-colors min-h-[148px]">
+<div class="flex items-start justify-between">
+<div class="space-y-1">
+<span class="text-[12px] uppercase tracking-wider text-[#94a3b8] font-semibold">Total Mastery Coverage</span>
+<div class="flex items-baseline gap-2 pt-0.5">
+<span class="text-[28px] font-bold text-[#f8faff] leading-none tracking-tight">74%</span>
+<span class="inline-flex items-center text-[12px] font-semibold text-emerald-400 gap-0.5">
+<span class="material-symbols-outlined text-[14px]">arrow_upward</span>+6% this month
+              </span>
+</div>
+</div>
+<div class="w-9 h-9 rounded-lg bg-[rgba(99,102,241,0.15)] text-[#818cf8] border border-[rgba(99,102,241,0.25)] flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">insights</span>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-[#262c3e] space-y-1.5">
+<div class="flex justify-between items-center text-[12px] text-[#94a3b8]">
+<span>Curriculum average target 85%</span>
+<span class="font-semibold text-[#818cf8]">74%</span>
+</div>
+<div class="h-1.5 w-full rounded-full bg-[#111520] overflow-hidden">
+<div class="h-full bg-[#6366f1] rounded-full" style="width: 74%"></div>
+</div>
+</div>
+</div>
+<!-- Stat 2: Active Study Vault -->
+<div class="p-5 rounded-xl bg-[#171b26] border border-[#23293b] shadow-sm flex flex-col justify-between hover:border-[rgba(99,102,241,0.3)] transition-colors min-h-[148px]">
+<div class="flex items-start justify-between">
+<div class="space-y-1">
+<span class="text-[12px] uppercase tracking-wider text-[#94a3b8] font-semibold">Active Study Vault</span>
+<div class="flex items-baseline gap-2 pt-0.5">
+<span class="text-[28px] font-bold text-[#f8faff] leading-none tracking-tight">164</span>
+<span class="text-[13px] text-[#94a3b8] font-medium">Cards</span>
+</div>
+</div>
+<div class="w-9 h-9 rounded-lg bg-[#111520] text-[#94a3b8] border border-[#2a3044] flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">inventory_2</span>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-[#262c3e] flex items-center justify-between text-[12px] text-[#94a3b8]">
+<div class="flex items-center gap-1.5">
+<span class="h-1.5 w-1.5 rounded-full bg-[#6366f1]"></span>
+<span>7 documents</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="h-1.5 w-1.5 rounded-full bg-[#818cf8]"></span>
+<span>14 quizzes</span>
+</div>
+</div>
+</div>
+<!-- Stat 3: Urgent Reviews Due -->
+<div class="p-5 rounded-xl bg-[#171b26] border border-[#23293b] shadow-sm flex flex-col justify-between hover:border-[rgba(99,102,241,0.3)] transition-colors min-h-[148px]">
+<div class="flex items-start justify-between">
+<div class="space-y-1">
+<span class="text-[12px] uppercase tracking-wider text-[#94a3b8] font-semibold">Urgent Reviews Due</span>
+<div class="flex items-baseline gap-2 pt-0.5">
+<span class="text-[28px] font-bold text-[#f8faff] leading-none tracking-tight">28</span>
+<span class="text-[13px] text-[#94a3b8] font-medium">Due Today</span>
+</div>
+</div>
+<div class="w-9 h-9 rounded-lg bg-[#111520] text-[#94a3b8] border border-[#2a3044] flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">schedule</span>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-[#262c3e] flex items-center justify-between text-[12px]">
+<div class="flex items-center gap-1.5">
+<span class="text-[#f8faff] font-medium">Distributed Systems</span>
+<span class="text-[12px] px-2 py-0.5 rounded bg-[rgba(244,63,94,0.15)] text-[#fb7185] border border-[rgba(244,63,94,0.3)] font-semibold">14 due</span>
+</div>
+<span class="text-[#64748b] text-[12px]">~14 mins completion</span>
+</div>
+</div>
+<!-- Stat 4: Gold Questions -->
+<div class="p-5 rounded-xl bg-[#171b26] border border-[#23293b] shadow-sm flex flex-col justify-between hover:border-[rgba(99,102,241,0.3)] transition-colors min-h-[148px]">
+<div class="flex items-start justify-between">
+<div class="space-y-1">
+<span class="text-[12px] uppercase tracking-wider text-[#94a3b8] font-semibold">Gold Questions</span>
+<div class="flex items-baseline gap-2 pt-0.5">
+<span class="text-[28px] font-bold text-[#f8faff] leading-none tracking-tight">18</span>
+<span class="text-[13px] text-[#94a3b8] font-medium">Top tier</span>
+</div>
+</div>
+<div class="w-9 h-9 rounded-lg bg-[rgba(245,158,11,0.15)] text-[#fbbf24] border border-[rgba(245,158,11,0.25)] flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">verified</span>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-[#262c3e] flex items-center justify-between text-[12px] text-[#94a3b8]">
+<span>High-yield mastered concepts</span>
+<span class="font-semibold text-emerald-400">98.2%</span>
+</div>
+</div>
+</section>
+<!-- Category Filter Tabs & Sort Row -->
+<section class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-1">
+<div class="flex items-center gap-2 overflow-x-auto pb-0.5" id="filter-tabs">
+<button class="px-3.5 py-1.5 rounded-lg bg-[#1f2538] text-[#818cf8] font-semibold text-[13px] border border-[rgba(99,102,241,0.25)] transition-all">
+          All Subjects (3)
+        </button>
+<button class="px-3.5 py-1.5 rounded-lg text-[#94a3b8] hover:bg-[#171b26] hover:text-[#f8faff] font-medium text-[13px] border border-transparent transition-all">
+          Core Engineering (2)
+        </button>
+<button class="px-3.5 py-1.5 rounded-lg text-[#94a3b8] hover:bg-[#171b26] hover:text-[#f8faff] font-medium text-[13px] border border-transparent transition-all">
+          Hardware &amp; Circuits (1)
+        </button>
+<button class="px-3.5 py-1.5 rounded-lg text-[#94a3b8] hover:bg-[#171b26] hover:text-[#f8faff] font-medium text-[13px] border border-transparent transition-all">
+          Archived (1)
+        </button>
+</div>
+<div class="flex items-center gap-2 text-[#64748b] text-[12px] self-end sm:self-auto">
+<span>Sort by:</span>
+<button class="flex items-center gap-1 font-semibold text-[13px] text-[#f8faff] hover:text-[#818cf8] transition-colors">
+<span>Review Urgency</span>
+<span class="material-symbols-outlined text-[16px]">expand_more</span>
+</button>
+</div>
+</section>
+<!-- Subject Cards Grid -->
+<div class="grid grid-cols-1 xl:grid-cols-3 gap-6" id="subject-cards-container">
+<!-- Card 1: Distributed Systems -->
+<article class="flex flex-col justify-between bg-[#171b26] rounded-xl border border-[#23293b] shadow-sm hover:border-[rgba(99,102,241,0.4)] transition-all overflow-hidden group">
+<div>
+<div class="p-6 pb-4">
+<div class="flex items-start justify-between gap-3 mb-3.5">
+<div class="flex items-center gap-2">
+<span class="px-2.5 py-0.5 rounded-md bg-[rgba(99,102,241,0.15)] text-[#a5b4fc] border border-[rgba(99,102,241,0.3)] text-[12px] font-semibold">Core CS · Advanced</span>
+</div>
+<button class="p-1 rounded-lg text-[#64748b] hover:text-[#f8faff] hover:bg-[#111520] transition-colors" title="Options">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+<div class="flex items-start gap-3.5">
+<div class="h-11 w-11 rounded-lg bg-[rgba(99,102,241,0.15)] text-[#818cf8] font-bold text-base flex items-center justify-center flex-shrink-0 border border-[rgba(99,102,241,0.3)] shadow-xs mt-0.5">DS</div>
+<div class="min-w-0 flex-1">
+<h3 class="text-[17px] font-bold text-[#f8faff] leading-tight">Distributed Systems</h3>
+<p class="text-[13px] text-[#94a3b8] leading-snug mt-1">MIT 6.824 &amp; Designing Data-Intensive Applications</p>
+</div>
+</div>
+<div class="mt-5 space-y-2">
+<div class="flex items-center justify-between text-[12px]">
+<span class="text-[#94a3b8] font-medium">Mastery Coverage</span>
+<span class="font-bold text-[#818cf8]">72%</span>
+</div>
+<div class="h-2 w-full rounded-full bg-[#111520] overflow-hidden">
+<div class="h-full bg-[#6366f1] rounded-full transition-all" style="width: 72%"></div>
+</div>
+<div class="flex items-center justify-between text-[#94a3b8] text-[12px] pt-0.5">
+<span>48 of 65 cards</span>
+<span>4 notes</span>
+</div>
+</div>
+</div>
+<!-- Modules List -->
+<div class="px-6 py-3.5 bg-[#111520]/60 border-t border-b border-[#262c3e]">
+<div class="text-[12px] uppercase tracking-wider text-[#64748b] mb-2.5 font-semibold">Key Syllabus Modules</div>
+<div class="space-y-2">
+<div class="flex items-center justify-between p-2 rounded-lg bg-[#171b26] border border-[#23293b]">
+<div class="flex items-center gap-2 min-w-0">
+<span class="text-[12px] text-[#64748b] font-medium">01</span>
+<span class="text-[13px] text-[#f8faff] font-medium truncate">Consensus &amp; Raft Protocol</span>
+</div>
+<span class="text-[12px] px-2 py-0.5 rounded-full bg-emerald-950/60 text-emerald-400 border border-emerald-800/50 font-semibold flex-shrink-0">88% Strong</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded-lg bg-[#171b26] border border-[#23293b]">
+<div class="flex items-center gap-2 min-w-0">
+<span class="text-[12px] text-[#64748b] font-medium">02</span>
+<span class="text-[13px] text-[#f8faff] font-medium truncate">Vector Clocks &amp; Causality</span>
+</div>
+<span class="text-[12px] px-2 py-0.5 rounded-full bg-indigo-950/60 text-indigo-300 border border-indigo-800/50 font-semibold flex-shrink-0">74% Stable</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded-lg bg-[#171b26] border border-[#23293b]">
+<div class="flex items-center gap-2 min-w-0">
+<span class="text-[12px] text-[#64748b] font-medium">03</span>
+<span class="text-[13px] text-[#f8faff] font-medium truncate">Byzantine Fault Tolerance</span>
+</div>
+<span class="text-[12px] px-2 py-0.5 rounded-full bg-amber-950/60 text-amber-300 border border-amber-800/50 font-semibold flex-shrink-0">54% Review</span>
+</div>
+</div>
+<div class="pt-2.5 text-center">
+<button class="text-[12px] font-semibold text-[#818cf8] hover:text-[#a5b4fc] hover:underline" type="button">View all 6 modules</button>
+</div>
+</div>
+</div>
+<div class="p-6 pt-4 flex flex-col gap-3">
+<div class="flex items-center justify-between text-[12.5px]">
+<div class="flex items-center gap-1.5 text-rose-400 font-medium">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+<span>14 due today</span>
+</div>
+<span class="text-[12px] text-[#64748b]">~7 min</span>
+</div>
+<div class="flex items-center gap-2.5">
+<button class="flex-1 h-9 px-3 rounded-lg bg-[#6366f1] hover:bg-[#4f46e5] text-white text-[13px] font-semibold shadow-md transition-colors flex items-center justify-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[16px]">play_arrow</span>
+<span>Study now</span>
+</button>
+<button class="h-9 px-3 rounded-lg bg-[#111520] hover:bg-[#1f2538] text-[#cbd5e1] border border-[#2a3044] text-[13px] font-semibold transition-colors flex items-center justify-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[17px]">menu_book</span>
+<span>Open subject</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Card 2: Linear Electronics -->
+<article class="flex flex-col justify-between bg-[#171b26] rounded-xl border border-[#23293b] shadow-sm hover:border-[#2a3044] transition-all overflow-hidden group">
+<div>
+<div class="p-6 pb-4">
+<div class="flex items-start justify-between gap-3 mb-3.5">
+<div class="flex items-center gap-2">
+<span class="px-2.5 py-0.5 rounded-md bg-[#1c2130] text-[#94a3b8] border border-[#2a3044] text-[12px] font-semibold">Hardware · Intermediate</span>
+</div>
+<button class="p-1 rounded-lg text-[#64748b] hover:text-[#f8faff] hover:bg-[#111520] transition-colors" title="Options">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+<div class="flex items-start gap-3.5">
+<div class="h-11 w-11 rounded-lg bg-[#1c2130] text-[#94a3b8] font-bold text-base flex items-center justify-center flex-shrink-0 border border-[#2a3044] shadow-xs mt-0.5">EE</div>
+<div class="min-w-0 flex-1">
+<h3 class="text-[17px] font-bold text-[#f8faff] leading-tight">Linear Electronics</h3>
+<p class="text-[13px] text-[#94a3b8] leading-snug mt-1">Sedra &amp; Smith Microelectronic Circuits</p>
+</div>
+</div>
+<div class="mt-5 space-y-2">
+<div class="flex items-center justify-between text-[12px]">
+<span class="text-[#94a3b8] font-medium">Mastery Coverage</span>
+<span class="font-bold text-[#cbd5e1]">48%</span>
+</div>
+<div class="h-2 w-full rounded-full bg-[#111520] overflow-hidden">
+<div class="h-full bg-slate-500 rounded-full transition-all" style="width: 48%"></div>
+</div>
+<div class="flex items-center justify-between text-[#94a3b8] text-[12px] pt-0.5">
+<span>32 of 60 cards</span>
+<span>2 lecture PDFs</span>
+</div>
+</div>
+</div>
+<!-- Modules List -->
+<div class="px-6 py-3.5 bg-[#111520]/60 border-t border-b border-[#262c3e]">
+<div class="text-[12px] uppercase tracking-wider text-[#64748b] mb-2.5 font-semibold">Key Syllabus Modules</div>
+<div class="space-y-2">
+<div class="flex items-center justify-between p-2 rounded-lg bg-[#171b26] border border-[#23293b]">
+<div class="flex items-center gap-2 min-w-0">
+<span class="text-[12px] text-[#64748b] font-medium">01</span>
+<span class="text-[13px] text-[#f8faff] font-medium truncate">Op-Amp &amp; Frequency Response</span>
+</div>
+<span class="text-[12px] px-2 py-0.5 rounded-full bg-indigo-950/60 text-indigo-300 border border-indigo-800/50 font-semibold flex-shrink-0">61% Stable</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded-lg bg-[#171b26] border border-[#23293b]">
+<div class="flex items-center gap-2 min-w-0">
+<span class="text-[12px] text-[#64748b] font-medium">02</span>
+<span class="text-[13px] text-[#f8faff] font-medium truncate">Phase Margin &amp; Bode Plots</span>
+</div>
+<span class="text-[12px] px-2 py-0.5 rounded-full bg-amber-950/60 text-amber-300 border border-amber-800/50 font-semibold flex-shrink-0">42% Review</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded-lg bg-[#171b26] border border-[#23293b]">
+<div class="flex items-center gap-2 min-w-0">
+<span class="text-[12px] text-[#64748b] font-medium">03</span>
+<span class="text-[13px] text-[#f8faff] font-medium truncate">Active Filter Synthesis</span>
+</div>
+<span class="text-[12px] px-2 py-0.5 rounded-full bg-amber-950/60 text-amber-300 border border-amber-800/50 font-semibold flex-shrink-0">40% Learn</span>
+</div>
+</div>
+<div class="pt-2.5 text-center">
+<button class="text-[12px] font-semibold text-[#818cf8] hover:text-[#a5b4fc] hover:underline" type="button">View all 5 modules</button>
+</div>
+</div>
+</div>
+<div class="p-6 pt-4 flex flex-col gap-3">
+<div class="flex items-center justify-between text-[12.5px]">
+<div class="flex items-center gap-1.5 text-[#94a3b8] font-medium">
+<span class="material-symbols-outlined text-[16px] text-[#64748b]">schedule</span>
+<span>9 due today</span>
+</div>
+<span class="text-[12px] text-[#64748b]">~5 min</span>
+</div>
+<div class="flex items-center gap-2.5">
+<button class="flex-1 h-9 px-3 rounded-lg bg-[#6366f1] hover:bg-[#4f46e5] text-white text-[13px] font-semibold shadow-md transition-colors flex items-center justify-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[16px]">play_arrow</span>
+<span>Study now</span>
+</button>
+<button class="h-9 px-3 rounded-lg bg-[#111520] hover:bg-[#1f2538] text-[#cbd5e1] border border-[#2a3044] text-[13px] font-semibold transition-colors flex items-center justify-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[17px]">menu_book</span>
+<span>Open subject</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Card 3: Machine Learning -->
+<article class="flex flex-col justify-between bg-[#171b26] rounded-xl border border-[#23293b] shadow-sm hover:border-[rgba(245,158,11,0.3)] transition-all overflow-hidden group">
+<div>
+<div class="p-6 pb-4">
+<div class="flex items-start justify-between gap-3 mb-3.5">
+<div class="flex items-center gap-2">
+<span class="px-2.5 py-0.5 rounded-md bg-[rgba(245,158,11,0.15)] text-[#fbbf24] border border-[rgba(245,158,11,0.3)] text-[12px] font-semibold">Deep Learning · Advanced</span>
+</div>
+<button class="p-1 rounded-lg text-[#64748b] hover:text-[#f8faff] hover:bg-[#111520] transition-colors" title="Options">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+<div class="flex items-start gap-3.5">
+<div class="h-11 w-11 rounded-lg bg-[rgba(245,158,11,0.15)] text-amber-400 font-bold text-base flex items-center justify-center flex-shrink-0 border border-[rgba(245,158,11,0.25)] shadow-xs mt-0.5">ML</div>
+<div class="min-w-0 flex-1">
+<h3 class="text-[17px] font-bold text-[#f8faff] leading-tight">Machine Learning</h3>
+<p class="text-[13px] text-[#94a3b8] leading-snug mt-1">Stanford CS229 &amp; Attention Papers</p>
+</div>
+</div>
+<div class="mt-5 space-y-2">
+<div class="flex items-center justify-between text-[12px]">
+<span class="text-[#94a3b8] font-medium">Mastery Coverage</span>
+<span class="font-bold text-amber-400">91%</span>
+</div>
+<div class="h-2 w-full rounded-full bg-[#111520] overflow-hidden">
+<div class="h-full bg-amber-500 rounded-full transition-all" style="width: 91%"></div>
+</div>
+<div class="flex items-center justify-between text-[#94a3b8] text-[12px] pt-0.5">
+<span>84 of 92 cards</span>
+<span>1 research paper</span>
+</div>
+</div>
+</div>
+<!-- Modules List -->
+<div class="px-6 py-3.5 bg-[#111520]/60 border-t border-b border-[#262c3e]">
+<div class="text-[12px] uppercase tracking-wider text-[#64748b] mb-2.5 font-semibold">Key Syllabus Modules</div>
+<div class="space-y-2">
+<div class="flex items-center justify-between p-2 rounded-lg bg-[#171b26] border border-[#23293b]">
+<div class="flex items-center gap-2 min-w-0">
+<span class="text-[12px] text-[#64748b] font-medium">01</span>
+<span class="text-[13px] text-[#f8faff] font-medium truncate">Multi-Head Attention</span>
+</div>
+<span class="text-[12px] px-2 py-0.5 rounded-full bg-emerald-950/60 text-emerald-400 border border-emerald-800/50 font-semibold flex-shrink-0">96% Strong</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded-lg bg-[#171b26] border border-[#23293b]">
+<div class="flex items-center gap-2 min-w-0">
+<span class="text-[12px] text-[#64748b] font-medium">02</span>
+<span class="text-[13px] text-[#f8faff] font-medium truncate">Diffusion &amp; Generative Models</span>
+</div>
+<span class="text-[12px] px-2 py-0.5 rounded-full bg-emerald-950/60 text-emerald-400 border border-emerald-800/50 font-semibold flex-shrink-0">89% Strong</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded-lg bg-[#171b26] border border-[#23293b]">
+<div class="flex items-center gap-2 min-w-0">
+<span class="text-[12px] text-[#64748b] font-medium">03</span>
+<span class="text-[13px] text-[#f8faff] font-medium truncate">Loss Calibration &amp; Regularization</span>
+</div>
+<span class="text-[12px] px-2 py-0.5 rounded-full bg-indigo-950/60 text-indigo-300 border border-indigo-800/50 font-semibold flex-shrink-0">68% Stable</span>
+</div>
+</div>
+<div class="pt-2.5 text-center">
+<button class="text-[12px] font-semibold text-[#818cf8] hover:text-[#a5b4fc] hover:underline" type="button">View all 5 modules</button>
+</div>
+</div>
+</div>
+<div class="p-6 pt-4 flex flex-col gap-3">
+<div class="flex items-center justify-between text-[12.5px]">
+<div class="flex items-center gap-1.5 text-[#94a3b8] font-medium">
+<span class="material-symbols-outlined text-[16px] text-[#64748b]">schedule</span>
+<span>5 due today</span>
+</div>
+<span class="text-[12px] text-[#64748b]">~3 min</span>
+</div>
+<div class="flex items-center gap-2.5">
+<button class="flex-1 h-9 px-3 rounded-lg bg-[#6366f1] hover:bg-[#4f46e5] text-white text-[13px] font-semibold shadow-md transition-colors flex items-center justify-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[16px]">play_arrow</span>
+<span>Study now</span>
+</button>
+<button class="h-9 px-3 rounded-lg bg-[#111520] hover:bg-[#1f2538] text-[#cbd5e1] border border-[#2a3044] text-[13px] font-semibold transition-colors flex items-center justify-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[17px]">menu_book</span>
+<span>Open subject</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Card 4: Dashed "+ New subject" Card -->
+<div class="flex flex-col items-center justify-center p-8 rounded-xl border-2 border-dashed border-[#23293b] hover:border-[#6366f1]/50 bg-[#111520]/50 hover:bg-[#171b26]/50 text-center transition-all cursor-pointer group min-h-[460px]" onclick="document.getElementById('modal-open-trigger').click()">
+<div class="w-12 h-12 rounded-full bg-[#1c2130] border border-[#2a3044] flex items-center justify-center text-[#818cf8] mb-3.5 group-hover:scale-105 group-hover:bg-[#1f2538] transition-all">
+<span class="material-symbols-outlined text-[24px]">add</span>
+</div>
+<h4 class="text-[16px] font-bold text-[#f8faff] mb-1.5">+ New subject</h4>
+<p class="text-[13px] text-[#94a3b8] max-w-[220px] leading-relaxed">Create a custom curriculum from notes, textbooks, or syllabus files</p>
+</div>
+</div>
+<!-- Quick Upload / Integration Banner -->
+<section class="mt-8 p-6 md:p-7 rounded-xl bg-[#171b26] border border-[#23293b] shadow-sm flex flex-col md:flex-row items-center justify-between gap-6 transition-all hover:border-[#2a3044]">
+<div class="flex items-start gap-4">
+<div class="h-12 w-12 rounded-xl bg-[#111520] border border-[#2a3044] shadow-xs flex items-center justify-center text-[#818cf8] flex-shrink-0">
+<span class="material-symbols-outlined text-[26px]">upload_file</span>
+</div>
+<div class="space-y-1">
+<h4 class="text-[17px] font-bold text-[#f8faff]">Add material to a subject</h4>
+<p class="text-[13px] text-[#94a3b8] max-w-xl leading-relaxed">Upload syllabus PDFs, lecture slides, or Markdown notes. Topics and study cards are extracted automatically.</p>
+</div>
+</div>
+<div class="flex items-center gap-3 flex-shrink-0 w-full md:w-auto">
+<input accept=".pdf,.epub,.md,.txt" class="hidden" id="bulk-upload-input" multiple="" type="file"/>
+<button class="w-full md:w-auto flex items-center justify-center gap-2 h-10 px-5 rounded-lg bg-[#111520] hover:bg-[#1f2538] text-[#cbd5e1] hover:text-white text-[13px] font-semibold border border-[#2a3044] shadow-sm transition-colors" onclick="document.getElementById('bulk-upload-input').click()">
+<span class="material-symbols-outlined text-[18px] text-[#818cf8]">cloud_upload</span>
+<span>Upload course files</span>
+</button>
+<button class="hidden lg:flex items-center justify-center h-10 w-10 rounded-lg bg-[#111520] text-[#94a3b8] hover:text-[#f8faff] hover:bg-[#1f2538] border border-[#2a3044] shadow-sm transition-colors" title="View import history">
+<span class="material-symbols-outlined text-[18px]">history</span>
+</button>
+</div>
+</section>
+</main>
+</div>
+<!-- Interactive Modal for "New Subject" -->
+<div class="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm hidden opacity-0 transition-opacity duration-200" id="new-subject-modal">
+<div class="w-full max-w-lg p-6 bg-[#171b26] rounded-xl shadow-2xl flex flex-col gap-5 transform scale-95 transition-transform duration-200 border border-[#262c3e]" id="modal-card">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<div class="h-8 w-8 rounded-lg bg-[rgba(99,102,241,0.15)] flex items-center justify-center text-[#818cf8]">
+<span class="material-symbols-outlined text-[18px]">add_circle</span>
+</div>
+<h3 class="text-lg font-bold text-[#f8faff]">Create New Subject</h3>
+</div>
+<button class="p-1 rounded-lg text-[#64748b] hover:text-[#f8faff] hover:bg-[#111520] transition-colors" id="modal-close-trigger">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<div class="space-y-4">
+<div>
+<label class="block text-[12px] uppercase tracking-wider text-[#94a3b8] mb-1.5 font-semibold">Subject Title</label>
+<input class="w-full h-10 px-3.5 rounded-lg bg-[#111520] text-[13.5px] text-[#f8faff] placeholder:text-[#64748b] border border-[#262c3e] focus:outline-none focus:ring-1 focus:ring-[#6366f1] focus:border-[#6366f1]" placeholder="e.g. Statistical Mechanics &amp; Thermodynamics" type="text"/>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<div>
+<label class="block text-[12px] uppercase tracking-wider text-[#94a3b8] mb-1.5 font-semibold">Discipline / Tag</label>
+<input class="w-full h-10 px-3.5 rounded-lg bg-[#111520] text-[13.5px] text-[#f8faff] placeholder:text-[#64748b] border border-[#262c3e] focus:outline-none focus:ring-1 focus:ring-[#6366f1] focus:border-[#6366f1]" placeholder="e.g. Physics" type="text"/>
+</div>
+<div>
+<label class="block text-[12px] uppercase tracking-wider text-[#94a3b8] mb-1.5 font-semibold">Proficiency Level</label>
+<select class="w-full h-10 px-3 rounded-lg bg-[#111520] text-[13.5px] text-[#f8faff] border border-[#262c3e] focus:outline-none focus:ring-1 focus:ring-[#6366f1] focus:border-[#6366f1]">
+<option class="bg-[#171b26]">Beginner · Foundational</option>
+<option class="bg-[#171b26]" selected="">Intermediate</option>
+<option class="bg-[#171b26]">Advanced · Graduate</option>
+</select>
+</div>
+</div>
+<div>
+<label class="block text-[12px] uppercase tracking-wider text-[#94a3b8] mb-1.5 font-semibold">Initial Reference (PDF, Syllabus URL, or Book Title)</label>
+<input class="w-full h-10 px-3.5 rounded-lg bg-[#111520] text-[13.5px] text-[#f8faff] placeholder:text-[#64748b] border border-[#262c3e] focus:outline-none focus:ring-1 focus:ring-[#6366f1] focus:border-[#6366f1]" placeholder="Paste link or drop document" type="text"/>
+</div>
+</div>
+<div class="flex items-center justify-end gap-2.5 pt-2">
+<button class="h-9 px-4 rounded-lg bg-[#111520] hover:bg-[#1f2538] text-[#cbd5e1] font-semibold text-[13px] border border-[#2a3044] transition-colors" id="modal-cancel-btn">
+          Cancel
+        </button>
+<button class="h-9 px-4 rounded-lg bg-[#6366f1] hover:bg-[#4f46e5] text-white font-semibold text-[13px] transition-colors shadow-sm">
+          Initialize Deck
+        </button>
+</div>
+</div>
+</div>
+<script>
+    // Search filtering
+    const searchInput = document.getElementById('subject-search-input');
+    const cardsContainer = document.getElementById('subject-cards-container');
+    const articles = cardsContainer.querySelectorAll('article');
+    const filterTabs = document.getElementById('filter-tabs');
+
+    searchInput.addEventListener('input', (e) => {
+      const val = e.target.value.toLowerCase().trim();
+      articles.forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(val) ? 'flex' : 'none';
+      });
+    });
+
+    // Category Tabs Selection
+    filterTabs.querySelectorAll('button').forEach(tab => {
+      tab.addEventListener('click', () => {
+        filterTabs.querySelectorAll('button').forEach(b => {
+          b.className = 'px-3.5 py-1.5 rounded-lg text-[#94a3b8] hover:bg-[#171b26] hover:text-[#f8faff] font-medium text-[13px] border border-transparent transition-all';
+        });
+        tab.className = 'px-3.5 py-1.5 rounded-lg bg-[#1f2538] text-[#818cf8] font-semibold text-[13px] border border-[rgba(99,102,241,0.25)] transition-all';
+      });
+    });
+
+    // Modal Interaction
+    const openModalBtn = document.getElementById('modal-open-trigger');
+    const closeModalBtn = document.getElementById('modal-close-trigger');
+    const cancelModalBtn = document.getElementById('modal-cancel-btn');
+    const modal = document.getElementById('new-subject-modal');
+    const modalCard = document.getElementById('modal-card');
+
+    function openModal() {
+      modal.classList.remove('hidden');
+      setTimeout(() => {
+        modal.classList.remove('opacity-0');
+        modalCard.classList.remove('scale-95');
+      }, 10);
+    }
+
+    function closeModal() {
+      modal.classList.add('opacity-0');
+      modalCard.classList.add('scale-95');
+      setTimeout(() => {
+        modal.classList.add('hidden');
+      }, 200);
+    }
+
+    openModalBtn.addEventListener('click', openModal);
+    closeModalBtn.addEventListener('click', closeModal);
+    cancelModalBtn.addEventListener('click', closeModal);
+
+    // Grid / List View Toggle
+    const gridBtn = document.getElementById('view-grid-btn');
+    const listBtn = document.getElementById('view-list-btn');
+
+    listBtn.addEventListener('click', () => {
+      cardsContainer.classList.remove('xl:grid-cols-3');
+      cardsContainer.classList.add('grid-cols-1');
+      listBtn.classList.add('bg-[#232838]', 'text-white', 'shadow-xs');
+      listBtn.classList.remove('text-[#94a3b8]');
+      gridBtn.classList.remove('bg-[#232838]', 'text-white', 'shadow-xs');
+      gridBtn.classList.add('text-[#94a3b8]');
+    });
+
+    gridBtn.addEventListener('click', () => {
+      cardsContainer.classList.add('xl:grid-cols-3');
+      cardsContainer.classList.remove('grid-cols-1');
+      gridBtn.classList.add('bg-[#232838]', 'text-white', 'shadow-xs');
+      gridBtn.classList.remove('text-[#94a3b8]');
+      listBtn.classList.remove('bg-[#232838]', 'text-white', 'shadow-xs');
+      listBtn.classList.add('text-[#94a3b8]');
+    });
+  </script>
+</body></html>

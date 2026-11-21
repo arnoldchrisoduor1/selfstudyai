@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={"darkMode":"class","theme":{"extend":{"colors":{"on-tertiary-fixed":"#2a1700","tertiary-container":"#925c00","on-primary":"#ffffff","on-tertiary-container":"#ffe3c6","on-tertiary":"#ffffff","primary":"#4233cd","secondary-fixed":"#d5e3fc","surface-container-low":"#eff4ff","on-error":"#ffffff","background":"#f8f9ff","surface-container-high":"#dce9ff","primary-fixed-dim":"#c4c0ff","surface-bright":"#f8f9ff","tertiary-fixed":"#ffddb8","inverse-surface":"#213145","primary-fixed":"#e3dfff","surface-container-lowest":"#ffffff","on-background":"#0b1c30","outline-variant":"#c8c4d7","surface-container-highest":"#d3e4fe","on-primary-container":"#e8e4ff","error-container":"#ffdad6","outline":"#777586","on-error-container":"#93000a","error":"#ba1a1a","on-secondary-fixed":"#0d1c2e","primary-container":"#5b50e6","tertiary":"#714600","surface-variant":"#d3e4fe","secondary-container":"#d5e3fc","surface":"#f8f9ff","surface-container":"#e5eeff","on-primary-fixed-variant":"#3826c5","on-secondary-container":"#57657a","on-surface-variant":"#464555","surface-tint":"#5145dc","secondary":"#515f74","on-secondary-fixed-variant":"#3a485b","on-tertiary-fixed-variant":"#653e00","inverse-primary":"#c4c0ff","secondary-fixed-dim":"#b9c7df","inverse-on-surface":"#eaf1ff","on-surface":"#0b1c30","on-secondary":"#ffffff","on-primary-fixed":"#110068","surface-dim":"#cbdbf5","tertiary-fixed-dim":"#ffb95f"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"space-md":"1rem","space-xl":"2.5rem","gutter":"1rem","margin-desktop":"2rem","margin":"1rem","gutter-desktop":"1.5rem","space-sm":"0.5rem","space-lg":"1.5rem","space-xs":"0.25rem"},"fontFamily":{"display-hero":["Inter"],"headline-lg":["Inter"],"headline-sm":["Inter"],"label-sm":["Inter"],"display-hero-mobile":["Inter"],"body-lg":["Inter"],"label-md":["Inter"],"body-md":["Inter"],"mono-metric":["JetBrains Mono"],"headline-md":["Inter"],"body-sm":["Inter"]},"fontSize":{"display-hero":["40px",{"lineHeight":"48px","letterSpacing":"-0.03em","fontWeight":"600"}],"headline-lg":["28px",{"lineHeight":"36px","letterSpacing":"-0.02em","fontWeight":"600"}],"headline-sm":["18px",{"lineHeight":"26px","letterSpacing":"-0.01em","fontWeight":"600"}],"label-sm":["11px",{"lineHeight":"14px","letterSpacing":"0.04em","fontWeight":"600"}],"display-hero-mobile":["30px",{"lineHeight":"38px","letterSpacing":"-0.025em","fontWeight":"600"}],"body-lg":["16px",{"lineHeight":"24px","letterSpacing":"-0.005em","fontWeight":"400"}],"label-md":["13px",{"lineHeight":"16px","letterSpacing":"0em","fontWeight":"500"}],"body-md":["14px",{"lineHeight":"22px","letterSpacing":"0em","fontWeight":"400"}],"mono-metric":["13px",{"lineHeight":"16px","letterSpacing":"-0.02em","fontWeight":"500"}],"headline-md":["22px",{"lineHeight":"30px","letterSpacing":"-0.015em","fontWeight":"600"}],"body-sm":["13px",{"lineHeight":"18px","letterSpacing":"0em","fontWeight":"400"}]}}}}</script></head><body class="bg-surface font-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 h-16 bg-surface/90 backdrop-blur-xl z-50 shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 w-full px-gutter-desktop flex items-center justify-between gap-space-md max-w-[1440px] mx-auto"><div class="flex items-center gap-3 min-w-[280px]"><div class="flex flex-col gap-1 min-w-0"><div class="flex items-center gap-2 flex-wrap text-secondary font-label-md text-label-md"><span class="inline-flex items-center gap-1 font-semibold text-primary"><span class="material-symbols-outlined text-[16px]">school</span>MIT 6.824 Specification</span><span class="text-outline-variant">•</span><span class="text-on-surface-variant font-medium">Part II: State Machine Replication &amp; Leases</span><span class="text-outline-variant">•</span><span class="text-on-surface-variant font-medium">Arnold • Nov 2026</span></div><h1 class="font-headline-md text-headline-md text-on-surface tracking-tight">Distributed Systems Final Examination</h1></div><div class="flex items-center gap-3 shrink-0 flex-wrap"><div class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-surface-container-low text-secondary text-[12px] font-medium"><span class="material-symbols-outlined text-[16px] text-primary">lock</span><span>Timed Session Active</span></div><div class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-surface-container-high text-on-surface text-[12px] font-medium"><span class="w-2 h-2 rounded-full bg-primary"></span><span>All responses saved</span></div></div></div><div class="flex flex-col items-center justify-center"><div class="flex items-center gap-2 bg-surface-container-lowest px-4 py-1.5 rounded-full shadow-[0_1px_4px_rgba(0,0,0,0.03)]"><span class="material-symbols-outlined text-primary text-[18px]">timer</span><span class="text-[14px] text-on-surface font-semibold">01:24:18 remaining</span><span class="text-outline-variant text-[13px]">•</span><span class="text-[13px] text-on-surface-variant font-medium">Question 14 of 35</span></div></div><div class="flex items-center gap-4 min-w-[280px] justify-end"><span class="text-[12px] text-on-surface-variant font-medium">Saved 12s ago</span><a class="px-3 py-1.5 rounded-lg text-secondary hover:bg-surface-container-high hover:text-on-surface text-[13px] font-medium transition-colors" data-path="exam-exit-confirm" href="#">Save &amp; exit</a><div class="w-8 h-8 rounded-full bg-primary-container text-on-primary flex items-center justify-center text-[12px] font-bold">A</div></div></div></header><div class=""><main class="relative pt-16 w-full min-h-screen bg-surface"><div class="flex flex-col w-full">
+<div class="w-full max-w-[1440px] mx-auto px-gutter-desktop py-space-lg flex flex-col gap-space-lg">
+<!-- Breadcrumb & Status Bar -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-sm">
+<nav aria-label="Breadcrumb" class="flex items-center gap-2 font-label-md text-label-md text-secondary">
+<span class="hover:text-on-surface cursor-pointer transition-colors">Workspace</span>
+<span class="text-outline-variant">/</span>
+<span class="hover:text-on-surface cursor-pointer transition-colors">Final Tests</span>
+<span class="text-outline-variant">/</span>
+<span class="hover:text-on-surface cursor-pointer transition-colors">Distributed Systems Final</span>
+<span class="text-outline-variant">/</span>
+<span class="text-primary font-semibold">Results</span>
+</nav>
+<div class="flex items-center gap-2 self-start md:self-auto">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-high text-on-surface font-label-md text-label-md">
+<span class="material-symbols-outlined text-[15px] text-tertiary">history_toggle_off</span>
+          Official Grading Finalized
+        </span>
+</div>
+</div>
+<!-- Main Header -->
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-space-md">
+<div class="flex flex-col gap-1.5">
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">
+          Distributed Systems Final — Exam Results
+        </h1>
+<p class="font-body-md text-body-md text-secondary">
+          Completed Friday, Nov 20, 2026 · Evaluated with course rubric
+        </p>
+</div>
+<div class="flex items-center gap-3 shrink-0">
+<button class="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-surface-container-lowest text-secondary shadow-sm hover:bg-surface-container hover:text-on-surface transition-all font-label-md text-label-md" type="button">
+<span class="material-symbols-outlined text-[18px]">download</span>
+          Export Report
+        </button>
+<button class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary-container text-on-primary font-label-md text-label-md shadow-sm hover:opacity-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+          Create cards from mistakes
+        </button>
+</div>
+</div>
+<!-- Summary Metric Cards Banner -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-space-md">
+<!-- Score Metric -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between gap-3">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-secondary">Overall Score</span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container-low text-primary font-label-md text-label-md font-semibold">
+            Grade A · Strong
+          </span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-headline-lg text-headline-lg text-on-surface tracking-tight">91%</span>
+<span class="font-body-md text-body-md text-secondary">91 / 100 points</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 91%"></div>
+</div>
+</div>
+<!-- Time Spent -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between gap-3">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-secondary">Time Spent</span>
+<span class="inline-flex items-center gap-1 text-secondary font-label-md text-label-md">
+<span class="material-symbols-outlined text-[15px] text-primary">schedule</span>
+            112 of 120 min
+          </span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-headline-lg text-headline-lg text-on-surface tracking-tight">1h 52m</span>
+<span class="font-body-md text-body-md text-secondary">8m remaining</span>
+</div>
+<div class="flex items-center gap-1.5">
+<div class="flex-1 bg-surface-container-high h-1.5 rounded-full overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 93.3%"></div>
+</div>
+<span class="font-label-sm text-label-sm text-secondary">93% pace</span>
+</div>
+</div>
+<!-- Question Breakdown -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between gap-3">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-secondary">Question Breakdown</span>
+<span class="font-label-md text-label-md font-semibold text-on-surface">10 total</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md text-on-surface">8</span>
+<span class="font-label-sm text-label-sm text-secondary">Correct</span>
+</div>
+<div class="w-px h-7 bg-surface-container-high"></div>
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md text-tertiary">1</span>
+<span class="font-label-sm text-label-sm text-secondary">Partial</span>
+</div>
+<div class="w-px h-7 bg-surface-container-high"></div>
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md text-error">1</span>
+<span class="font-label-sm text-label-sm text-secondary">Incorrect</span>
+</div>
+</div>
+<div class="flex h-1.5 w-full rounded-full overflow-hidden gap-0.5">
+<div class="bg-primary flex-[8] rounded-l-full"></div>
+<div class="bg-tertiary flex-[1]"></div>
+<div class="bg-error flex-[1] rounded-r-full"></div>
+</div>
+</div>
+<!-- Quick Remediation CTA Banner -->
+<div class="bg-primary-fixed rounded-xl p-space-md shadow-sm flex flex-col justify-between gap-3 text-on-primary-fixed">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md font-semibold text-primary">Target Practice</span>
+<span class="material-symbols-outlined text-primary text-[20px]" style="font-variation-settings: 'FILL' 1;">style</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm tracking-tight text-on-primary-fixed">2 Questions to Recover</span>
+<span class="font-body-sm text-body-sm text-secondary mt-0.5">Generate study cards for Q3 and Q4</span>
+</div>
+<button class="w-full py-1.5 px-3 rounded-lg bg-primary-container text-on-primary font-label-md text-label-md font-medium text-center hover:opacity-95 transition-opacity" type="button">
+          Generate Review Deck
+        </button>
+</div>
+</div>
+<!-- Main Content Split Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
+<!-- Left Column: Question Navigator (lg:col-span-4 or 5) -->
+<aside class="lg:col-span-4 xl:col-span-4 flex flex-col gap-space-md w-full">
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm">
+<!-- Navigator Top Title & Filters -->
+<div class="flex items-center justify-between">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Question Navigator</h2>
+<span class="font-label-sm text-label-sm text-secondary font-medium">10 Questions</span>
+</div>
+<!-- Filter Pills -->
+<div class="flex items-center gap-1.5 overflow-x-auto pb-1">
+<button class="px-2.5 py-1 rounded-full bg-surface-container-high text-on-surface font-label-md text-label-md font-semibold" type="button">
+              All (10)
+            </button>
+<button class="px-2.5 py-1 rounded-full bg-surface-container-low text-secondary hover:text-on-surface font-label-md text-label-md" type="button">
+              Correct (8)
+            </button>
+<button class="px-2.5 py-1 rounded-full bg-surface-container-low text-secondary hover:text-on-surface font-label-md text-label-md" type="button">
+              Partial (1)
+            </button>
+<button class="px-2.5 py-1 rounded-full bg-surface-container-low text-secondary hover:text-on-surface font-label-md text-label-md" type="button">
+              Incorrect (1)
+            </button>
+</div>
+<!-- Scrollable Question Items -->
+<div class="flex flex-col gap-2 mt-1 max-h-[720px] overflow-y-auto pr-1">
+<!-- Q1 -->
+<button class="w-full text-left p-3 rounded-xl bg-surface-container-lowest hover:bg-surface-container-low transition-colors flex items-start justify-between gap-3" type="button">
+<div class="flex flex-col gap-0.5 min-w-0">
+<span class="font-label-sm text-label-sm text-secondary font-medium">Question 1 · 10 pts</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold truncate">Byzantine Fault Tolerance in Asynchronous Networks</span>
+</div>
+<div class="shrink-0 flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-primary text-[15px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span>10/10</span>
+</div>
+</button>
+<!-- Q2 -->
+<button class="w-full text-left p-3 rounded-xl bg-surface-container-lowest hover:bg-surface-container-low transition-colors flex items-start justify-between gap-3" type="button">
+<div class="flex flex-col gap-0.5 min-w-0">
+<span class="font-label-sm text-label-sm text-secondary font-medium">Question 2 · 10 pts</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold truncate">Vector Clocks and Concurrent Event Detection</span>
+</div>
+<div class="shrink-0 flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-primary text-[15px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span>10/10</span>
+</div>
+</button>
+<!-- Q3: ACTIVE ITEM -->
+<div class="w-full p-3.5 rounded-xl bg-surface-container-low shadow-sm flex items-start justify-between gap-3">
+<div class="flex flex-col gap-1 min-w-0">
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-label-sm text-primary font-bold">Question 3 · Active</span>
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+<span class="font-label-sm text-label-sm text-tertiary font-semibold">Partial Credit</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface font-semibold">Raft Leader Election and Partition Quorum Guarantees</span>
+<p class="font-body-sm text-body-sm text-secondary line-clamp-1">Leader completeness invariant during minority isolation</p>
+</div>
+<div class="shrink-0 flex items-center gap-1 px-2.5 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm font-bold shadow-sm">
+<span class="material-symbols-outlined text-[15px]">remove_circle</span>
+<span>7/10</span>
+</div>
+</div>
+<!-- Q4 -->
+<button class="w-full text-left p-3 rounded-xl bg-surface-container-lowest hover:bg-surface-container-low transition-colors flex items-start justify-between gap-3" type="button">
+<div class="flex flex-col gap-0.5 min-w-0">
+<span class="font-label-sm text-label-sm text-secondary font-medium">Question 4 · 10 pts</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold truncate">Two-Phase Commit vs Three-Phase Commit Blocking</span>
+</div>
+<div class="shrink-0 flex items-center gap-1 px-2 py-0.5 rounded-full bg-error-container text-on-error-container font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[15px]">cancel</span>
+<span>0/10</span>
+</div>
+</button>
+<!-- Q5 -->
+<button class="w-full text-left p-3 rounded-xl bg-surface-container-lowest hover:bg-surface-container-low transition-colors flex items-start justify-between gap-3" type="button">
+<div class="flex flex-col gap-0.5 min-w-0">
+<span class="font-label-sm text-label-sm text-secondary font-medium">Question 5 · 10 pts</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold truncate">Chandy-Lamport Distributed Snapshot Algorithm</span>
+</div>
+<div class="shrink-0 flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-primary text-[15px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span>10/10</span>
+</div>
+</button>
+<!-- Q6 -->
+<button class="w-full text-left p-3 rounded-xl bg-surface-container-lowest hover:bg-surface-container-low transition-colors flex items-start justify-between gap-3" type="button">
+<div class="flex flex-col gap-0.5 min-w-0">
+<span class="font-label-sm text-label-sm text-secondary font-medium">Question 6 · 10 pts</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold truncate">Consistent Hashing and Virtual Node Rebalancing</span>
+</div>
+<div class="shrink-0 flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-primary text-[15px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span>10/10</span>
+</div>
+</button>
+<!-- Q7 -->
+<button class="w-full text-left p-3 rounded-xl bg-surface-container-lowest hover:bg-surface-container-low transition-colors flex items-start justify-between gap-3" type="button">
+<div class="flex flex-col gap-0.5 min-w-0">
+<span class="font-label-sm text-label-sm text-secondary font-medium">Question 7 · 10 pts</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold truncate">Gossip Protocols and Anti-Entropy Convergence</span>
+</div>
+<div class="shrink-0 flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-primary text-[15px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span>9/10</span>
+</div>
+</button>
+<!-- Q8 -->
+<button class="w-full text-left p-3 rounded-xl bg-surface-container-lowest hover:bg-surface-container-low transition-colors flex items-start justify-between gap-3" type="button">
+<div class="flex flex-col gap-0.5 min-w-0">
+<span class="font-label-sm text-label-sm text-secondary font-medium">Question 8 · 10 pts</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold truncate">Linearizability vs Sequential Consistency</span>
+</div>
+<div class="shrink-0 flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-primary text-[15px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span>10/10</span>
+</div>
+</button>
+<!-- Q9 -->
+<button class="w-full text-left p-3 rounded-xl bg-surface-container-lowest hover:bg-surface-container-low transition-colors flex items-start justify-between gap-3" type="button">
+<div class="flex flex-col gap-0.5 min-w-0">
+<span class="font-label-sm text-label-sm text-secondary font-medium">Question 9 · 10 pts</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold truncate">CAP Theorem Tradeoffs in Dynamo-style Datastores</span>
+</div>
+<div class="shrink-0 flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-primary text-[15px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span>10/10</span>
+</div>
+</button>
+<!-- Q10 -->
+<button class="w-full text-left p-3 rounded-xl bg-surface-container-lowest hover:bg-surface-container-low transition-colors flex items-start justify-between gap-3" type="button">
+<div class="flex flex-col gap-0.5 min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-label-sm text-label-sm text-tertiary font-bold">Bonus Synthesis</span>
+<span class="text-outline-variant">•</span>
+<span class="font-label-sm text-label-sm text-secondary font-medium">15 pts</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface font-semibold truncate">Paxos Synod and Multi-Paxos Phase 2 Optimization</span>
+</div>
+<div class="shrink-0 flex items-center gap-1 px-2 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm font-bold">
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+<span>15/15</span>
+</div>
+</button>
+</div>
+</div>
+<!-- Integrity Log Card -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[18px]">verified_user</span>
+<h3 class="font-label-md text-label-md font-bold text-on-surface">Integrity Log</h3>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface font-label-sm text-label-sm font-semibold">
+              Verified
+            </span>
+</div>
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center justify-between font-label-md text-label-md">
+<span class="text-secondary font-medium">Application Focus</span>
+<span class="text-on-surface font-semibold">2 exits, 14 seconds total</span>
+</div>
+<p class="font-body-sm text-body-sm text-secondary">
+              Within acceptable review tolerance · Verified local session
+            </p>
+</div>
+<div class="p-2.5 rounded-lg bg-surface-container-low flex flex-col gap-1.5">
+<div class="flex items-center justify-between font-label-sm text-label-sm text-secondary">
+<span>Exit 1: 00:42:15</span>
+<span class="text-on-surface font-medium">Duration: 6s (Window focus shift)</span>
+</div>
+<div class="flex items-center justify-between font-label-sm text-label-sm text-secondary">
+<span>Exit 2: 01:18:04</span>
+<span class="text-on-surface font-medium">Duration: 8s (System notification glance)</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Right Column: Selected Question Deep Dive (lg:col-span-8 or 7) -->
+<section class="lg:col-span-8 xl:col-span-8 flex flex-col gap-space-md w-full">
+<!-- Question Title Header Card -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-bold">Review Item</span>
+<span class="text-outline-variant">•</span>
+<span class="px-2 py-0.5 rounded-md bg-surface-container-high text-on-surface font-label-sm text-label-sm font-medium">
+                Raft Consensus Protocol
+              </span>
+<span class="px-2 py-0.5 rounded-md bg-surface-container-high text-secondary font-label-sm text-label-sm">
+                Topic 4.2
+              </span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface">
+              Question 3 of 10 · Partial Credit
+            </h2>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex flex-col items-end">
+<span class="font-headline-md text-headline-md text-tertiary">7 / 10 pts</span>
+<span class="font-label-sm text-label-sm text-secondary font-medium">70% achieved</span>
+</div>
+<span class="p-2 rounded-xl bg-tertiary-fixed text-on-tertiary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-[24px]">flag</span>
+</span>
+</div>
+</div>
+<!-- The Question Prompt Card -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-2.5">
+<div class="flex items-center gap-2 text-secondary font-label-sm text-label-sm font-bold uppercase tracking-wider">
+<span class="material-symbols-outlined text-[16px]">help_center</span>
+            Prompt
+          </div>
+<p class="font-headline-sm text-headline-sm text-on-surface leading-snug">
+            Explain how Raft ensures leader completeness during network partitions, and analyze why a minority partition cannot commit log entries independently.
+          </p>
+</div>
+<!-- Side-by-side Response Comparison (Desktop 2-Col or Stack) -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<!-- Student Response -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between gap-space-sm">
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md font-bold text-on-surface flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[17px] text-secondary">edit_note</span>
+                  My Answer
+                </span>
+<span class="font-label-sm text-label-sm text-secondary">Submitted at 00:38:12</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+                “A minority partition cannot commit entries because it cannot gather votes from a majority of nodes for AppendEntries RPCs. Raft requires a majority quorum ((n/2) + 1) to commit an entry. The leader in the minority partition will continue accepting client requests if connected, but will never receive confirmation from a majority, so the entries remain uncommitted until partition heals.”
+              </p>
+</div>
+<div class="p-3 rounded-lg bg-surface-container-low flex flex-col gap-1">
+<span class="font-label-sm text-label-sm font-bold text-tertiary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">warning</span>
+                Omission Detected
+              </span>
+<p class="font-body-sm text-body-sm text-secondary">
+                Did not address the Election Restriction rule that guarantees the newly elected leader contains all previously committed entries via quorum intersection.
+              </p>
+</div>
+</div>
+<!-- Academic Reference Solution -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md font-bold text-primary flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[17px]">menu_book</span>
+                Model Answer
+              </span>
+<span class="font-label-sm text-label-sm text-secondary">Course Canon Solution</span>
+</div>
+<div class="font-body-md text-body-md text-on-surface flex flex-col gap-2 leading-relaxed">
+<p>
+                Raft enforces Leader Completeness via the <strong>election restriction</strong>: a candidate must have a log at least as up-to-date as any majority voter (measured by higher term, then longer log index). During a partition:
+              </p>
+<ol class="flex flex-col gap-2 pl-4 list-decimal marker:text-secondary font-body-sm text-body-sm">
+<li>
+<strong>Minority Partition:</strong> Any leader in a minority can receive requests but cannot achieve majority consensus on AppendEntries, preventing log commits.
+                </li>
+<li>
+<strong>Majority Partition:</strong> Will elect a new leader with higher term number. Because any two majorities intersect by the pigeonhole principle, at least one node in the election quorum contains all previously committed entries.
+                </li>
+<li>
+<strong>Reconnection:</strong> When healed, the old minority leader discovers the higher term, steps down to follower, and overwrites conflicting uncommitted entries.
+                </li>
+</ol>
+</div>
+</div>
+</div>
+<!-- Rubric Breakdown Table Card -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm overflow-hidden">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Rubric Breakdown</h3>
+<span class="font-label-md text-label-md text-secondary">3 criteria evaluated</span>
+</div>
+<div class="w-full overflow-x-auto">
+<table class="w-full text-left font-body-md text-body-md">
+<thead>
+<tr class="bg-surface-container-low text-secondary font-label-md text-label-md">
+<th class="py-2.5 px-3 rounded-l-lg">Criterion</th>
+<th class="py-2.5 px-3">Weight</th>
+<th class="py-2.5 px-3">Points Earned</th>
+<th class="py-2.5 px-3 rounded-r-lg">Evaluation</th>
+</tr>
+</thead>
+<tbody class="divide-none">
+<!-- Criterion 1 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-3 px-3 align-top font-semibold text-on-surface">
+                    Majority Quorum Requirement for AppendEntries
+                  </td>
+<td class="py-3 px-3 align-top text-secondary font-medium">3 pts</td>
+<td class="py-3 px-3 align-top">
+<span class="inline-flex items-center gap-1 font-semibold text-primary">
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                      3 / 3 pts
+                    </span>
+</td>
+<td class="py-3 px-3 align-top text-body-sm text-body-sm text-secondary">
+                    Fully explained quorum threshold and uncommitted state in minority.
+                  </td>
+</tr>
+<!-- Criterion 2 -->
+<tr class="bg-surface-container-low/30 hover:bg-surface-container-low transition-colors">
+<td class="py-3 px-3 align-top font-semibold text-on-surface">
+                    Election Restriction &amp; Pigeonhole Overlap
+                  </td>
+<td class="py-3 px-3 align-top text-secondary font-medium">4 pts</td>
+<td class="py-3 px-3 align-top">
+<span class="inline-flex items-center gap-1 font-semibold text-tertiary">
+<span class="material-symbols-outlined text-[15px]">flag</span>
+                      1 / 4 pts
+                    </span>
+</td>
+<td class="py-3 px-3 align-top text-body-sm text-body-sm text-secondary">
+                    Identified voting rules but missed explaining why the election restriction guarantees that the new leader holds all committed entries through intersection.
+                  </td>
+</tr>
+<!-- Criterion 3 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-3 px-3 align-top font-semibold text-on-surface">
+                    Partition Healing &amp; Log Reconciliation
+                  </td>
+<td class="py-3 px-3 align-top text-secondary font-medium">3 pts</td>
+<td class="py-3 px-3 align-top">
+<span class="inline-flex items-center gap-1 font-semibold text-primary">
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                      3 / 3 pts
+                    </span>
+</td>
+<td class="py-3 px-3 align-top text-body-sm text-body-sm text-secondary">
+                    Accurately noted term step-down and rollback of uncommitted minority entries.
+                  </td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- AI Feedback & Study Remediation Card -->
+<div class="bg-primary-fixed rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm text-on-primary-fixed">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]" style="font-variation-settings: 'FILL' 1;">psychology</span>
+<h3 class="font-headline-sm text-headline-sm text-primary">Feedback &amp; Remediation</h3>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-lowest text-primary font-label-sm text-label-sm font-semibold">
+              Course Invariant Focus
+            </span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+            Strong grasp of runtime RPC behaviors. To score full marks on consensus invariants, explicitly articulate how the Election Restriction (Section 5.4.1 in Raft paper) pairs with the pigeonhole principle to preserve committed history across terms.
+          </p>
+<div class="flex flex-col sm:flex-row items-center justify-between gap-3 pt-2">
+<div class="flex items-center gap-2 text-secondary font-label-md text-label-md">
+<span class="material-symbols-outlined text-[18px] text-primary">bookmark</span>
+<span>Raft Paper § 5.4.1 · Leader Completeness Invariant</span>
+</div>
+<button class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-surface-container-lowest text-on-surface font-label-md text-label-md font-medium shadow-sm hover:bg-surface-container transition-colors" type="button">
+<span class="material-symbols-outlined text-primary text-[18px]">add_box</span>
+              Generate targeted flashcard for Election Restriction
+            </button>
+</div>
+</div>
+<!-- Bottom Navigator Controls -->
+<div class="flex items-center justify-between pt-space-xs pb-space-lg">
+<button class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-surface-container-lowest text-secondary shadow-sm hover:bg-surface-container hover:text-on-surface font-label-md text-label-md transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">arrow_back</span>
+            Previous: Vector Clocks (Q2)
+          </button>
+<button class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-surface-container-lowest text-secondary shadow-sm hover:bg-surface-container hover:text-on-surface font-label-md text-label-md transition-colors" type="button">
+            Next: 2PC vs 3PC Blocking (Q4)
+            <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</section>
+</div>
+</div>
+</div></main></div></body></html>

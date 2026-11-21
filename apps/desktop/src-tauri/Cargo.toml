@@ -1,0 +1,24 @@
+[package]
+name = "self-study-desktop"
+version = "0.1.0"
+description = "Self Study desktop shell"
+edition = "2021"
+license = "UNLICENSED"
+publish = false
+
+[lib]
+name = "app_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2.7.4", features = [] }
+
+[dependencies]
+serde_json = "1"
+serde = { version = "1", features = ["derive"] }
+tauri = { version = "2.12.5", features = [] }
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "net"] }
+dirs = "5"
+axum = { version = "0.8", features = [] }
+api = { path = "../../../crates/api" }
+storage = { path = "../../../crates/storage" }

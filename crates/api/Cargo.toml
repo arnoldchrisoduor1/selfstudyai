@@ -1,0 +1,56 @@
+[package]
+name = "api"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+description = "Axum HTTP API."
+
+[[bin]]
+name = "api"
+path = "src/main.rs"
+
+[dependencies]
+study_core = { workspace = true }
+storage = { workspace = true }
+ingest = { workspace = true }
+ai = { workspace = true }
+questions = { workspace = true }
+learning = { workspace = true }
+
+tokio = { workspace = true, features = ["fs"] }
+chrono = { workspace = true }
+axum = { workspace = true, features = ["multipart"] }
+tower-http = { workspace = true }
+http = { workspace = true }
+
+serde = { workspace = true }
+serde_json = { workspace = true }
+uuid = { workspace = true }
+
+dotenvy = { workspace = true }
+anyhow = { workspace = true }
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
+
+argon2 = "0.5"
+sha2 = "0.10"
+rand = "0.8"
+hex = "0.4"
+axum-extra = { version = "0.10", features = ["cookie"] }
+tower = { version = "0.5" }
+sea-orm = { workspace = true }
+
+[dev-dependencies]
+tokio = { workspace = true }
+tower = { version = "0.5", features = ["util"] }
+http-body-util = "0.1"
+storage = { workspace = true }
+tempfile = "3"
+ai = { workspace = true }
+ingest = { workspace = true }
+questions = { workspace = true }
+learning = { workspace = true }
+study_core = { workspace = true }
+chrono = { workspace = true }
+serde_json = { workspace = true }

@@ -1,0 +1,64 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/core",
+    "crates/storage",
+    "crates/ingest",
+    "crates/ai",
+    "crates/questions",
+    "crates/learning",
+    "crates/api",
+    "apps/desktop/src-tauri",
+]
+default-members = ["crates/api"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+license = "UNLICENSED"
+publish = false
+
+[workspace.dependencies]
+study_core = { package = "core", path = "crates/core" }
+storage = { path = "crates/storage" }
+ingest = { path = "crates/ingest" }
+ai = { path = "crates/ai" }
+questions = { path = "crates/questions" }
+learning = { path = "crates/learning" }
+
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "signal", "fs", "time", "sync"] }
+axum = { version = "0.8", features = ["macros"] }
+tower-http = { version = "0.6", features = ["cors"] }
+http = "1"
+
+sea-orm = { version = "1.1", features = [
+    "sqlx-sqlite",
+    "sqlx-postgres",
+    "runtime-tokio-rustls",
+    "macros",
+] }
+sea-orm-migration = { version = "1.1", features = [
+    "sqlx-sqlite",
+    "sqlx-postgres",
+    "runtime-tokio-rustls",
+] }
+async-trait = "0.1"
+chrono = { version = "0.4", default-features = false, features = ["clock", "std"] }
+
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+uuid = { version = "1", features = ["v4", "v7"] }
+
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "json", "fmt"] }
+
+dotenvy = "0.15"
+thiserror = "2"
+anyhow = "1"
+
+[profile.dev]
+debug = 1
+
+[profile.release]
+lto = true
+codegen-units = 1

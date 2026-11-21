@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "inverse-primary": "#494bd6",
+          "primary-fixed": "#e1e0ff",
+          "error-container": "#93000a",
+          "border-focus": "#6366f1",
+          "surface-container-low": "#171b26",
+          "on-primary-fixed-variant": "#2f2ebe",
+          "on-tertiary-container": "#3e2400",
+          "tertiary-fixed": "#ffddb8",
+          "surface-elevated": "#1a2234",
+          "on-primary-fixed": "#07006c",
+          "outline": "#908fa0",
+          "background": "#0f131d",
+          "primary-container": "#8083ff",
+          "surface-raised": "#111827",
+          "on-tertiary": "#472a00",
+          "inverse-surface": "#dfe2f1",
+          "surface-variant": "#313540",
+          "text-secondary": "#94a3b8",
+          "warning-bg": "rgba(245, 158, 11, 0.12)",
+          "surface-tint": "#c0c1ff",
+          "warning-border": "rgba(251, 191, 36, 0.25)",
+          "surface-container-high": "#262a35",
+          "accent-glow": "rgba(99, 102, 241, 0.25)",
+          "on-surface-variant": "#c7c4d7",
+          "success-text": "#34d399",
+          "primary": "#c0c1ff",
+          "surface-highlight": "#28344d",
+          "alert-bg": "rgba(239, 68, 68, 0.12)",
+          "border-subtle": "#1e293b",
+          "border-default": "#2d3748",
+          "surface-dim": "#0f131d",
+          "on-background": "#dfe2f1",
+          "secondary": "#bdc2ff",
+          "tertiary-container": "#ca8100",
+          "outline-variant": "#464554",
+          "text-dim": "#475569",
+          "alert-border": "rgba(248, 113, 113, 0.25)",
+          "tertiary-fixed-dim": "#ffb95f",
+          "success-border": "rgba(52, 211, 153, 0.25)",
+          "on-secondary-container": "#a8afff",
+          "surface-container-lowest": "#0a0e18",
+          "on-primary": "#1000a9",
+          "surface-container": "#1c1f2a",
+          "surface-base": "#0b0f19",
+          "alert-text": "#f87171",
+          "text-primary": "#f8fafc",
+          "on-surface": "#dfe2f1",
+          "secondary-fixed": "#e0e0ff",
+          "on-secondary-fixed-variant": "#2f3aa3",
+          "on-secondary": "#131e8c",
+          "on-primary-container": "#0d0096",
+          "surface": "#0f131d",
+          "secondary-container": "#2f3aa3",
+          "success-bg": "rgba(16, 185, 129, 0.12)",
+          "surface-overlay": "#1f293d",
+          "error": "#ffb4ab",
+          "primary-fixed-dim": "#c0c1ff",
+          "on-secondary-fixed": "#000767",
+          "inverse-on-surface": "#2c303b",
+          "on-tertiary-fixed": "#2a1700",
+          "on-error": "#690005",
+          "on-error-container": "#ffdad6",
+          "warning-text": "#fbbf24",
+          "surface-container-highest": "#313540",
+          "text-muted": "#64748b",
+          "secondary-fixed-dim": "#bdc2ff",
+          "surface-bright": "#353944",
+          "on-tertiary-fixed-variant": "#653e00",
+          "tertiary": "#ffb95f"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.25rem",
+          "lg": "0.5rem",
+          "xl": "0.75rem",
+          "full": "9999px"
+        },
+        "spacing": {
+          "space-xs": "0.25rem",
+          "space-lg": "1.5rem",
+          "gutter": "1rem",
+          "space-md": "1rem",
+          "space-xl": "2.5rem",
+          "space-sm": "0.5rem",
+          "gutter-desktop": "1.5rem",
+          "margin": "1rem",
+          "margin-desktop": "2rem"
+        },
+        "fontFamily": {
+          "mono-sm": [
+            "JetBrains Mono"
+          ],
+          "label-sm": [
+            "Inter"
+          ],
+          "mono-metric": [
+            "JetBrains Mono"
+          ],
+          "headline-sm": [
+            "Inter"
+          ],
+          "display-hero": [
+            "Inter"
+          ],
+          "body-md": [
+            "Inter"
+          ],
+          "headline-lg": [
+            "Inter"
+          ],
+          "body-sm": [
+            "Inter"
+          ],
+          "display-hero-mobile": [
+            "Inter"
+          ],
+          "body-lg": [
+            "Inter"
+          ],
+          "headline-md": [
+            "Inter"
+          ],
+          "label-md": [
+            "Inter"
+          ]
+        },
+        "fontSize": {
+          "mono-sm": [
+            "11px",
+            {
+              "lineHeight": "14px",
+              "letterSpacing": "0em",
+              "fontWeight": "400"
+            }
+          ],
+          "label-sm": [
+            "11px",
+            {
+              "lineHeight": "14px",
+              "letterSpacing": "0.04em",
+              "fontWeight": "600"
+            }
+          ],
+          "mono-metric": [
+            "13px",
+            {
+              "lineHeight": "16px",
+              "letterSpacing": "-0.02em",
+              "fontWeight": "500"
+            }
+          ],
+          "headline-sm": [
+            "18px",
+            {
+              "lineHeight": "26px",
+              "letterSpacing": "-0.01em",
+              "fontWeight": "600"
+            }
+          ],
+          "display-hero": [
+            "40px",
+            {
+              "lineHeight": "48px",
+              "letterSpacing": "-0.03em",
+              "fontWeight": "600"
+            }
+          ],
+          "body-md": [
+            "14px",
+            {
+              "lineHeight": "22px",
+              "letterSpacing": "0em",
+              "fontWeight": "400"
+            }
+          ],
+          "headline-lg": [
+            "28px",
+            {
+              "lineHeight": "36px",
+              "letterSpacing": "-0.02em",
+              "fontWeight": "600"
+            }
+          ],
+          "body-sm": [
+            "13px",
+            {
+              "lineHeight": "18px",
+              "letterSpacing": "0em",
+              "fontWeight": "400"
+            }
+          ],
+          "display-hero-mobile": [
+            "30px",
+            {
+              "lineHeight": "38px",
+              "letterSpacing": "-0.025em",
+              "fontWeight": "600"
+            }
+          ],
+          "body-lg": [
+            "16px",
+            {
+              "lineHeight": "24px",
+              "letterSpacing": "-0.005em",
+              "fontWeight": "400"
+            }
+          ],
+          "headline-md": [
+            "22px",
+            {
+              "lineHeight": "30px",
+              "letterSpacing": "-0.015em",
+              "fontWeight": "600"
+            }
+          ],
+          "label-md": [
+            "13px",
+            {
+              "lineHeight": "16px",
+              "letterSpacing": "0em",
+              "fontWeight": "500"
+            }
+          ]
+        }
+      },
+    },
+  }</script></head><body class="bg-surface-base font-body-md text-body-md text-on-surface antialiased selection:bg-secondary-container selection:text-on-secondary-container" style="background-color: #05060F;"><header class="fixed top-0 left-0 w-full z-50 bg-surface-container-lowest/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-20 w-full px-gutter-desktop max-w-[1360px] mx-auto flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-sm"><div class="w-9 h-9 rounded-lg bg-secondary-container flex items-center justify-center shadow-[0_0_16px_2px_rgba(99,102,241,0.28)]"><span class="material-symbols-outlined text-on-secondary-container text-[20px]">menu_book</span></div><span class="font-headline-sm text-headline-sm text-text-primary tracking-tight">Self-Study AI</span></div><nav class="hidden xl:flex items-center gap-space-xs" data-active-classes="bg-surface-elevated text-text-primary font-label-md text-label-md rounded-lg"><a aria-current="page" class="px-space-sm py-space-xs transition-colors bg-surface-elevated text-text-primary font-label-md text-label-md rounded-lg" data-path="concept" href="#">Concept</a><a class="px-space-sm py-space-xs rounded-lg font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" data-path="retention-curve" href="#">Retention Curve</a><a class="px-space-sm py-space-xs rounded-lg font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" data-path="notes-to-quizzes" href="#">Notes to Quizzes</a><a class="px-space-sm py-space-xs rounded-lg font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" data-path="exams" href="#">Exams</a><a class="px-space-sm py-space-xs rounded-lg font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" data-path="privacy" href="#">Privacy</a><a class="px-space-sm py-space-xs rounded-lg font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" data-path="pricing" href="#">Pricing</a><a class="px-space-sm py-space-xs rounded-lg font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" data-path="faq" href="#">FAQ</a></nav><div class="flex items-center gap-space-sm"><a class="hidden sm:inline-flex items-center justify-center px-space-md py-space-xs rounded-lg bg-border-focus text-text-primary font-label-md text-label-md hover:bg-on-primary-fixed-variant transition-all shadow-[0_0_14px_rgba(99,102,241,0.45)]" data-path="get-started" href="#">Get started free</a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-20 bg-surface-base min-h-[calc(100vh-80px)]"><div class="flex flex-col w-full text-text-primary overflow-x-hidden selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- ==========================================
+       SECTION 1: HERO
+       ========================================== -->
+<section class="relative min-h-[942px] flex flex-col justify-center items-center text-center px-4 sm:px-6 lg:px-8 py-20 lg:py-28 overflow-hidden">
+<!-- Atmospheric Ambient Glows -->
+<div class="pointer-events-none absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[720px] h-[720px] rounded-full bg-border-focus/20 blur-[130px] -z-10"></div>
+<div class="pointer-events-none absolute top-1/3 left-1/4 w-[380px] h-[380px] rounded-full bg-secondary-container/30 blur-[110px] -z-10"></div>
+<div class="pointer-events-none absolute bottom-12 right-1/4 w-[320px] h-[320px] rounded-full bg-tertiary/15 blur-[95px] -z-10"></div>
+<!-- Living Constellation SVG Canvas -->
+<div class="pointer-events-none absolute inset-0 -z-10 overflow-hidden opacity-90">
+<svg class="w-full h-full" fill="none" preserveaspectratio="xMidYMid slice" viewbox="0 0 1440 900" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<lineargradient id="beam-cyan" x1="0%" x2="100%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#22D3EE" stop-opacity="0.6"></stop>
+<stop offset="100%" stop-color="#6366F1" stop-opacity="0.1"></stop>
+</lineargradient>
+<lineargradient id="beam-amber" x1="0%" x2="100%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#FBBF24" stop-opacity="0.8"></stop>
+<stop offset="100%" stop-color="#CA8100" stop-opacity="0.15"></stop>
+</lineargradient>
+<radialgradient cx="50%" cy="50%" id="amber-glow" r="50%">
+<stop offset="0%" stop-color="#FBBF24" stop-opacity="0.9"></stop>
+<stop offset="40%" stop-color="#FBBF24" stop-opacity="0.3"></stop>
+<stop offset="100%" stop-color="#FBBF24" stop-opacity="0"></stop>
+</radialgradient>
+</defs>
+<!-- Constellation Lines (Interconnected knowledge edges) -->
+<path d="M 220 280 L 380 220 L 520 340 L 720 240 L 940 320 L 1120 200 L 1260 360" stroke="#6366F1" stroke-dasharray="3 4" stroke-opacity="0.32" stroke-width="1.25"></path>
+<path d="M 380 220 L 460 480 L 720 540 L 940 320" stroke="#818CF8" stroke-opacity="0.25" stroke-width="1.2"></path>
+<path d="M 520 340 L 720 240 L 720 540 L 520 340" stroke="#22D3EE" stroke-opacity="0.4" stroke-width="1"></path>
+<path d="M 720 240 L 920 160 L 1120 200" stroke="#FBBF24" stroke-opacity="0.5" stroke-width="1.5"></path>
+<path d="M 940 320 L 1020 560 L 1260 360" stroke="#6366F1" stroke-opacity="0.3" stroke-width="1"></path>
+<path d="M 180 520 L 460 480 L 320 680" stroke="#6366F1" stroke-opacity="0.2" stroke-width="0.9"></path>
+<path d="M 720 540 L 860 700 L 1020 560" stroke="#22D3EE" stroke-opacity="0.35" stroke-width="1"></path>
+<!-- Dim Nodes (Fading knowledge) -->
+<circle cx="220" cy="280" fill="#6366F1" fill-opacity="0.35" r="3"></circle>
+<circle cx="180" cy="520" fill="#464554" fill-opacity="0.6" r="2.5"></circle>
+<circle cx="320" cy="680" fill="#464554" fill-opacity="0.5" r="3"></circle>
+<circle cx="460" cy="480" fill="#818CF8" fill-opacity="0.4" r="4"></circle>
+<circle cx="1020" cy="560" fill="#6366F1" fill-opacity="0.35" r="3.5"></circle>
+<circle cx="860" cy="700" fill="#464554" fill-opacity="0.5" r="2.5"></circle>
+<!-- Active Radiant Cyan Nodes -->
+<circle cx="380" cy="220" fill="#22D3EE" r="4.5"></circle>
+<circle cx="520" cy="340" fill="#22D3EE" r="4"></circle>
+<circle cx="940" cy="320" fill="#22D3EE" r="5"></circle>
+<circle cx="1260" cy="360" fill="#22D3EE" r="4.5"></circle>
+<!-- Pulse Ring around Cyan Master Node -->
+<circle class="animate-ping" cx="940" cy="320" r="16" stroke="#22D3EE" stroke-opacity="0.4" stroke-width="1" style="animation-duration: 3.5s;"></circle>
+<!-- Warm Amber "Relit" Stars (Key retention nodes) -->
+<circle cx="720" cy="240" fill="url(#amber-glow)" r="28"></circle>
+<circle cx="720" cy="240" fill="#FBBF24" r="7"></circle>
+<circle class="animate-ping" cx="720" cy="240" r="20" stroke="#FBBF24" stroke-opacity="0.5" stroke-width="1" style="animation-duration: 2.8s;"></circle>
+<circle cx="920" cy="160" fill="url(#amber-glow)" r="22"></circle>
+<circle cx="920" cy="160" fill="#FBBF24" r="6"></circle>
+<circle cx="1120" cy="200" fill="url(#amber-glow)" r="20"></circle>
+<circle cx="1120" cy="200" fill="#FBBF24" r="5.5"></circle>
+<circle cx="720" cy="540" fill="#818CF8" r="5"></circle>
+</svg>
+</div>
+<!-- Floating Glass Fragment: Left Mini Flashcard -->
+<div class="hidden lg:flex absolute left-8 top-1/3 -translate-y-6 w-72 p-space-md rounded-xl bg-surface-container-low/70 backdrop-blur-xl shadow-xl flex-col gap-2 text-left pointer-events-none transform -rotate-3 transition-transform hover:rotate-0 duration-500">
+<div class="flex items-center justify-between">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-warning-bg text-warning-text font-mono-sm text-mono-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary animate-pulse"></span>
+          Relit · 98% retention
+        </span>
+<span class="font-mono-sm text-mono-sm text-text-dim">#raft-consensus</span>
+</div>
+<p class="font-body-sm text-body-sm text-text-primary mt-1 leading-snug">Q: Why does Raft require a strict majority quorum for committing log entries?</p>
+<div class="flex items-center gap-2 mt-2 pt-2 text-text-secondary font-mono-sm text-mono-sm">
+<span class="material-symbols-outlined text-[14px] text-border-focus">auto_awesome</span>
+<span>Relit 12m ago via Spaced Recall</span>
+</div>
+</div>
+<!-- Floating Glass Fragment: Top-Right Streak Chip -->
+<div class="hidden md:flex absolute right-12 top-24 px-4 py-2.5 rounded-xl bg-surface-container-low/75 backdrop-blur-xl shadow-lg items-center gap-3 pointer-events-none transform rotate-2">
+<div class="w-8 h-8 rounded-lg bg-warning-bg flex items-center justify-center">
+<span class="material-symbols-outlined text-warning-text text-[20px]" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+</div>
+<div class="text-left">
+<div class="font-label-sm text-label-sm text-warning-text uppercase tracking-wider">Memory Active</div>
+<div class="font-headline-sm text-headline-sm text-text-primary leading-tight font-semibold">12-Day Streak</div>
+</div>
+</div>
+<!-- Floating Glass Fragment: Right Review Due Chip -->
+<div class="hidden lg:flex absolute right-10 bottom-1/4 px-4 py-3 rounded-xl bg-surface-container-low/70 backdrop-blur-xl shadow-xl items-center gap-3.5 pointer-events-none transform rotate-1">
+<div class="relative w-9 h-9 rounded-lg bg-surface-elevated flex items-center justify-center">
+<span class="material-symbols-outlined text-[#22D3EE] text-[20px]">notifications_active</span>
+<span class="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-[#22D3EE] animate-ping"></span>
+<span class="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-[#22D3EE]"></span>
+</div>
+<div class="text-left">
+<div class="font-mono-metric text-mono-metric text-text-primary font-bold">28 due today</div>
+<div class="font-mono-sm text-mono-sm text-text-secondary">Optimal recall window: 3h left</div>
+</div>
+</div>
+<!-- Main Hero Text Content -->
+<div class="max-w-4xl mx-auto flex flex-col items-center relative z-10">
+<!-- Eyebrow Pill -->
+<div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-surface-container-high/80 backdrop-blur-md mb-8 shadow-sm">
+<span class="w-2 h-2 rounded-full bg-border-focus animate-pulse"></span>
+<span class="font-label-sm text-label-sm text-primary tracking-wider uppercase font-semibold">Cognitive Retentive Architecture</span>
+<span class="text-outline-variant font-mono-sm">•</span>
+<span class="font-label-sm text-label-sm text-text-secondary">Memory as a Constellation</span>
+</div>
+<!-- Main Monumental Headline -->
+<h1 class="text-5xl sm:text-7xl lg:text-8xl font-display-hero font-extrabold tracking-tight leading-[1.05] text-center bg-gradient-to-b from-white via-slate-100 to-indigo-300 bg-clip-text text-transparent max-w-4xl">
+        Remember everything you study.
+      </h1>
+<!-- Subheadline -->
+<p class="max-w-2xl mx-auto font-body-lg text-body-lg sm:text-xl text-text-secondary leading-relaxed mt-6 font-normal">Turn your notes, books and slides into questions, then review each one right before you'd forget it.</p>
+<!-- CTA Action Group -->
+<div class="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10 w-full sm:w-auto">
+<a class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl bg-border-focus text-text-primary font-label-md text-base font-semibold shadow-[0_0_32px_rgba(99,102,241,0.55)] hover:shadow-[0_0_48px_rgba(99,102,241,0.8)] hover:bg-on-primary-fixed-variant transition-all transform hover:-translate-y-0.5" href="#">
+<span>Get started free</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+<a class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-surface-container/60 hover:bg-surface-elevated text-text-secondary hover:text-text-primary backdrop-blur-md transition-all font-label-md text-base font-medium" href="#retention-curve"><span class="material-symbols-outlined text-[20px] text-border-focus">play_circle</span><span>Watch it work</span></a>
+</div>
+<!-- Reassurance metadata line -->
+<div class="flex flex-wrap items-center justify-center gap-y-2 gap-x-6 mt-8 text-text-dim font-mono-sm text-mono-sm">
+<span class="inline-flex items-center gap-1.5"><span class="material-symbols-outlined text-success-text text-[15px]">check_circle</span> 100% offline ready</span>
+<span class="inline-flex items-center gap-1.5"><span class="material-symbols-outlined text-success-text text-[15px]">check_circle</span> Zero vendor lock-in</span>
+<span class="inline-flex items-center gap-1.5"><span class="material-symbols-outlined text-success-text text-[15px]">check_circle</span> Bring your own models</span>
+</div>
+</div>
+</section>
+<!-- ==========================================
+       SECTION 2: THE FORGETTING CURVE
+       ========================================== -->
+<section class="relative py-24 sm:py-32 px-4 sm:px-6 lg:px-8 max-w-[1360px] mx-auto w-full" id="retention-curve">
+<!-- Header -->
+<div class="max-w-3xl mb-16">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary-container/40 text-secondary font-label-sm text-label-sm uppercase tracking-wider mb-4">
+<span>The Mathematics of Neural Decay</span>
+</div>
+<h2 class="font-headline-lg text-3xl sm:text-5xl text-text-primary font-bold tracking-tight leading-tight">
+        Memory fades. Unless you review at the right moment.
+      </h2>
+<p class="font-body-lg text-body-lg text-text-secondary mt-4 leading-relaxed">
+        Left alone, new neural pathways dissolve along an exponential decay curve. Timed active recall triggers rebuild structural stability, each time flattening the forgetting curve until retention becomes permanent.
+      </p>
+</div>
+<!-- Chart Visualization Card -->
+<div class="w-full rounded-2xl bg-surface-raised/80 backdrop-blur-2xl p-6 sm:p-10 shadow-2xl relative overflow-hidden">
+<!-- Glow Underlay -->
+<div class="pointer-events-none absolute top-0 right-1/4 w-[420px] h-[300px] bg-border-focus/15 blur-[120px] -z-10"></div>
+<!-- Metric Legend Header -->
+<div class="flex flex-wrap items-center justify-between gap-4 pb-8 mb-6">
+<div class="flex flex-wrap items-center gap-6">
+<div class="flex items-center gap-2.5">
+<span class="w-3 h-3 rounded-full bg-tertiary shadow-[0_0_8px_#FBBF24]"></span>
+<span class="font-label-md text-label-md text-text-primary">Compounded Retention (With Self-Study AI)</span>
+</div>
+<div class="flex items-center gap-2.5">
+<span class="w-3 h-0.5 bg-outline-variant"></span>
+<span class="font-label-md text-label-md text-text-dim">Typical Ebbinghaus Decay (Unassisted)</span>
+</div>
+</div>
+<div class="flex items-center gap-2 font-mono-sm text-mono-sm px-3 py-1.5 rounded-lg bg-surface-elevated text-success-text">
+<span class="material-symbols-outlined text-[16px]">trending_up</span>
+<span>+480% 30-day recall lift</span>
+</div>
+</div>
+<!-- Vector Retention Chart -->
+<div class="w-full h-72 sm:h-96 relative">
+<svg class="w-full h-full overflow-visible" fill="none" preserveaspectratio="none" viewbox="0 0 1000 360">
+<defs>
+<!-- Vertical review light beams -->
+<lineargradient id="beam1" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#22D3EE" stop-opacity="0.45"></stop>
+<stop offset="100%" stop-color="#22D3EE" stop-opacity="0"></stop>
+</lineargradient>
+<lineargradient id="beam2" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#FBBF24" stop-opacity="0.55"></stop>
+<stop offset="100%" stop-color="#FBBF24" stop-opacity="0"></stop>
+</lineargradient>
+<lineargradient id="compounded-fill" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#6366F1" stop-opacity="0.35"></stop>
+<stop offset="60%" stop-color="#22D3EE" stop-opacity="0.08"></stop>
+<stop offset="100%" stop-color="#0B0F19" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<!-- Horizontal Grid Lines -->
+<line stroke="#1E293B" stroke-dasharray="4 4" stroke-width="1" x1="60" x2="980" y1="40" y2="40"></line>
+<text fill="#64748B" font-family="JetBrains Mono" font-size="11" x="20" y="44">100%</text>
+<line stroke="#1E293B" stroke-dasharray="4 4" stroke-width="1" x1="60" x2="980" y1="120" y2="120"></line>
+<text fill="#64748B" font-family="JetBrains Mono" font-size="11" x="24" y="124">75%</text>
+<line stroke="#1E293B" stroke-dasharray="4 4" stroke-width="1" x1="60" x2="980" y1="200" y2="200"></line>
+<text fill="#64748B" font-family="JetBrains Mono" font-size="11" x="24" y="204">50%</text>
+<line stroke="#1E293B" stroke-dasharray="4 4" stroke-width="1" x1="60" x2="980" y1="280" y2="280"></line>
+<text fill="#64748B" font-family="JetBrains Mono" font-size="11" x="24" y="284">25%</text>
+<line stroke="#2D3748" stroke-width="1.5" x1="60" x2="980" y1="340" y2="340"></line>
+<!-- Unassisted Decay Curve (Dim Gray/Indigo decaying to ~15%) -->
+<path d="M 60 40 Q 140 250 320 310 T 980 332" fill="none" stroke="#464554" stroke-dasharray="6 6" stroke-width="2"></path>
+<text fill="#64748B" font-family="JetBrains Mono" font-size="11" x="260" y="335">Unreviewed: Memory dims out completely (15%)</text>
+<!-- Review 1 Light Column (+24 Hours, x=220) -->
+<rect fill="url(#beam1)" height="300" width="8" x="216" y="40"></rect>
+<line stroke="#22D3EE" stroke-opacity="0.7" stroke-width="1.25" x1="220" x2="220" y1="40" y2="340"></line>
+<!-- Review 2 Light Column (+4 Days, x=480) -->
+<rect fill="url(#beam1)" height="300" width="8" x="476" y="40"></rect>
+<line stroke="#22D3EE" stroke-opacity="0.7" stroke-width="1.25" x1="480" x2="480" y1="40" y2="340"></line>
+<!-- Review 3 Light Column (+16 Days, x=780) -->
+<rect fill="url(#beam2)" height="300" width="12" x="774" y="40"></rect>
+<line stroke="#FBBF24" stroke-opacity="0.85" stroke-width="1.5" x1="780" x2="780" y1="40" y2="340"></line>
+<!-- Compounding Fill Under Relit Curve -->
+<path d="M 60 40 
+                   Q 130 140 220 180 
+                   L 220 40 
+                   Q 330 120 480 140 
+                   L 480 40 
+                   Q 620 90 780 100 
+                   L 780 40 
+                   Q 880 50 980 54 
+                   L 980 340 L 60 340 Z" fill="url(#compounded-fill)"></path>
+<!-- The Relit Compounded Curve -->
+<path d="M 60 40 
+                   Q 130 140 220 180 
+                   M 220 40 
+                   Q 330 120 480 140 
+                   M 480 40 
+                   Q 620 90 780 100 
+                   M 780 40 
+                   Q 880 50 980 54" fill="none" stroke="#FBBF24" stroke-width="2.5"></path>
+<!-- Immediate Relight Vertical Steps -->
+<line stroke="#22D3EE" stroke-linecap="round" stroke-width="2" x1="220" x2="220" y1="180" y2="40"></line>
+<line stroke="#22D3EE" stroke-linecap="round" stroke-width="2" x1="480" x2="480" y1="140" y2="40"></line>
+<line stroke="#FBBF24" stroke-linecap="round" stroke-width="2.5" x1="780" x2="780" y1="100" y2="40"></line>
+<!-- Relit Nodes / Stars on the Points -->
+<!-- Point 1 -->
+<circle cx="220" cy="180" fill="#1E293B" r="5" stroke="#22D3EE" stroke-width="2"></circle>
+<circle cx="220" cy="40" fill="#22D3EE" r="6"></circle>
+<!-- Point 2 -->
+<circle cx="480" cy="140" fill="#1E293B" r="5" stroke="#22D3EE" stroke-width="2"></circle>
+<circle cx="480" cy="40" fill="#22D3EE" r="6"></circle>
+<!-- Point 3 (Master Relit Star) -->
+<circle cx="780" cy="100" fill="#1E293B" r="5" stroke="#FBBF24" stroke-width="2"></circle>
+<circle cx="780" cy="40" fill="#FBBF24" r="8"></circle>
+<circle cx="780" cy="40" r="16" stroke="#FBBF24" stroke-opacity="0.6" stroke-width="1.2"></circle>
+<!-- Trajectory Terminal Star -->
+<circle cx="980" cy="54" fill="#FBBF24" r="7"></circle>
+</svg>
+</div>
+<!-- Chart Annotations Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8 pt-6">
+<div class="p-4 rounded-xl bg-surface-container-low/70 flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-[#22D3EE]"></span>
+<span class="font-mono-metric text-mono-metric text-text-primary font-bold">Review 1 (+24h)</span>
+</div>
+<span class="font-body-sm text-body-sm text-text-secondary">Arrests steepest immediate loss; re-anchors core definitions.</span>
+</div>
+<div class="p-4 rounded-xl bg-surface-container-low/70 flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-[#22D3EE]"></span>
+<span class="font-mono-metric text-mono-metric text-text-primary font-bold">Review 2 (+4d)</span>
+</div>
+<span class="font-body-sm text-body-sm text-text-secondary">Halves decay velocity; strengthens invariant reasoning.</span>
+</div>
+<div class="p-4 rounded-xl bg-surface-container-low/70 flex flex-col gap-1 bg-surface-elevated/60">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-tertiary shadow-[0_0_6px_#FBBF24]"></span>
+<span class="font-mono-metric text-mono-metric text-warning-text font-bold">Review 3 (+16d)</span>
+</div>
+<span class="font-body-sm text-body-sm text-text-secondary">Permanent consolidation; concept stays relit indefinitely.</span>
+</div>
+</div>
+</div>
+</section>
+<!-- ==========================================
+       SECTION 3: FROM NOTES TO QUESTIONS
+       ========================================== -->
+<section class="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 max-w-[1360px] mx-auto w-full relative" id="notes-to-quizzes">
+<div class="text-center max-w-2xl mx-auto mb-20">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container-high text-primary font-label-sm text-label-sm uppercase tracking-wider mb-4">
+<span>Grounded Synthesis Pipeline</span>
+</div>
+<h2 class="font-headline-lg text-3xl sm:text-5xl text-text-primary font-bold tracking-tight">
+        From notes to living questions.
+      </h2>
+<p class="font-body-lg text-body-lg text-text-secondary mt-3">Every question points back to your own notes.</p>
+</div>
+<!-- Cinematic 3-Stage Pipeline Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+<!-- Stage 1: Left Lecture Document Sheet -->
+<div class="lg:col-span-5 rounded-2xl bg-surface-raised p-6 relative shadow-xl">
+<!-- Document Meta Header -->
+<div class="flex items-center justify-between pb-4 mb-4">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-border-focus text-[22px]">picture_as_pdf</span>
+<div>
+<div class="font-label-md text-label-md text-text-primary font-medium">MIT_6.824_Lecture05.pdf</div>
+<div class="font-mono-sm text-mono-sm text-text-dim">Page 42 · Distributed Systems</div>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded bg-surface-elevated font-mono-sm text-mono-sm text-text-secondary">Parsed 14 nodes</span>
+</div>
+<!-- Document Text Preview with Radiant Highlight -->
+<div class="space-y-3 font-body-sm text-body-sm leading-relaxed text-text-secondary">
+<p class="text-text-muted">
+            The fundamental requirement for state machine replication is agreement on the sequence of actions. In Raft, the leader is solely responsible for accepting client logs...
+          </p>
+<div class="p-3.5 rounded-lg bg-secondary-container/20 relative">
+<span class="font-mono-sm text-mono-sm text-primary block mb-1">§ 3.2 Leader Completeness Invariant:</span>
+<p class="text-text-primary font-medium">
+              "If a log entry is committed in a given term, then that entry will be present in the logs of the leaders for all higher-numbered terms."
+            </p>
+<div class="absolute -right-2 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-border-focus flex items-center justify-center shadow-[0_0_12px_#6366F1]">
+<span class="w-1.5 h-1.5 rounded-full bg-white"></span>
+</div>
+</div>
+<p class="text-text-muted">
+            This invariant guarantees that followers cannot overwrite committed history during unexpected network partition recoveries.
+          </p>
+</div>
+<!-- Citation Anchor Footnote -->
+<div class="mt-5 pt-3 flex items-center justify-between text-text-dim font-mono-sm text-mono-sm">
+<span>Vector embedding #0x7F2A</span>
+<span class="text-success-text flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">verified</span> Grounding verified
+          </span>
+</div>
+</div>
+<!-- Stage 2: Center Constellation Bridge (Transform Flow) -->
+<div class="lg:col-span-2 flex flex-col items-center justify-center py-4 lg:py-0">
+<div class="relative w-full flex items-center justify-center">
+<!-- Animated Line or Icon Bridge -->
+<div class="hidden lg:flex flex-col items-center gap-3">
+<span class="w-1.5 h-1.5 rounded-full bg-[#22D3EE] animate-ping"></span>
+<div class="w-0.5 h-20 bg-gradient-to-b from-border-focus via-[#22D3EE] to-tertiary"></div>
+<div class="w-10 h-10 rounded-xl bg-surface-elevated flex items-center justify-center shadow-lg">
+<span class="material-symbols-outlined text-primary text-[20px]">auto_fix_high</span>
+</div>
+<div class="w-0.5 h-20 bg-gradient-to-b from-tertiary via-border-focus to-[#22D3EE]"></div>
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+</div>
+<!-- Mobile Alternative Flow Marker -->
+<div class="flex lg:hidden items-center gap-2 text-primary font-mono-sm text-mono-sm my-2">
+<span class="material-symbols-outlined text-[20px] animate-pulse">keyboard_double_arrow_down</span>
+<span>Synthesizing Question Node</span>
+</div>
+</div>
+</div>
+<!-- Stage 3: Right Synthesized Knowledge Card -->
+<div class="lg:col-span-5 flex flex-col gap-4">
+<!-- Synthesized Active Recall Card -->
+<div class="rounded-2xl bg-surface-raised p-6 shadow-2xl relative transition-transform hover:-translate-y-1 duration-300">
+<div class="flex items-center justify-between pb-3 mb-3">
+<span class="px-2.5 py-1 rounded-md bg-warning-bg text-warning-text font-mono-sm text-mono-sm font-semibold flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+              Conceptual Inquiry · High Yield
+            </span>
+<span class="font-mono-sm text-mono-sm text-text-dim">Interval: +4 days</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-text-primary font-semibold mb-3">
+            What ensures a newly elected Raft leader never overwrites previously committed log entries?
+          </h3>
+<!-- Revealable Answer Drawer Preview -->
+<div class="p-3.5 rounded-xl bg-surface-container-low text-text-secondary font-body-sm text-body-sm leading-relaxed mb-4">
+<span class="font-label-sm text-label-sm text-text-primary block font-semibold mb-1">Key Relit Criteria:</span>
+            Voting mechanism denies candidate election unless candidate's log contains at least all entries committed in prior terms (Raft Leader Completeness).
+          </div>
+<!-- Citation Breadcrumb Link -->
+<div class="flex items-center justify-between pt-2">
+<div class="inline-flex items-center gap-1.5 font-mono-sm text-mono-sm text-border-focus bg-border-focus/10 px-2.5 py-1 rounded">
+<span class="material-symbols-outlined text-[14px]">link</span>
+<span>Source: MIT 6.824 Lecture 5, §3.2</span>
+</div>
+<span class="font-mono-sm text-mono-sm text-success-text">Precision: 100%</span>
+</div>
+</div>
+<!-- Subordinate Secondary Star Card -->
+<div class="rounded-xl bg-surface-container-low/70 p-4 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-elevated flex items-center justify-center">
+<span class="material-symbols-outlined text-text-secondary text-[18px]">quiz</span>
+</div>
+<div>
+<div class="font-label-md text-label-md text-text-primary">3 corollary questions generated</div>
+<div class="font-mono-sm text-mono-sm text-text-dim">Targeting log divergence and split-brain scenarios</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-text-dim text-[18px]">chevron_right</span>
+</div>
+</div>
+</div>
+</section>
+<!-- ==========================================
+       SECTION 4: PRODUCT SHOWCASE (DASHBOARD COSMOS)
+       ========================================== -->
+<section class="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 max-w-[1360px] mx-auto w-full relative">
+<div class="text-center max-w-3xl mx-auto mb-16">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary-container text-secondary font-label-sm text-label-sm uppercase tracking-wider mb-4">
+<span>Panoramic Observatory</span>
+</div>
+<h2 class="font-headline-lg text-3xl sm:text-5xl text-text-primary font-bold tracking-tight">
+        Your personal knowledge cosmos.
+      </h2>
+<p class="font-body-lg text-body-lg text-text-secondary mt-3">
+        A single unified view of everything you know and what is fading next.
+      </p>
+</div>
+<!-- Tilted 3D Mockup Container with Glow Aura -->
+<div class="relative w-full max-w-5xl mx-auto">
+<div class="pointer-events-none absolute -inset-4 bg-gradient-to-r from-border-focus/25 via-secondary-container/20 to-tertiary/20 rounded-3xl blur-2xl -z-10"></div>
+<!-- Sleek Browser Frame Mockup -->
+<div class="rounded-2xl bg-surface-raised shadow-2xl overflow-hidden" style="transform: perspective(1200px) rotateX(4deg) translateY(-8px); border: 1px solid rgba(99, 102, 241, 0.2);">
+<!-- Mockup Top Window Bar -->
+<div class="h-10 px-4 bg-surface-container-lowest flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-[#EF4444]/60"></span>
+<span class="w-3 h-3 rounded-full bg-[#F59E0B]/60"></span>
+<span class="w-3 h-3 rounded-full bg-[#10B981]/60"></span>
+</div>
+<div class="px-4 py-1 rounded-md bg-surface-elevated font-mono-sm text-mono-sm text-text-dim flex items-center gap-2">
+<span class="material-symbols-outlined text-[13px] text-text-dim">lock</span>
+<span>app.selfstudy.ai/cosmos/distributed-systems</span>
+</div>
+<div class="flex items-center gap-2 text-text-dim font-mono-sm text-mono-sm">
+<span class="material-symbols-outlined text-[16px]">wifi_off</span>
+<span class="hidden sm:inline">Offline Mode</span>
+</div>
+</div>
+<!-- Dashboard Canvas Mockup Body -->
+<div class="p-6 sm:p-8 bg-surface-base grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Left Mini Orbit / Topic Rail -->
+<div class="md:col-span-4 flex flex-col gap-4">
+<!-- Overall Retention Widget -->
+<div class="p-5 rounded-xl bg-surface-container-low flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-text-secondary uppercase">Retention Health</span>
+<span class="font-mono-metric text-mono-metric text-warning-text font-bold">91.4%</span>
+</div>
+<!-- Progress Rail -->
+<div class="w-full h-2 rounded-full bg-surface-overlay overflow-hidden">
+<div class="h-full bg-gradient-to-r from-border-focus to-tertiary rounded-full" style="width: 91.4%;"></div>
+</div>
+<div class="flex justify-between font-mono-sm text-mono-sm text-text-dim">
+<span>384 Constellation Nodes</span>
+<span>32 Fading</span>
+</div>
+</div>
+<!-- Active Deck List -->
+<div class="space-y-2">
+<div class="p-3.5 rounded-lg bg-surface-elevated flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary shadow-[0_0_6px_#FBBF24]"></span>
+<span class="font-label-md text-label-md text-text-primary">Distributed Systems</span>
+</div>
+<span class="font-mono-sm text-mono-sm text-warning-text">14 due</span>
+</div>
+<div class="p-3.5 rounded-lg bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="w-2.5 h-2.5 rounded-full bg-[#22D3EE]"></span>
+<span class="font-label-md text-label-md text-text-secondary">Quantum Computing</span>
+</div>
+<span class="font-mono-sm text-mono-sm text-text-dim">8 due</span>
+</div>
+<div class="p-3.5 rounded-lg bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="w-2.5 h-2.5 rounded-full bg-text-dim"></span>
+<span class="font-label-md text-label-md text-text-secondary">Compiler Design</span>
+</div>
+<span class="font-mono-sm text-mono-sm text-text-dim">6 due</span>
+</div>
+</div>
+</div>
+<!-- Right Interactive Constellation Graph View -->
+<div class="md:col-span-8 rounded-xl bg-surface-container-lowest p-6 flex flex-col justify-between relative min-h-[340px] overflow-hidden">
+<!-- Cosmos Canvas Overlay Graphic -->
+<svg class="absolute inset-0 w-full h-full pointer-events-none" fill="none" viewbox="0 0 600 340">
+<!-- Network Lines -->
+<path d="M 80 120 L 190 70 L 320 150 L 460 90 L 530 210" stroke="#6366F1" stroke-opacity="0.4" stroke-width="1.2"></path>
+<path d="M 190 70 L 260 260 L 410 240 L 460 90" stroke="#22D3EE" stroke-opacity="0.35" stroke-width="1.2"></path>
+<path d="M 80 120 L 260 260" stroke="#64748B" stroke-dasharray="3 3" stroke-opacity="0.3" stroke-width="1"></path>
+<path d="M 320 150 L 410 240" stroke="#FBBF24" stroke-opacity="0.6" stroke-width="1.5"></path>
+<!-- Stars -->
+<circle cx="80" cy="120" fill="#64748B" r="4"></circle>
+<circle cx="190" cy="70" fill="#22D3EE" r="5"></circle>
+<circle cx="260" cy="260" fill="#6366F1" r="4.5"></circle>
+<!-- Relit Focal Node with Radar Ring -->
+<circle cx="320" cy="150" fill="#FBBF24" fill-opacity="0.1" r="24"></circle>
+<circle cx="320" cy="150" fill="#FBBF24" r="7"></circle>
+<circle cx="320" cy="150" r="16" stroke="#FBBF24" stroke-opacity="0.5" stroke-width="1"></circle>
+<circle cx="460" cy="90" fill="#22D3EE" r="6"></circle>
+<circle cx="410" cy="240" fill="#818CF8" r="5"></circle>
+<circle cx="530" cy="210" fill="#64748B" r="4"></circle>
+</svg>
+<!-- Live Inspection Drawer in Dashboard -->
+<div class="relative z-10 flex items-center justify-between">
+<div class="px-3 py-1 rounded bg-surface-elevated/90 backdrop-blur-md font-mono-sm text-mono-sm text-text-secondary flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-success-text"></span>
+<span>Active Map: Invariants &amp; Quorums</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded bg-surface-container font-mono-sm text-mono-sm text-text-dim">Zoom 100%</span>
+</div>
+</div>
+<!-- Focused Topic Inspector Bottom Pill -->
+<div class="relative z-10 p-3.5 rounded-xl bg-surface-raised/90 backdrop-blur-lg flex items-center justify-between">
+<div>
+<div class="font-label-md text-label-md text-text-primary font-semibold">Active Node: Raft Leader Election</div>
+<div class="font-mono-sm text-mono-sm text-text-secondary">Last recall: 3 days ago · Next decay projected in 22h</div>
+</div>
+<button class="px-3 py-1.5 rounded-lg bg-border-focus text-text-primary font-label-sm text-label-sm font-semibold hover:bg-on-primary-fixed-variant transition-colors shadow-md">
+                Relight Now
+              </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- 3 Flanking Product Callouts -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto mt-12">
+<div class="p-6 rounded-2xl bg-surface-raised flex flex-col gap-2" style="transform: perspective(1200px) rotateX(4deg) translateY(-8px); border: 1px solid rgba(99, 102, 241, 0.2);">
+<div class="w-10 h-10 rounded-xl bg-secondary-container/30 flex items-center justify-center text-primary mb-2">
+<span class="material-symbols-outlined text-[22px]">insights</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-text-primary font-semibold">Knowledge Score</h3>
+<p class="font-body-md text-body-md text-text-secondary leading-relaxed">
+          Real-time topic mastery mapped continuously across all courses, identifying durable recall vs surface familiarity.
+        </p>
+</div>
+<div class="p-6 rounded-2xl bg-surface-raised flex flex-col gap-2" style="transform: perspective(1200px) rotateX(4deg) translateY(-8px); border: 1px solid rgba(99, 102, 241, 0.2);">
+<div class="w-10 h-10 rounded-xl bg-warning-bg flex items-center justify-center text-warning-text mb-2">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">alarm</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-text-primary font-semibold">Reviews Due</h3>
+<p class="font-body-md text-body-md text-text-secondary leading-relaxed">
+          Mathematically calibrated notifications scheduled immediately before recall decay, avoiding wasteful over-practice.
+        </p>
+</div>
+<div class="p-6 rounded-2xl bg-surface-raised flex flex-col gap-2" style="transform: perspective(1200px) rotateX(4deg) translateY(-8px); border: 1px solid rgba(99, 102, 241, 0.2);">
+<div class="w-10 h-10 rounded-xl bg-[#22D3EE]/10 flex items-center justify-center text-[#22D3EE] mb-2">
+<span class="material-symbols-outlined text-[22px]">psychology_alt</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-text-primary font-semibold">Weak Topics</h3>
+<p class="font-body-md text-body-md text-text-secondary leading-relaxed">
+          Automated detection of fragile nodes and faulty causal links, turning exam blind spots into targeted precision drills.
+        </p>
+</div>
+</div>
+</section>
+<!-- ==========================================
+       SECTION 5: PRACTICE EXAMS
+       ========================================== -->
+<section class="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 max-w-[1360px] mx-auto w-full relative" id="exams">
+<div class="max-w-3xl mx-auto text-center mb-16">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container-high text-primary font-label-sm text-label-sm uppercase tracking-wider mb-4">
+<span>High-Stakes Simulation</span>
+</div>
+<h2 class="font-headline-lg text-3xl sm:text-5xl text-text-primary font-bold tracking-tight">
+        Exams engineered for deep recall.
+      </h2>
+<p class="font-body-lg text-body-lg text-text-secondary mt-3">
+        Timed exams with a focus mode and graded answers.
+      </p>
+</div>
+<!-- Exam Simulation Glass Mockup -->
+<div class="max-w-4xl mx-auto rounded-2xl bg-surface-raised shadow-2xl p-6 sm:p-8">
+<!-- Top Exam Bar: Status, Countdown Timer, Question Grid -->
+<div class="flex flex-wrap items-center justify-between gap-4 pb-6 mb-6">
+<div class="flex items-center gap-3">
+<span class="px-3 py-1 rounded-md bg-alert-bg text-alert-text font-mono-sm text-mono-sm font-semibold flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-alert-text animate-pulse"></span>
+            FOCUS LOCK ACTIVE
+          </span>
+<span class="font-label-md text-label-md text-text-primary font-medium">Midterm: Distributed Systems &amp; Consensus</span>
+</div>
+<!-- Glowing Circular Countdown Timer -->
+<div class="flex items-center gap-3 px-4 py-2 rounded-xl bg-surface-elevated shadow-inner">
+<div class="relative w-8 h-8 flex items-center justify-center">
+<svg class="w-8 h-8 -rotate-90" viewbox="0 0 36 36">
+<path class="text-surface-highlight" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3"></path>
+<path class="text-tertiary" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="78, 100" stroke-linecap="round" stroke-width="3"></path>
+</svg>
+<span class="material-symbols-outlined absolute text-[14px] text-tertiary">timer</span>
+</div>
+<div class="text-left font-mono-metric text-mono-metric text-text-primary font-semibold">
+            01:24:18 <span class="text-text-dim text-[11px] font-normal">remaining</span>
+</div>
+</div>
+</div>
+<!-- Question Palette Chips (1 to 10) -->
+<div class="flex flex-wrap items-center gap-2 pb-6 mb-6">
+<span class="font-mono-sm text-mono-sm text-text-dim mr-2">Questions:</span>
+<button class="w-8 h-8 rounded-lg bg-success-bg text-success-text font-mono-sm text-mono-sm font-semibold flex items-center justify-center">1</button>
+<button class="w-8 h-8 rounded-lg bg-success-bg text-success-text font-mono-sm text-mono-sm font-semibold flex items-center justify-center">2</button>
+<button class="w-8 h-8 rounded-lg bg-success-bg text-success-text font-mono-sm text-mono-sm font-semibold flex items-center justify-center">3</button>
+<button class="w-8 h-8 rounded-lg bg-border-focus text-text-primary font-mono-sm text-mono-sm font-semibold flex items-center justify-center shadow-[0_0_12px_#6366F1]">4</button>
+<button class="w-8 h-8 rounded-lg bg-surface-elevated text-text-secondary font-mono-sm text-mono-sm flex items-center justify-center">5</button>
+<button class="w-8 h-8 rounded-lg bg-surface-elevated text-text-secondary font-mono-sm text-mono-sm flex items-center justify-center">6</button>
+<button class="w-8 h-8 rounded-lg bg-warning-bg text-warning-text font-mono-sm text-mono-sm flex items-center justify-center">7</button>
+<button class="w-8 h-8 rounded-lg bg-surface-elevated text-text-secondary font-mono-sm text-mono-sm flex items-center justify-center">8</button>
+<button class="w-8 h-8 rounded-lg bg-surface-elevated text-text-secondary font-mono-sm text-mono-sm flex items-center justify-center">9</button>
+<button class="w-8 h-8 rounded-lg bg-surface-elevated text-text-secondary font-mono-sm text-mono-sm flex items-center justify-center">10</button>
+</div>
+<!-- Question Body -->
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<span class="font-mono-sm text-mono-sm text-primary uppercase tracking-wider font-semibold">Question 4 of 10 · 15 Points</span>
+<span class="px-2 py-0.5 rounded bg-surface-elevated font-mono-sm text-mono-sm text-text-secondary">Synthesized from MIT 6.824</span>
+</div>
+<p class="font-headline-sm text-headline-sm text-text-primary font-semibold leading-snug">
+          Consider a 5-node cluster running Paxos. Explain why an acceptor must accept a proposal in Phase 2b even if it previously promised a lower numbered proposal in Phase 1b.
+        </p>
+<!-- Candidate Written Response Area -->
+<div class="p-4 rounded-xl bg-surface-container-low font-body-md text-body-md text-text-primary leading-relaxed">
+          "The acceptor only promised not to accept proposals numbered *less* than n. If the proposer issues Phase 2 with proposal n (which is greater than or equal to the highest promised term), accepting it satisfies the agreement invariant without violating safety..."
+        </div>
+<!-- Real-time AI Rubric Breakdown Pill -->
+<div class="p-4 rounded-xl bg-surface-elevated flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-success-text text-[24px]">task_alt</span>
+<div>
+<div class="font-label-md text-label-md text-text-primary font-semibold">Rubric Match: 14 / 15 pts (Full Credit on Safety Proof)</div>
+<div class="font-mono-sm text-mono-sm text-text-secondary">Identified non-decreasing sequence; accurately cited Phase 1b invariant constraint.</div>
+</div>
+</div>
+<span class="px-3 py-1 rounded bg-success-bg text-success-text font-mono-sm text-mono-sm font-semibold">Consolidated</span>
+</div>
+</div>
+<!-- Exam Action Footer -->
+<div class="flex items-center justify-between mt-8 pt-6">
+<button class="px-4 py-2 rounded-lg bg-surface-elevated text-text-secondary font-label-md text-label-md hover:text-text-primary transition-colors">
+          Previous Question
+        </button>
+<button class="px-6 py-2.5 rounded-lg bg-border-focus text-text-primary font-label-md text-label-md font-semibold hover:bg-on-primary-fixed-variant transition-all shadow-[0_0_16px_rgba(99,102,241,0.4)]">
+          Submit &amp; Next Question
+        </button>
+</div>
+</div>
+</section>
+<!-- ==========================================
+       SECTION 6: YOUR AI, YOUR CHOICE (PRIVACY)
+       ========================================== -->
+<section class="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 max-w-[1360px] mx-auto w-full relative" id="privacy">
+<div class="max-w-2xl mx-auto text-center mb-20">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary-container text-secondary font-label-sm text-label-sm uppercase tracking-wider mb-4">
+<span>Sovereign Knowledge Architecture</span>
+</div>
+<h2 class="font-headline-lg text-3xl sm:text-5xl text-text-primary font-bold tracking-tight">
+        Your data stays yours.
+      </h2>
+<p class="font-body-lg text-body-lg text-text-secondary mt-3">
+        Local-first privacy with flexible compute architecture. Your study materials never train public models.
+      </p>
+</div>
+<!-- Radiant Encrypted Hub Layout -->
+<div class="relative max-w-4xl mx-auto">
+<!-- Central Vault Hub -->
+<div class="flex flex-col items-center text-center mb-16 relative">
+<div class="relative w-24 h-24 rounded-2xl bg-surface-elevated flex items-center justify-center shadow-[0_0_40px_rgba(99,102,241,0.35)]">
+<span class="material-symbols-outlined text-border-focus text-[44px]">shield_lock</span>
+<span class="absolute -inset-1 rounded-2xl border-2 border-border-focus/40 animate-pulse"></span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-text-primary font-bold mt-4">Your notes</h3>
+<p class="font-mono-sm text-mono-sm text-text-secondary max-w-sm mt-1">Zero-knowledge local SQLite database with AES-256 client encryption</p>
+</div>
+<!-- Connected Satellite Nodes (3 Engine Choices) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Node 1: Local Model -->
+<div class="p-6 rounded-2xl bg-surface-raised flex flex-col justify-between hover:bg-surface-elevated transition-all">
+<div>
+<div class="w-10 h-10 rounded-xl bg-success-bg text-success-text flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-[22px]">laptop_mac</span>
+</div>
+<div class="font-mono-sm text-mono-sm text-success-text uppercase tracking-wider font-semibold">Option 1</div>
+<h4 class="font-headline-sm text-headline-sm text-text-primary font-bold mt-1 mb-2">Local model (free, offline)</h4>
+<p class="font-body-md text-body-md text-text-secondary leading-relaxed">
+              Runs 100% in-browser via WebGPU or your native Ollama daemon. Zero network requests, infinite battery life.
+            </p>
+</div>
+<div class="mt-6 pt-4 font-mono-sm text-mono-sm text-text-dim flex items-center gap-1.5">
+<span class="material-symbols-outlined text-success-text text-[15px]">check</span> Llama 3.2 · Mistral · Phi-3
+          </div>
+</div>
+<!-- Node 2: BYOK -->
+<div class="p-6 rounded-2xl bg-surface-raised flex flex-col justify-between hover:bg-surface-elevated transition-all">
+<div>
+<div class="w-10 h-10 rounded-xl bg-secondary-container/30 text-primary flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-[22px]">key</span>
+</div>
+<div class="font-mono-sm text-mono-sm text-primary uppercase tracking-wider font-semibold">Option 2</div>
+<h4 class="font-headline-sm text-headline-sm text-text-primary font-bold mt-1 mb-2">Your own key</h4>
+<p class="font-body-md text-body-md text-text-secondary leading-relaxed">
+              Direct BYOK connection to Anthropic Claude 3.5 Sonnet or OpenAI. Zero platform markup, exact cost pass-through.
+            </p>
+</div>
+<div class="mt-6 pt-4 font-mono-sm text-mono-sm text-text-dim flex items-center gap-1.5">
+<span class="material-symbols-outlined text-success-text text-[15px]">check</span> Direct provider billing
+          </div>
+</div>
+<!-- Node 3: Cloud Credits -->
+<div class="p-6 rounded-2xl bg-surface-raised flex flex-col justify-between hover:bg-surface-elevated transition-all">
+<div>
+<div class="w-10 h-10 rounded-xl bg-warning-bg text-warning-text flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-[22px]">cloud_sync</span>
+</div>
+<div class="font-mono-sm text-mono-sm text-warning-text uppercase tracking-wider font-semibold">Option 3</div>
+<h4 class="font-headline-sm text-headline-sm text-text-primary font-bold mt-1 mb-2">Cloud credits</h4>
+<p class="font-body-md text-body-md text-text-secondary leading-relaxed">
+              High-speed managed cloud inference with prepaid pay-as-you-go credits that never expire. Zero setup required.
+            </p>
+</div>
+<div class="mt-6 pt-4 font-mono-sm text-mono-sm text-text-dim flex items-center gap-1.5">
+<span class="material-symbols-outlined text-success-text text-[15px]">check</span> Instant start · No API keys
+          </div>
+</div>
+</div>
+</div>
+</section>
+<!-- ==========================================
+       SECTION 7: PRICING & GRAND FINALE CTA
+       ========================================== -->
+<section class="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 max-w-[1360px] mx-auto w-full relative" id="pricing">
+<div class="max-w-2xl mx-auto text-center mb-16">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary-container text-secondary font-label-sm text-label-sm uppercase tracking-wider mb-4">
+<span>Predictable Investment</span>
+</div>
+<h2 class="font-headline-lg text-3xl sm:text-5xl text-text-primary font-bold tracking-tight">
+        Simple, transparent pricing.
+      </h2>
+<p class="font-body-lg text-body-lg text-text-secondary mt-3">
+        Start free with local offline models. Upgrade whenever you need cloud intelligence.
+      </p>
+</div>
+<!-- 3 Pricing Cards Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto items-stretch">
+<!-- Card 1: Free Tier -->
+<div class="rounded-2xl bg-surface-raised p-8 flex flex-col justify-between shadow-xl">
+<div>
+<div class="font-label-sm text-label-sm text-text-secondary uppercase tracking-wider">Free Forever</div>
+<div class="flex items-baseline gap-2 mt-2 mb-3">
+<span class="text-4xl font-headline-lg font-bold text-text-primary">$0</span>
+<span class="font-mono-sm text-mono-sm text-text-dim">/ month</span>
+</div>
+<p class="font-body-sm text-body-sm text-text-secondary mb-6">For self-directed local learners focused on complete privacy.</p>
+<div class="space-y-3 font-body-sm text-body-sm text-text-secondary">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-success-text text-[18px]">check</span>
+<span>Local model support (WebGPU &amp; Ollama)</span>
+</div>
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-success-text text-[18px]">check</span>
+<span>Unlimited personal notes &amp; PDFs</span>
+</div>
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-success-text text-[18px]">check</span>
+<span>Offline spaced repetition scheduling</span>
+</div>
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-success-text text-[18px]">check</span>
+<span>Standard active recall quizzes</span>
+</div>
+</div>
+</div>
+<div class="mt-8 pt-6">
+<a class="w-full inline-flex items-center justify-center py-3 rounded-xl bg-surface-elevated hover:bg-surface-highlight text-text-primary font-label-md text-label-md font-semibold transition-all" href="#">
+            Get started free
+          </a>
+</div>
+</div>
+<!-- Card 2: Pro Tier (Featured / Most Popular) -->
+<div class="rounded-2xl bg-surface-raised p-8 flex flex-col justify-between shadow-2xl relative transform lg:-translate-y-3">
+<!-- Accent Glow Highlight -->
+<div class="pointer-events-none absolute -inset-0.5 rounded-2xl bg-gradient-to-b from-border-focus via-secondary to-transparent -z-10 blur-sm opacity-60"></div>
+<div>
+<div class="flex items-center justify-between mb-2">
+<div class="font-label-sm text-label-sm text-primary uppercase tracking-wider font-semibold">Pro Academic</div>
+<span class="px-2.5 py-0.5 rounded-full bg-border-focus text-text-primary font-mono-sm text-mono-sm font-semibold shadow-[0_0_12px_#6366F1]">MOST POPULAR</span>
+</div>
+<div class="flex items-baseline gap-2 mb-3">
+<span class="text-4xl font-headline-lg font-bold text-text-primary">$12</span>
+<span class="font-mono-sm text-mono-sm text-text-dim">/ month</span>
+</div>
+<p class="font-body-sm text-body-sm text-text-secondary mb-6">For intensive university and technical certification preparation.</p>
+<div class="space-y-3 font-body-sm text-body-sm text-text-primary">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-success-text text-[18px]">check</span>
+<span>Everything in Free</span>
+</div>
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-success-text text-[18px]">check</span>
+<span>500 monthly cloud intelligence credits</span>
+</div>
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-success-text text-[18px]">check</span>
+<span>Multi-device encrypted constellation sync</span>
+</div>
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-success-text text-[18px]">check</span>
+<span>AI rubric evaluations on written answers</span>
+</div>
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-success-text text-[18px]">check</span>
+<span>Full-length timed mock exams</span>
+</div>
+</div>
+</div>
+<div class="mt-8 pt-6">
+<a class="w-full inline-flex items-center justify-center py-3.5 rounded-xl bg-border-focus hover:bg-on-primary-fixed-variant text-text-primary font-label-md text-label-md font-semibold transition-all shadow-[0_0_24px_rgba(99,102,241,0.5)]" href="#">
+            Start 14-day Pro trial
+          </a>
+</div>
+</div>
+<!-- Card 3: Pay As You Go -->
+<div class="rounded-2xl bg-surface-raised p-8 flex flex-col justify-between shadow-xl">
+<div>
+<div class="font-label-sm text-label-sm text-text-secondary uppercase tracking-wider">Pay As You Go</div>
+<div class="flex items-baseline gap-2 mt-2 mb-3">
+<span class="text-4xl font-headline-lg font-bold text-text-primary">$5</span>
+<span class="font-mono-sm text-mono-sm text-text-dim">/ 250 credits</span>
+</div>
+<p class="font-body-sm text-body-sm text-text-secondary mb-6">For flexible test crunches without monthly commitments.</p>
+<div class="space-y-3 font-body-sm text-body-sm text-text-secondary">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-success-text text-[18px]">check</span>
+<span>No recurring subscriptions</span>
+</div>
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-success-text text-[18px]">check</span>
+<span>Credits never expire</span>
+</div>
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-success-text text-[18px]">check</span>
+<span>On-demand high speed cloud generation</span>
+</div>
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-success-text text-[18px]">check</span>
+<span>Bring your own Anthropic / OpenAI keys</span>
+</div>
+</div>
+</div>
+<div class="mt-8 pt-6">
+<a class="w-full inline-flex items-center justify-center py-3 rounded-xl bg-surface-elevated hover:bg-surface-highlight text-text-primary font-label-md text-label-md font-semibold transition-all" href="#">
+            Buy credit bundle
+          </a>
+</div>
+</div>
+</div>
+<!-- GRAND FINALE CTA BAND -->
+<div class="mt-24 rounded-3xl bg-surface-raised relative overflow-hidden p-8 sm:p-16 text-center shadow-2xl">
+<!-- Full Relit Constellation Background Canvas -->
+<div class="pointer-events-none absolute inset-0 -z-10 opacity-70">
+<svg class="w-full h-full" fill="none" preserveaspectratio="none" viewbox="0 0 1200 400">
+<path d="M 0 200 Q 300 50 600 200 T 1200 200" stroke="#6366F1" stroke-opacity="0.3" stroke-width="1.5"></path>
+<path d="M 100 100 L 350 250 L 600 80 L 850 260 L 1100 120" stroke="#22D3EE" stroke-opacity="0.4" stroke-width="1.5"></path>
+<!-- Vibrant Relit Star Clusters -->
+<circle cx="200" cy="140" fill="#FBBF24" r="6"></circle>
+<circle cx="350" cy="250" fill="#22D3EE" r="5"></circle>
+<circle cx="600" cy="80" fill="#FBBF24" r="8"></circle>
+<circle cx="750" cy="180" fill="#818CF8" r="6"></circle>
+<circle cx="850" cy="260" fill="#FBBF24" r="7"></circle>
+<circle cx="1000" cy="140" fill="#22D3EE" r="5"></circle>
+</svg>
+</div>
+<div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-surface-raised via-transparent to-surface-raised/60 -z-10"></div>
+<div class="max-w-2xl mx-auto flex flex-col items-center">
+<span class="w-3 h-3 rounded-full bg-tertiary shadow-[0_0_12px_#FBBF24] mb-4"></span>
+<h2 class="font-headline-lg text-3xl sm:text-5xl text-text-primary font-bold tracking-tight">
+          Start remembering what you study.
+        </h2>
+<p class="font-body-lg text-body-lg text-text-secondary mt-4 mb-8">
+          Light up your first constellation in less than two minutes. Import any slide deck, reading list, or handwritten notes.
+        </p>
+<div class="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
+<a class="w-full sm:w-auto px-8 py-4 rounded-xl bg-border-focus text-text-primary font-label-md text-base font-semibold shadow-[0_0_36px_rgba(99,102,241,0.6)] hover:shadow-[0_0_50px_rgba(99,102,241,0.85)] hover:bg-on-primary-fixed-variant transition-all" href="#">
+            Get started free
+          </a>
+</div>
+<div class="font-mono-sm text-mono-sm text-text-dim mt-4">
+          Works offline • No credit card required • Instant access
+        </div>
+</div>
+</div>
+</section>
+<!-- ==========================================
+       SECTION 8: FAQ ACCORDION & MINIMAL FOOTER
+       ========================================== -->
+<section class="py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto w-full" id="faq">
+<div class="text-center mb-12">
+<h3 class="font-headline-lg text-2xl sm:text-3xl text-text-primary font-bold">Frequently Asked Questions</h3>
+</div>
+<!-- Accordion Items -->
+<div class="space-y-4" id="faq-accordion">
+<!-- FAQ 1 -->
+<details class="group rounded-xl bg-surface-raised p-5 shadow-sm cursor-pointer open:bg-surface-elevated transition-colors">
+<summary class="flex items-center justify-between font-label-md text-base text-text-primary font-medium list-none">
+<span>Does it work without internet?</span>
+<span class="material-symbols-outlined text-text-dim transition-transform duration-200 group-open:rotate-180">expand_more</span>
+</summary>
+<div class="mt-4 font-body-md text-body-md text-text-secondary leading-relaxed">
+          Yes. Self-Study AI is architected offline-first. You can execute local inference through in-browser WebGPU models or your local Ollama setup. Your flashcards, review history, and notes remain fully functional without a connection.
+        </div>
+</details>
+<!-- FAQ 2 -->
+<details class="group rounded-xl bg-surface-raised p-5 shadow-sm cursor-pointer open:bg-surface-elevated transition-colors">
+<summary class="flex items-center justify-between font-label-md text-base text-text-primary font-medium list-none">
+<span>Where are my notes stored?</span>
+<span class="material-symbols-outlined text-text-dim transition-transform duration-200 group-open:rotate-180">expand_more</span>
+</summary>
+<div class="mt-4 font-body-md text-body-md text-text-secondary leading-relaxed">
+          Your knowledge base is stored locally on your device in an encrypted SQLite database. If you enable Pro cloud sync, data is encrypted client-side with AES-256 before transmission. We cannot read your materials.
+        </div>
+</details>
+<!-- FAQ 3 -->
+<details class="group rounded-xl bg-surface-raised p-5 shadow-sm cursor-pointer open:bg-surface-elevated transition-colors">
+<summary class="flex items-center justify-between font-label-md text-base text-text-primary font-medium list-none">
+<span>Which file formats are supported?</span>
+<span class="material-symbols-outlined text-text-dim transition-transform duration-200 group-open:rotate-180">expand_more</span>
+</summary>
+<div class="mt-4 font-body-md text-body-md text-text-secondary leading-relaxed">
+          You can drop in PDFs, EPUBs, Markdown files, raw text, and PowerPoint/Keynote slides. Equations formatted in LaTeX and source code blocks are natively preserved in quiz synthesis.
+        </div>
+</details>
+<!-- FAQ 4 -->
+<details class="group rounded-xl bg-surface-raised p-5 shadow-sm cursor-pointer open:bg-surface-elevated transition-colors">
+<summary class="flex items-center justify-between font-label-md text-base text-text-primary font-medium list-none">
+<span>Can I use my own API key or local models?</span>
+<span class="material-symbols-outlined text-text-dim transition-transform duration-200 group-open:rotate-180">expand_more</span>
+</summary>
+<div class="mt-4 font-body-md text-body-md text-text-secondary leading-relaxed">
+          Yes. We strongly encourage Bring-Your-Own-Key (BYOK). Enter your OpenAI or Anthropic API key directly in preferences with zero markup, or point the application to any OpenAI-compatible local HTTP endpoint (e.g., LM Studio, vLLM, Ollama).
+        </div>
+</details>
+</div>
+<!-- System Status & Subordinate Links -->
+<div class="mt-16 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-text-dim font-mono-sm text-mono-sm">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-success-text"></span>
+<span>Local Core Engine: Online (WebGPU Available)</span>
+</div>
+<div class="flex items-center gap-6">
+<a class="hover:text-text-secondary transition-colors" href="#">Changelog (v2.4.1)</a>
+<a class="hover:text-text-secondary transition-colors" href="#">Telemetry Disclosures</a>
+<a class="hover:text-text-secondary transition-colors" href="#">Encryption Audit</a>
+</div>
+</div>
+</section>
+</div></main><footer class="w-full bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="w-full max-w-[1360px] mx-auto px-gutter-desktop py-space-lg flex flex-col md:flex-row items-center justify-between gap-space-md"><div class="flex items-center gap-space-sm"><div class="w-6 h-6 rounded bg-secondary-container flex items-center justify-center"><span class="material-symbols-outlined text-on-secondary-container text-[14px]">menu_book</span></div><span class="font-label-sm text-label-sm text-text-secondary">Self-Study AI © 2025. Cognitive mastery engines.</span></div><div class="flex items-center gap-space-md font-mono-sm text-mono-sm text-text-dim"><a class="hover:text-text-secondary transition-colors" data-path="privacy" href="#">Privacy Policy</a><span class="text-outline-variant">•</span><a class="hover:text-text-secondary transition-colors" data-path="terms" href="#">System Terms</a><span class="text-outline-variant">•</span><span class="text-success-text">Status: Operational</span></div></div></footer></body></html>

@@ -1,0 +1,25 @@
+Phase 2 of "self-study-ai": ingestion, search, and the AI provider layer. WEB ONLY: do not touch apps/desktop and do not run desktop tests (desktop is verified in the final phase). Keep core, storage, and api free of web-specific assumptions. No CI/CD. Follow the existing .cursor rules: reusable components in the flat components folder, sections folder, pages folder, and a design-system entry (design-system/self-study-ai/pages/<page>.md and components/<component>.md) for every new page and component.
+
+1. Data model (new migrations): sources (subject_id, title, kind: notes|book, file_name, content_hash, original file stored in the app data directory, status: pending|processing|ready|failed, error, progress), topics (source_id, parent_id nullable, title, position, is_core boolean default false), chunks (source_id, topic_id, position, text, token_count, page_ref nullable), chunk_embeddings (chunk_id, provider/model id, dimensions, vector blob), plus an FTS5 virtual table over chunk text. Dedupe uploads by content_hash within a subject.
+
+2. Ingestion pipeline in the ingest crate: parsers for .md, .txt, .pdf and .epub behind a Parser trait. Extract structure: headings for markdown, table of contents or bookmarks for epub/pdf, fallback to size-based grouping when no structure exists. Produce topics (hierarchical) and chunks (target about 500 tokens, small overlap, never split mid-sentence, each chunk linked to its topic and page/section reference). Run as a background job with status and progress updates written to the source row; failures set status=failed with a readable error and never crash the API. Enforce a configurable max upload size.
+
+3. AI provider layer in the ai crate: a Provider trait with embed(texts) and chat(messages) methods. Implementations: OpenAI-compatible HTTP (covers OpenAI, OpenRouter and similar via base URL + key), Ollama (local), and a deterministic MockProvider (hash-based embeddings, canned chat) used by all tests so no test needs network or keys. Provider configs are stored in settings; API keys are never returned to the frontend after saving (only a masked indicator), never logged, and never included in error messages. Support a default chat model and a default embedding model, switchable at runtime, and record which embedding model produced each vector; if the embedding model changes, mark sources as needing re-embedding and offer a re-embed action.
+
+4. Search in the storage/api layers behind a VectorIndex trait: v1 implementation is brute-force cosine similarity over stored vectors in Rust, designed so sqlite-vec or pgvector can replace it later without touching callers. Combine with FTS5 keyword search (hybrid ranking with a simple reciprocal rank fusion). Endpoints: upload source, list/get/delete source, retrieve source status, list topics and chunks, PATCH topic (rename, reorder, toggle is_core), POST search (query, optional subject/source/topic filters, limit), re-embed source, provider CRUD plus a test-connection endpoint.
+
+5. Web UI (apps/web), using shared components and adding any new reusable ones (FileDropzone, ProgressBar, SearchInput, ResultCard, Tabs, Badge, SecretInput):
+   - Sources library page: upload (drag and drop), per-source status with progress, delete, filter by subject.
+   - Source detail page: topic tree with rename, reorder and a "core topic" toggle, chunk preview per topic, re-embed button.
+   - Search page: query box, subject/source/topic filters, results as cards showing the matching chunk, source, topic and page reference, with keyword highlighting.
+   - Settings > AI providers: add/edit providers, masked keys, test connection, choose default chat and embedding models, show a re-embed warning when the embedding model changes.
+   Include loading, empty and error states on every page.
+
+6. Tests, written in this phase:
+   - Rust unit tests: each parser against small fixture files (md, txt, pdf, epub), chunker rules (size, overlap, sentence boundaries), vector index ranking, hybrid ranking, provider trait via MockProvider, key masking and redaction.
+   - Rust integration tests: full pipeline upload -> ready -> search using MockProvider and a temp SQLite DB; duplicate upload; failed parse sets status=failed; embedding-model change flags re-embedding.
+   - Playwright (web only, MockProvider mode): upload a notes fixture and a book fixture, wait for ready, edit and toggle a topic, search and find the expected chunk, configure a provider and test connection, upload failure shows an error state, axe accessibility scan on the new pages.
+
+7. Run policy: per-step checks while building (cargo build, cargo clippy, tsc --noEmit, web lint). At the END of the phase run everything once (cargo test, integration tests, Playwright), fix failures, and prune Docker after every build.
+
+Report: what was built, design decisions, anything not verified, and the exact commands to run it locally. Flag any parser limitations (for example scanned PDFs without text) rather than hiding them.

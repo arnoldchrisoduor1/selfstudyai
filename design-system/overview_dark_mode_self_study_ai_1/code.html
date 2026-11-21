@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Overview (Dark Mode) - Self-Study AI</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#6366f1",
+            "primary-hover": "#4f46e5",
+            "primary-subtle": "rgba(99, 102, 241, 0.15)",
+            "primary-border": "rgba(99, 102, 241, 0.3)",
+            background: "#0a0e18",
+            surface: "#171b26",
+            "surface-dim": "#111520",
+            "surface-elevated": "#232838",
+            "surface-border": "#262c3e",
+            "text-main": "#f8faff",
+            "text-muted": "#94a3b8",
+            "text-subtle": "#64748b",
+            emerald: {
+              400: "#34d399",
+              500: "#10b981",
+              900: "#064e3b",
+              950: "rgba(6, 78, 59, 0.3)"
+            },
+            amber: {
+              400: "#fbbf24",
+              500: "#f59e0b",
+              900: "#78350f",
+              950: "rgba(120, 53, 15, 0.3)"
+            },
+            rose: {
+              400: "#fb7185",
+              500: "#f43f5e",
+              900: "#881337",
+              950: "rgba(136, 19, 55, 0.3)"
+            }
+          },
+          fontFamily: {
+            sans: ["Inter", "sans-serif"]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      font-family: 'Inter', sans-serif;
+      overscroll-behavior: none;
+      -webkit-font-smoothing: antialiased;
+    }
+    ::-webkit-scrollbar {
+      display: none;
+    }
+  </style>
+</head>
+<body class="bg-[#0a0e18] text-[#f8faff] text-[14px] leading-relaxed antialiased">
+<!-- Left Sidebar (Full Viewport Height) -->
+<aside class="fixed left-0 top-0 h-screen w-64 bg-[#0d111a] border-r border-[#1e2333] z-50 flex flex-col justify-between">
+<div class="flex flex-col">
+<!-- App Header / Logo: strictly one line, book SVG in indigo rounded square -->
+<div class="h-16 px-6 flex items-center border-b border-[#1e2333]">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-[#6366f1] flex items-center justify-center text-white shrink-0 shadow-sm">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24">
+<path d="M19 2H6c-1.2 0-2 .8-2 2v16c0 1.2.8 2 2 2h13a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1zm-1 18H6a1 1 0 0 1-1-1V5c0-.6.4-1 1-1h12v16zm-3-8H8V10h7v2zm-2 4H8v-2h5v2z"></path>
+</svg>
+</div>
+<span class="font-bold text-[17px] text-[#f8faff] tracking-tight whitespace-nowrap">Self-Study AI</span>
+</div>
+</div>
+<!-- Navigation -->
+<div class="px-3 py-4">
+<div class="text-[12px] font-semibold text-[#64748b] uppercase tracking-wider px-3 mb-2">Workspace</div>
+<nav class="space-y-1">
+<!-- Overview (Active) -->
+<a class="flex items-center justify-between px-3 py-2 rounded-lg bg-[#1f2538] text-[#818cf8] font-semibold transition-colors border border-[rgba(99,102,241,0.25)]" href="#">
+<div class="flex items-center gap-3">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24">
+<path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"></path>
+</svg>
+<span>Overview</span>
+</div>
+</a>
+<!-- Subjects -->
+<a class="flex items-center justify-between px-3 py-2 rounded-lg text-[#94a3b8] hover:bg-[#171b26] hover:text-[#f8faff] font-medium transition-colors" href="#">
+<div class="flex items-center gap-3">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24">
+<path d="M12 2l-5.5 9h11L12 2zm0 3.84L13.93 9h-3.87L12 5.84zM17.5 13c-2.49 0-4.5 2.01-4.5 4.5s2.01 4.5 4.5 4.5 4.5-2.01 4.5-4.5-2.01-4.5-4.5-4.5zm0 7c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5zM3 21.5h8v-8H3v8zm2-6h4v4H5v-4z"></path>
+</svg>
+<span>Subjects</span>
+</div>
+</a>
+<!-- Library -->
+<a class="flex items-center justify-between px-3 py-2 rounded-lg text-[#94a3b8] hover:bg-[#171b26] hover:text-[#f8faff] font-medium transition-colors" href="#">
+<div class="flex items-center gap-3">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24">
+<path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z"></path>
+</svg>
+<span>Library</span>
+</div>
+</a>
+<!-- Quizzes (Badge: 12) -->
+<a class="flex items-center justify-between px-3 py-2 rounded-lg text-[#94a3b8] hover:bg-[#171b26] hover:text-[#f8faff] font-medium transition-colors" href="#">
+<div class="flex items-center gap-3">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24">
+<path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14h-2v-2h2v2zm1.07-4.75l-.9.92C11.45 13.9 11 14.3 11 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H7c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"></path>
+</svg>
+<span>Quizzes</span>
+</div>
+<span class="text-[12px] font-semibold px-2 py-0.5 rounded-full bg-[#1c2130] text-[#94a3b8] border border-[#2a3044]">12</span>
+</a>
+<!-- Reviews (Badge: 28) -->
+<a class="flex items-center justify-between px-3 py-2 rounded-lg text-[#94a3b8] hover:bg-[#171b26] hover:text-[#f8faff] font-medium transition-colors" href="#">
+<div class="flex items-center gap-3">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24">
+<path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"></path>
+</svg>
+<span>Reviews</span>
+</div>
+<span class="text-[12px] font-semibold px-2 py-0.5 rounded-full bg-[rgba(245,158,11,0.15)] text-[#fbbf24] border border-[rgba(245,158,11,0.3)]">28</span>
+</a>
+<!-- Final Tests -->
+<a class="flex items-center justify-between px-3 py-2 rounded-lg text-[#94a3b8] hover:bg-[#171b26] hover:text-[#f8faff] font-medium transition-colors" href="#">
+<div class="flex items-center gap-3">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24">
+<path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-9 14l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"></path>
+</svg>
+<span>Final Tests</span>
+</div>
+</a>
+<!-- Analytics -->
+<a class="flex items-center justify-between px-3 py-2 rounded-lg text-[#94a3b8] hover:bg-[#171b26] hover:text-[#f8faff] font-medium transition-colors" href="#">
+<div class="flex items-center gap-3">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24">
+<path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-5h2v5zm4 0h-2v-9h2v9zm4 0h-2V7h2v10z"></path>
+</svg>
+<span>Analytics</span>
+</div>
+</a>
+<!-- Settings -->
+<a class="flex items-center justify-between px-3 py-2 rounded-lg text-[#94a3b8] hover:bg-[#171b26] hover:text-[#f8faff] font-medium transition-colors" href="#">
+<div class="flex items-center gap-3">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24">
+<path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"></path>
+</svg>
+<span>Settings</span>
+</div>
+</a>
+</nav>
+</div>
+</div>
+<!-- Sidebar Footer -->
+<div class="p-4 border-t border-[#1e2333] space-y-3">
+<!-- Sync Status -->
+<div class="flex items-center justify-between px-3 py-1.5 rounded-lg bg-[#111520] border border-[#262c3e] text-[12px]">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.5)]"></span>
+<span class="font-medium text-[#94a3b8]">Synced</span>
+</div>
+<svg class="w-3.5 h-3.5 text-[#64748b]" fill="currentColor" viewbox="0 0 24 24">
+<path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM10 17l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"></path>
+</svg>
+</div>
+<!-- AI Status -->
+<div class="flex items-center justify-between px-3 py-1.5 rounded-lg bg-[#111520] border border-[#262c3e] text-[12px]">
+<span class="font-medium text-[#94a3b8]">Cloud AI · 420 credits</span>
+<svg class="w-3.5 h-3.5 text-[#818cf8]" fill="currentColor" viewbox="0 0 24 24">
+<path d="M21 10.12h-6.78l2.74-2.82c.86-.86.86-2.27 0-3.14s-2.27-.86-3.14 0L7.54 10.45c-.39.39-.62.92-.62 1.48s.23 1.09.62 1.48l6.28 6.29c.86.86 2.27.86 3.14 0s.86-2.27 0-3.14l-2.74-2.82H21c1.1 0 2-.9 2-2s-.9-1.62-2-1.62z"></path>
+</svg>
+</div>
+<!-- User Profile -->
+<div class="flex items-center justify-between pt-1">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-full bg-[rgba(99,102,241,0.2)] text-[#a5b4fc] font-bold flex items-center justify-center text-[13px] border border-[rgba(99,102,241,0.4)]">
+            A
+          </div>
+<div class="flex flex-col">
+<span class="font-semibold text-[13px] text-[#f8faff] leading-tight">Arnold</span>
+<span class="text-[12px] text-[#64748b] leading-tight">arnold@linear.app</span>
+</div>
+</div>
+<button class="p-1 rounded text-[#64748b] hover:text-[#f8faff] transition-colors" type="button">
+<svg class="w-4 h-4 fill-current" viewbox="0 0 24 24">
+<path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z"></path>
+</svg>
+</button>
+</div>
+</div>
+</aside>
+<!-- Main Content Wrapper -->
+<div class="pl-64">
+<!-- Top Bar (Dark mode backdrop blur) -->
+<header class="fixed top-0 left-64 right-0 h-16 bg-[#0d111a]/90 backdrop-blur-md border-b border-[#1e2333] z-40 flex items-center justify-between px-8">
+<div class="flex-1 max-w-xl">
+<div class="relative flex items-center">
+<svg class="w-4 h-4 absolute left-3 text-[#64748b] fill-current" viewbox="0 0 24 24">
+<path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+</svg>
+<input class="w-full h-9 pl-9 pr-14 rounded-lg bg-[#161b26] border border-[#2a3044] text-[13px] text-[#f8faff] placeholder:text-[#64748b] focus:outline-none focus:border-[#6366f1] focus:ring-1 focus:ring-[#6366f1] shadow-sm" placeholder="Search your notes and books... (Cmd+K)" type="text"/>
+<span class="text-[12px] font-medium text-[#94a3b8] bg-[#111520] border border-[#2a3044] px-1.5 py-0.5 rounded absolute right-2.5 pointer-events-none">Cmd+K</span>
+</div>
+</div>
+<!-- Action items -->
+<div class="flex items-center gap-3">
+<button class="h-9 px-3.5 rounded-lg border border-[#2a3044] bg-[#171b26] text-[#cbd5e1] hover:bg-[#1f2538] hover:text-white font-medium text-[13px] flex items-center gap-2 shadow-sm transition-colors" type="button">
+<svg class="w-4 h-4 text-[#94a3b8] fill-current" viewbox="0 0 24 24">
+<path d="M9 16h6v-6h4l-7-7-7 7h4v6zm-4 2h14v2H5v-2z"></path>
+</svg>
+<span>Add material</span>
+</button>
+<button class="relative p-2 rounded-lg border border-[#2a3044] bg-[#171b26] text-[#94a3b8] hover:text-[#f8faff] hover:bg-[#1f2538] shadow-sm transition-colors" title="Notifications" type="button">
+<svg class="w-4 h-4 fill-current" viewbox="0 0 24 24">
+<path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"></path>
+</svg>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-[#f43f5e] shadow-[0_0_6px_rgba(244,63,94,0.6)]"></span>
+</button>
+<button class="h-9 px-3.5 rounded-lg border border-[#2a3044] bg-[#171b26] text-[#cbd5e1] hover:bg-[#1f2538] hover:text-white font-medium text-[13px] flex items-center gap-2 shadow-sm transition-colors" type="button">
+<svg class="w-4 h-4 text-[#818cf8] fill-current" viewbox="0 0 24 24">
+<path d="M8 5v14l11-7z"></path>
+</svg>
+<span>Start review</span>
+</button>
+</div>
+</header>
+<!-- Page Body -->
+<main class="pt-24 pb-16 px-8 max-w-7xl mx-auto space-y-6">
+<!-- Page Header -->
+<section class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div>
+<h1 class="text-[26px] font-bold text-[#f8faff] tracking-tight leading-snug">Good morning, Arnold</h1>
+<p class="text-[14px] text-[#94a3b8] mt-0.5">You have <strong class="font-semibold text-[#f8faff]">28 cards</strong> scheduled across <strong class="font-semibold text-[#f8faff]">3 subjects</strong> today.</p>
+</div>
+<!-- Header Right Widget: One compact card containing Flame + streak and Circular progress ring -->
+<div class="flex items-center gap-4 px-4 py-2.5 rounded-xl bg-[#171b26] border border-[#262c3e] shadow-sm shrink-0">
+<!-- Flame & Streak -->
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-lg bg-[rgba(245,158,11,0.15)] border border-[rgba(245,158,11,0.25)] flex items-center justify-center text-[#fbbf24] shrink-0">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24">
+<path d="M12 23c-4.97 0-9-4.03-9-9 0-4.04 2.87-7.86 6.84-11.45.68-.61 1.74-.26 1.89.65.26 1.63 1.15 3.19 2.5 4.3 1.11.92 2.27 1.87 2.77 3.5.06.2.22.34.42.36.21.02.4-.1.49-.29.43-.88 1.15-2.07 1.15-3.07 0-.32.33-.55.62-.43C21.7 8.78 21 14.86 21 14c0 4.97-4.03 9-9 9z"></path>
+</svg>
+</div>
+<div class="flex flex-col">
+<span class="font-bold text-[14px] text-[#f8faff] leading-tight">12-day streak</span>
+<span class="text-[12px] text-[#94a3b8] leading-tight">Active consistency</span>
+</div>
+</div>
+<div class="w-px h-8 bg-[#2a3044]"></div>
+<!-- Progress Ring: 15 / 20 cards today (75%) -->
+<div class="flex items-center gap-2.5">
+<div class="relative w-8 h-8 flex items-center justify-center shrink-0">
+<svg class="w-8 h-8 -rotate-90" viewbox="0 0 32 32">
+<circle cx="16" cy="16" fill="none" r="13" stroke="#262c3e" stroke-width="3"></circle>
+<circle cx="16" cy="16" fill="none" r="13" stroke="#6366f1" stroke-dasharray="81.68" stroke-dashoffset="20.42" stroke-linecap="round" stroke-width="3"></circle>
+</svg>
+<span class="absolute text-[12px] font-bold text-[#f8faff]">75%</span>
+</div>
+<div class="flex flex-col">
+<span class="font-bold text-[14px] text-[#f8faff] leading-tight">15/20</span>
+<span class="text-[12px] text-[#94a3b8] leading-tight">Cards today</span>
+</div>
+</div>
+</div>
+</section>
+<!-- 5 Stat Cards in ONE single 5-column row of equal height -->
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+<!-- Card 1: Knowledge Score -->
+<div class="flex flex-col justify-between p-4 rounded-xl bg-[#171b26] border border-[#23293b] shadow-sm min-h-[140px]">
+<div>
+<span class="text-[12px] font-semibold uppercase tracking-wider text-[#94a3b8]">Knowledge Score</span>
+<div class="flex items-baseline gap-1 mt-1.5">
+<span class="text-[26px] font-bold text-[#f8faff] leading-none">884</span>
+<span class="text-[13px] text-[#64748b]">/ 1000</span>
+</div>
+</div>
+<div class="pt-3 border-t border-[#262c3e]">
+<div class="text-[12px] text-emerald-400 font-semibold flex items-center gap-1">
+<svg class="w-3.5 h-3.5 fill-current" viewbox="0 0 24 24"><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"></path></svg>
+<span>+18 pts vs last week</span>
+</div>
+<p class="text-[12px] text-[#64748b] mt-0.5">Calculated across all subjects</p>
+</div>
+</div>
+<!-- Card 2: Reviews Due -->
+<div class="flex flex-col justify-between p-4 rounded-xl bg-[#171b26] border border-[#23293b] shadow-sm min-h-[140px]">
+<div>
+<span class="text-[12px] font-semibold uppercase tracking-wider text-[#94a3b8]">Reviews Due</span>
+<div class="mt-1.5">
+<span class="text-[26px] font-bold text-[#f8faff] leading-none">28</span>
+</div>
+</div>
+<div class="pt-3 border-t border-[#262c3e]">
+<div class="text-[12px] text-[#818cf8] font-semibold">91% target</div>
+<p class="text-[12px] text-[#64748b] mt-0.5">Est. 14 mins completion</p>
+</div>
+</div>
+<!-- Card 3: Questions Mastered -->
+<div class="flex flex-col justify-between p-4 rounded-xl bg-[#171b26] border border-[#23293b] shadow-sm min-h-[140px]">
+<div>
+<span class="text-[12px] font-semibold uppercase tracking-wider text-[#94a3b8]">Questions Mastered</span>
+<div class="mt-1.5">
+<span class="text-[26px] font-bold text-[#f8faff] leading-none">1,420</span>
+</div>
+</div>
+<div class="pt-3 border-t border-[#262c3e]">
+<div class="text-[12px] text-[#818cf8] font-semibold flex items-center gap-1">
+<svg class="w-3.5 h-3.5 fill-current" viewbox="0 0 24 24"><path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"></path></svg>
+<span>+34 this week</span>
+</div>
+<p class="text-[12px] text-[#64748b] mt-0.5">84% long-term stability</p>
+</div>
+</div>
+<!-- Card 4: Weekly Points -->
+<div class="flex flex-col justify-between p-4 rounded-xl bg-[#171b26] border border-[#23293b] shadow-sm min-h-[140px]">
+<div>
+<span class="text-[12px] font-semibold uppercase tracking-wider text-[#94a3b8]">Weekly Points</span>
+<div class="mt-1.5">
+<span class="text-[26px] font-bold text-[#f8faff] leading-none">2,850</span>
+</div>
+</div>
+<div class="pt-3 border-t border-[#262c3e]">
+<div class="text-[12px] text-amber-400 font-semibold flex items-center gap-1">
+<svg class="w-3.5 h-3.5 fill-current" viewbox="0 0 24 24"><path d="M7 2v11h3v9l7-12h-4l4-8z"></path></svg>
+<span>+12% vs last week</span>
+</div>
+<p class="text-[12px] text-[#64748b] mt-0.5">Earned across active sessions</p>
+</div>
+</div>
+<!-- Card 5: Gold Questions -->
+<div class="flex flex-col justify-between p-4 rounded-xl bg-[#171b26] border border-[#23293b] shadow-sm min-h-[140px]">
+<div>
+<span class="text-[12px] font-semibold uppercase tracking-wider text-[#94a3b8]">Gold Questions</span>
+<div class="mt-1.5">
+<span class="text-[26px] font-bold text-[#f8faff] leading-none">18</span>
+</div>
+</div>
+<div class="pt-3 border-t border-[#262c3e]">
+<div class="text-[12px] text-amber-400 font-semibold flex items-center gap-1">
+<svg class="w-3.5 h-3.5 fill-current text-amber-400" viewbox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
+<span>+2 this week</span>
+</div>
+<p class="text-[12px] text-[#64748b] mt-0.5">Mastered high-yield concepts</p>
+</div>
+</div>
+</section>
+<!-- Main Two Column Grid (Subjects + Reviews) -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- Left Column: Continue Studying (8 cols) -->
+<div class="lg:col-span-7 xl:col-span-8 space-y-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<h2 class="text-[17px] font-bold text-[#f8faff]">Continue studying</h2>
+<span class="text-[12px] font-semibold px-2 py-0.5 rounded-full bg-[#1c2130] text-[#94a3b8] border border-[#2a3044]">3 active</span>
+</div>
+<button class="text-[13px] font-semibold text-[#94a3b8] hover:text-[#818cf8] flex items-center gap-1 transition-colors" type="button">
+<span>All subjects</span>
+<svg class="w-4 h-4 fill-current" viewbox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path></svg>
+</button>
+</div>
+<!-- Subject 1: Distributed Systems -->
+<div class="p-5 rounded-xl bg-[#171b26] border border-[#23293b] shadow-sm hover:border-[rgba(99,102,241,0.4)] transition-colors">
+<div class="flex flex-col sm:flex-row sm:items-start justify-between gap-3">
+<div class="space-y-1">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-[#6366f1] shrink-0"></span>
+<h3 class="text-[16px] font-bold text-[#f8faff]">Distributed Systems</h3>
+<span class="text-[12px] font-semibold px-2 py-0.5 rounded bg-[rgba(99,102,241,0.15)] text-[#a5b4fc] border border-[rgba(99,102,241,0.3)]">Core CS</span>
+</div>
+<p class="text-[14px] text-[#94a3b8]">Ch. 4: Consensus &amp; Raft Protocol</p>
+</div>
+<button class="self-start sm:self-center h-8 px-3.5 rounded-lg border border-[#2a3044] bg-[#111520] hover:bg-[#1f2538] text-[#cbd5e1] font-semibold text-[13px] flex items-center gap-1.5 transition-colors" type="button">
+<span>Resume</span>
+<svg class="w-3.5 h-3.5 fill-current" viewbox="0 0 24 24"><path d="M5 13h11.86l-5.43 5.43 1.42 1.42L21.14 12l-8.29-8.29-1.42 1.42L16.86 11H5v2z"></path></svg>
+</button>
+</div>
+<div class="mt-4 pt-3 border-t border-[#262c3e] space-y-2">
+<div class="flex items-center justify-between text-[12px]">
+<span class="text-[#94a3b8] font-medium">Syllabus Completion</span>
+<span class="font-bold text-[#f8faff]">72%</span>
+</div>
+<div class="w-full h-2 rounded-full bg-[#111520] overflow-hidden">
+<div class="h-full bg-[#6366f1] rounded-full" style="width: 72%;"></div>
+</div>
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-[12px] text-[#94a3b8] pt-1">
+<div class="flex items-center gap-4">
+<span class="flex items-center gap-1.5">
+<svg class="w-3.5 h-3.5 text-[#64748b] fill-current" viewbox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z"></path></svg>
+<span>48 / 65 flashcards</span>
+</span>
+<span class="flex items-center gap-1.5">
+<svg class="w-3.5 h-3.5 text-[#64748b] fill-current" viewbox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"></path></svg>
+<span>4 notes</span>
+</span>
+</div>
+<span class="text-[#64748b]">Studied today at 08:30 AM</span>
+</div>
+</div>
+</div>
+<!-- Subject 2: Linear Electronics -->
+<div class="p-5 rounded-xl bg-[#171b26] border border-[#23293b] shadow-sm hover:border-[#2a3044] transition-colors">
+<div class="flex flex-col sm:flex-row sm:items-start justify-between gap-3">
+<div class="space-y-1">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-slate-500 shrink-0"></span>
+<h3 class="text-[16px] font-bold text-[#f8faff]">Linear Electronics</h3>
+<span class="text-[12px] font-semibold px-2 py-0.5 rounded bg-[#1c2130] text-[#94a3b8] border border-[#2a3044]">Hardware</span>
+</div>
+<p class="text-[14px] text-[#94a3b8]">Op-Amp Configurations &amp; Frequency Response</p>
+</div>
+<button class="self-start sm:self-center h-8 px-3.5 rounded-lg border border-[#2a3044] bg-[#111520] hover:bg-[#1f2538] text-[#cbd5e1] font-semibold text-[13px] flex items-center gap-1.5 transition-colors" type="button">
+<span>Resume</span>
+<svg class="w-3.5 h-3.5 fill-current" viewbox="0 0 24 24"><path d="M5 13h11.86l-5.43 5.43 1.42 1.42L21.14 12l-8.29-8.29-1.42 1.42L16.86 11H5v2z"></path></svg>
+</button>
+</div>
+<div class="mt-4 pt-3 border-t border-[#262c3e] space-y-2">
+<div class="flex items-center justify-between text-[12px]">
+<span class="text-[#94a3b8] font-medium">Syllabus Completion</span>
+<span class="font-bold text-[#f8faff]">48%</span>
+</div>
+<div class="w-full h-2 rounded-full bg-[#111520] overflow-hidden">
+<div class="h-full bg-slate-500 rounded-full" style="width: 48%;"></div>
+</div>
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-[12px] text-[#94a3b8] pt-1">
+<div class="flex items-center gap-4">
+<span class="flex items-center gap-1.5">
+<svg class="w-3.5 h-3.5 text-[#64748b] fill-current" viewbox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z"></path></svg>
+<span>32 / 60 flashcards</span>
+</span>
+<span class="flex items-center gap-1.5">
+<svg class="w-3.5 h-3.5 text-[#64748b] fill-current" viewbox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"></path></svg>
+<span>2 lecture PDFs</span>
+</span>
+</div>
+<span class="text-[#64748b]">Studied yesterday (Nov 19, 2026)</span>
+</div>
+</div>
+</div>
+<!-- Subject 3: Machine Learning -->
+<div class="p-5 rounded-xl bg-[#171b26] border border-[#23293b] shadow-sm hover:border-[#2a3044] transition-colors">
+<div class="flex flex-col sm:flex-row sm:items-start justify-between gap-3">
+<div class="space-y-1">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-amber-500 shrink-0"></span>
+<h3 class="text-[16px] font-bold text-[#f8faff]">Machine Learning</h3>
+<span class="text-[12px] font-semibold px-2 py-0.5 rounded bg-[rgba(245,158,11,0.15)] text-[#fbbf24] border border-[rgba(245,158,11,0.3)]">Deep Learning</span>
+</div>
+<p class="text-[14px] text-[#94a3b8]">Transformers &amp; Multi-Head Attention Mechanisms</p>
+</div>
+<button class="self-start sm:self-center h-8 px-3.5 rounded-lg border border-[#2a3044] bg-[#111520] hover:bg-[#1f2538] text-[#cbd5e1] font-semibold text-[13px] flex items-center gap-1.5 transition-colors" type="button">
+<span>Resume</span>
+<svg class="w-3.5 h-3.5 fill-current" viewbox="0 0 24 24"><path d="M5 13h11.86l-5.43 5.43 1.42 1.42L21.14 12l-8.29-8.29-1.42 1.42L16.86 11H5v2z"></path></svg>
+</button>
+</div>
+<div class="mt-4 pt-3 border-t border-[#262c3e] space-y-2">
+<div class="flex items-center justify-between text-[12px]">
+<span class="text-[#94a3b8] font-medium">Syllabus Completion</span>
+<span class="font-bold text-[#f8faff]">91%</span>
+</div>
+<div class="w-full h-2 rounded-full bg-[#111520] overflow-hidden">
+<div class="h-full bg-amber-500 rounded-full" style="width: 91%;"></div>
+</div>
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-[12px] text-[#94a3b8] pt-1">
+<div class="flex items-center gap-4">
+<span class="flex items-center gap-1.5">
+<svg class="w-3.5 h-3.5 text-[#64748b] fill-current" viewbox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z"></path></svg>
+<span>84 / 92 flashcards</span>
+</span>
+<span class="flex items-center gap-1.5">
+<svg class="w-3.5 h-3.5 text-[#64748b] fill-current" viewbox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"></path></svg>
+<span>1 research paper</span>
+</span>
+</div>
+<span class="text-[#64748b]">Studied Nov 18, 2026</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Spaced Repetition Due for review (4 cols) -->
+<div class="lg:col-span-5 xl:col-span-4 space-y-4">
+<div class="flex items-center justify-between">
+<h2 class="text-[17px] font-bold text-[#f8faff]">Due for review</h2>
+<span class="text-[12px] font-semibold text-[#64748b] uppercase tracking-wider">Spaced Repetition</span>
+</div>
+<!-- Priority Burst Card: ONLY filled primary button on the whole page -->
+<div class="p-5 rounded-xl bg-gradient-to-br from-[#1e2338] to-[#171b26] border border-[rgba(99,102,241,0.4)] shadow-sm space-y-3">
+<div class="flex items-center justify-between">
+<span class="text-[12px] font-bold uppercase tracking-wider text-[#a5b4fc]">Next recommended batch</span>
+<span class="text-[12px] font-bold px-2 py-0.5 rounded bg-[#111520] border border-[rgba(99,102,241,0.3)] text-[#a5b4fc]">2.5 min</span>
+</div>
+<div>
+<h3 class="text-[18px] font-bold text-[#f8faff] leading-snug">Consensus &amp; Leader election</h3>
+<p class="text-[13px] text-[#94a3b8] mt-1">High-impact retrieval practice on Raft log replication invariant checks.</p>
+</div>
+<!-- Single primary filled button -->
+<button class="w-full h-10 rounded-lg bg-[#6366f1] hover:bg-[#4f46e5] text-white font-semibold text-[14px] flex items-center justify-center gap-2 shadow-md transition-colors" type="button">
+<svg class="w-4 h-4 fill-current" viewbox="0 0 24 24"><path d="M7 2v11h3v9l7-12h-4l4-8z"></path></svg>
+<span>Start burst (4 questions)</span>
+</button>
+<!-- Plain sans-serif text -->
+<div class="flex items-center justify-center gap-1.5 text-[12px] text-[#94a3b8] pt-1">
+<svg class="w-3.5 h-3.5 fill-current text-amber-400" viewbox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
+<span>Earn 2x streak multiplier points</span>
+</div>
+</div>
+<!-- Queued by retention decay -->
+<div class="p-4 rounded-xl bg-[#171b26] border border-[#23293b] shadow-sm space-y-3">
+<div class="text-[12px] font-semibold text-[#64748b] uppercase tracking-wider">Queued by retention decay</div>
+<div class="space-y-1.5">
+<!-- Item 1: Distributed Systems -->
+<div class="flex items-center justify-between p-2.5 rounded-lg hover:bg-[#1f2538] transition-colors">
+<div class="flex items-center gap-2.5 min-w-0">
+<span class="w-2 h-2 rounded-full bg-[#6366f1] shrink-0"></span>
+<div class="flex flex-col min-w-0">
+<span class="font-semibold text-[13px] text-[#f8faff] truncate">Distributed Systems</span>
+<span class="text-[12px] text-[#64748b]">Avg. stability 3.2d</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-[12px] font-semibold px-2 py-0.5 rounded bg-[rgba(244,63,94,0.15)] text-[#fb7185] border border-[rgba(244,63,94,0.3)]">8 overdue</span>
+<span class="font-bold text-[14px] text-[#f8faff]">14</span>
+</div>
+</div>
+<!-- Item 2: Linear Electronics -->
+<div class="flex items-center justify-between p-2.5 rounded-lg hover:bg-[#1f2538] transition-colors">
+<div class="flex items-center gap-2.5 min-w-0">
+<span class="w-2 h-2 rounded-full bg-slate-500 shrink-0"></span>
+<div class="flex flex-col min-w-0">
+<span class="font-semibold text-[13px] text-[#f8faff] truncate">Linear Electronics</span>
+<span class="text-[12px] text-[#64748b]">Avg. stability 5.8d</span>
+</div>
+</div>
+<span class="font-bold text-[14px] text-[#f8faff] pr-1">9</span>
+</div>
+<!-- Item 3: Machine Learning -->
+<div class="flex items-center justify-between p-2.5 rounded-lg hover:bg-[#1f2538] transition-colors">
+<div class="flex items-center gap-2.5 min-w-0">
+<span class="w-2 h-2 rounded-full bg-amber-500 shrink-0"></span>
+<div class="flex flex-col min-w-0">
+<span class="font-semibold text-[13px] text-[#f8faff] truncate">Machine Learning</span>
+<span class="text-[12px] text-[#64748b]">Avg. stability 12.1d</span>
+</div>
+</div>
+<span class="font-bold text-[14px] text-[#f8faff] pr-1">5</span>
+</div>
+</div>
+<div class="pt-2 border-t border-[#262c3e]">
+<button class="w-full h-9 rounded-lg border border-[#2a3044] bg-[#111520] hover:bg-[#1f2538] text-[#cbd5e1] hover:text-white font-semibold text-[13px] flex items-center justify-center gap-2 transition-colors shadow-sm" type="button">
+<svg class="w-4 h-4 text-[#818cf8] fill-current" viewbox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"></path></svg>
+<span>Review all 28 due cards</span>
+</button>
+</div>
+</div>
+<!-- Upcoming Final Test Card: Distributed Systems in 9 days (Nov 29, 2026) -->
+<div class="p-4 rounded-xl bg-[#171b26] border border-[#23293b] shadow-sm space-y-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5 text-[#94a3b8]">
+<svg class="w-4 h-4 fill-current text-[#818cf8]" viewbox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-9 14l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"></path></svg>
+<span class="text-[12px] font-semibold uppercase tracking-wider">Upcoming Final Test</span>
+</div>
+<span class="text-[12px] font-semibold px-2 py-0.5 rounded bg-[rgba(99,102,241,0.15)] text-[#a5b4fc] border border-[rgba(99,102,241,0.3)]">in 9 days · Nov 29</span>
+</div>
+<div>
+<div class="flex items-baseline justify-between">
+<h3 class="font-bold text-[14px] text-[#f8faff]">Distributed Systems Final</h3>
+<span class="font-bold text-[14px] text-[#818cf8]">68%</span>
+</div>
+<p class="text-[12px] text-[#64748b] mt-0.5">Target readiness: 85%</p>
+</div>
+<div class="w-full h-2 rounded-full bg-[#111520] overflow-hidden">
+<div class="h-full bg-[#6366f1] rounded-full" style="width: 68%;"></div>
+</div>
+<div class="flex items-center justify-between text-[12px] pt-0.5">
+<span class="text-[#64748b]">68% readiness</span>
+<button class="text-[#818cf8] hover:text-[#a5b4fc] hover:underline font-semibold flex items-center gap-1 transition-colors" type="button">
+<span>Configure test</span>
+<svg class="w-3.5 h-3.5 fill-current" viewbox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path></svg>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Knowledge Progress & Retention Chart Section -->
+<section class="p-6 rounded-xl bg-[#171b26] border border-[#23293b] shadow-sm space-y-4">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+<div>
+<div class="flex items-center gap-2">
+<h2 class="text-[17px] font-bold text-[#f8faff]">Knowledge Progress &amp; Points Earned</h2>
+<span class="text-[12px] text-[#94a3b8] bg-[#111520] px-2 py-0.5 rounded border border-[#2a3044]">FSRS</span>
+</div>
+<p class="text-[13px] text-[#94a3b8] mt-0.5">Memory index retention tracking vs daily question volume</p>
+</div>
+<!-- Time Range Buttons (secondary) -->
+<div class="flex items-center p-1 rounded-lg bg-[#111520] border border-[#2a3044] text-[12px]">
+<button class="px-3 py-1 rounded-md bg-[#232838] font-semibold text-white shadow-xs" type="button">7d</button>
+<button class="px-3 py-1 rounded-md text-[#94a3b8] hover:text-white font-medium transition-colors" type="button">30d</button>
+<button class="px-3 py-1 rounded-md text-[#94a3b8] hover:text-white font-medium transition-colors" type="button">90d</button>
+</div>
+</div>
+<!-- Chart Visualization -->
+<div class="relative w-full flex items-stretch gap-3 h-52 pt-6">
+<!-- Left Axis: Points -->
+<div class="flex flex-col justify-between items-end text-right text-[12px] text-[#64748b] select-none shrink-0 py-1">
+<span>600</span>
+<span>400</span>
+<span>200</span>
+<span>0</span>
+</div>
+<!-- Chart Area -->
+<div class="relative flex-1 h-full">
+<svg class="w-full h-full overflow-visible" preserveaspectratio="none" viewbox="0 0 700 180">
+<defs>
+<lineargradient id="areaGradientDark" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#6366f1" stop-opacity="0.3"></stop>
+<stop offset="100%" stop-color="#6366f1" stop-opacity="0.0"></stop>
+</lineargradient>
+<lineargradient id="solidBarDark" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#312e81"></stop>
+<stop offset="100%" stop-color="#1e1b4b"></stop>
+</lineargradient>
+<lineargradient id="highBarDark" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#6366f1"></stop>
+<stop offset="100%" stop-color="#4338ca"></stop>
+</lineargradient>
+</defs>
+<!-- Grid Horizontal Lines -->
+<line stroke="#1f2537" stroke-dasharray="3 3" stroke-width="1" x1="0" x2="700" y1="10" y2="10"></line>
+<line stroke="#1f2537" stroke-dasharray="3 3" stroke-width="1" x1="0" x2="700" y1="60" y2="60"></line>
+<line stroke="#1f2537" stroke-dasharray="3 3" stroke-width="1" x1="0" x2="700" y1="110" y2="110"></line>
+<line stroke="#262c3e" stroke-width="1" x1="0" x2="700" y1="160" y2="160"></line>
+<!-- Daily Point Bars (Nov 14 to Nov 20) -->
+<!-- Sat Nov 14 -->
+<rect fill="url(#solidBarDark)" height="70" rx="4" width="32" x="34" y="90"></rect>
+<!-- Sun Nov 15 -->
+<rect fill="url(#solidBarDark)" height="80" rx="4" width="32" x="134" y="80"></rect>
+<!-- Mon Nov 16 -->
+<rect fill="url(#solidBarDark)" height="105" rx="4" width="32" x="234" y="55"></rect>
+<!-- Tue Nov 17 -->
+<rect fill="url(#solidBarDark)" height="95" rx="4" width="32" x="334" y="65"></rect>
+<!-- Wed Nov 18 -->
+<rect fill="url(#solidBarDark)" height="85" rx="4" width="32" x="434" y="75"></rect>
+<!-- Thu Nov 19: High volume day -->
+<rect fill="url(#highBarDark)" height="130" rx="4" width="32" x="534" y="30"></rect>
+<!-- Fri Nov 20: Today (in progress) - dashed / semi-transparent -->
+<rect fill="rgba(99,102,241,0.15)" height="55" rx="4" stroke="#6366f1" stroke-dasharray="3 3" stroke-width="1.5" width="32" x="634" y="105"></rect>
+<!-- Retention Curve Area Fill -->
+<path d="M50 110 C100 102, 130 92, 150 88 C200 78, 230 65, 250 62 C300 58, 330 68, 350 64 C400 58, 430 48, 450 45 C500 40, 530 32, 550 30 L550 160 L50 160 Z" fill="url(#areaGradientDark)"></path>
+<!-- Retention Line past to Thu -->
+<path d="M50 110 C100 102, 130 92, 150 88 C200 78, 230 65, 250 62 C300 58, 330 68, 350 64 C400 58, 430 48, 450 45 C500 40, 530 32, 550 30" fill="none" stroke="#818cf8" stroke-linecap="round" stroke-width="2.5"></path>
+<!-- Projected / in-progress line to today (Fri) -->
+<path d="M550 30 C580 28, 620 38, 650 42" fill="none" stroke="#818cf8" stroke-dasharray="4 4" stroke-linecap="round" stroke-width="2"></path>
+<circle cx="550" cy="30" fill="#171b26" r="4.5" stroke="#818cf8" stroke-width="2.5"></circle>
+<circle cx="650" cy="42" fill="#818cf8" r="4" stroke="#171b26" stroke-width="2"></circle>
+</svg>
+<!-- Non-overlapping Tooltip for Thu Nov 19 (590 pts) placed with generous clearance -->
+<div class="absolute -top-3 left-[78%] -translate-x-1/2 px-2.5 py-1.5 rounded-lg bg-[#0f1420] border border-[#333b52] text-white shadow-xl pointer-events-none flex flex-col items-center z-10">
+<span class="text-[12px] font-semibold whitespace-nowrap text-[#f8faff]">Thu Nov 19: 590 pts</span>
+<span class="text-[12px] text-[#94a3b8] whitespace-nowrap">42 cards mastered</span>
+<div class="w-2 h-2 bg-[#0f1420] border-r border-b border-[#333b52] rotate-45 -mb-1 mt-0.5"></div>
+</div>
+<!-- In Progress Badge for Today -->
+<div class="absolute bottom-20 right-0 px-2 py-1 rounded bg-[rgba(99,102,241,0.15)] border border-[rgba(99,102,241,0.3)] text-[#a5b4fc] text-[12px] font-semibold flex items-center gap-1.5 shadow-xs">
+<span class="w-2 h-2 rounded-full bg-[#6366f1] animate-pulse"></span>
+<span>Today (in progress)</span>
+</div>
+</div>
+<!-- Right Axis: Retention % -->
+<div class="flex flex-col justify-between items-start text-left text-[12px] text-[#64748b] select-none shrink-0 py-1">
+<span>100%</span>
+<span>90%</span>
+<span>80%</span>
+<span>70%</span>
+</div>
+</div>
+<!-- Chart X-Axis Labels: Last 7 days ending Fri Nov 20 (Today) -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between pt-2 gap-3">
+<div class="grid grid-cols-7 w-full max-w-2xl pl-10 pr-10 text-center text-[12px] text-[#94a3b8] font-medium">
+<span>Sat Nov 14</span>
+<span>Sun Nov 15</span>
+<span>Mon Nov 16</span>
+<span>Tue Nov 17</span>
+<span>Wed Nov 18</span>
+<span>Thu Nov 19</span>
+<span class="font-bold text-[#818cf8]">Fri Nov 20 (Today)</span>
+</div>
+<div class="flex items-center gap-4 shrink-0 pr-4 text-[12px] text-[#94a3b8]">
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-3 rounded-xs bg-[#4338ca]"></span>
+<span>Daily points</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-4 h-0.5 bg-[#818cf8] rounded-full"></span>
+<span>FSRS Retention (91%)</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Bottom Layout: "Ask your notes" + "Recent activity" alongside "Weak topics" -->
+<section class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+<!-- Left Column: Search Box + Recent Activity -->
+<div class="space-y-4">
+<!-- Compact "Ask your notes" search card placed directly ABOVE Recent Activity -->
+<div class="p-4 rounded-xl bg-[#171b26] border border-[#23293b] shadow-sm space-y-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-lg bg-[rgba(99,102,241,0.15)] text-[#a5b4fc] flex items-center justify-center">
+<svg class="w-4 h-4 fill-current" viewbox="0 0 24 24">
+<path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2zm4-6H6V6h12v2z"></path>
+</svg>
+</div>
+<h3 class="text-[14px] font-bold text-[#f8faff]">Ask your notes</h3>
+</div>
+<span class="text-[12px] text-[#64748b]">Semantic search</span>
+</div>
+<div class="flex items-center gap-2">
+<input class="flex-1 h-9 px-3 rounded-lg bg-[#111520] border border-[#262c3e] text-[13px] text-[#f8faff] placeholder:text-[#64748b] focus:outline-none focus:border-[#6366f1] focus:ring-1 focus:ring-[#6366f1]" placeholder="Ask a question about your notes…" type="text"/>
+<button class="h-9 px-3.5 rounded-lg border border-[#2a3044] bg-[#111520] hover:bg-[#1f2538] text-[#cbd5e1] font-semibold text-[13px] flex items-center gap-1.5 transition-colors shadow-sm shrink-0" type="button">
+<svg class="w-3.5 h-3.5 fill-current text-[#94a3b8]" viewbox="0 0 24 24">
+<path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+</svg>
+<span>Search</span>
+</button>
+</div>
+</div>
+<!-- Recent Activity Card with clear SVG icons for every row -->
+<div class="p-5 rounded-xl bg-[#171b26] border border-[#23293b] shadow-sm space-y-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<h2 class="text-[17px] font-bold text-[#f8faff]">Recent activity</h2>
+<svg class="w-4 h-4 text-[#64748b] fill-current" viewbox="0 0 24 24"><path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z"></path></svg>
+</div>
+<span class="text-[12px] text-[#64748b]">Synced with vault</span>
+</div>
+<div class="space-y-3.5">
+<!-- Row 1: Upload Icon -->
+<div class="flex items-start gap-3">
+<div class="w-8 h-8 rounded-lg bg-[rgba(99,102,241,0.15)] text-[#818cf8] border border-[rgba(99,102,241,0.3)] flex items-center justify-center shrink-0">
+<svg class="w-4 h-4 fill-current" viewbox="0 0 24 24">
+<path d="M9 16h6v-6h4l-7-7-7 7h4v6zm-4 2h14v2H5v-2z"></path>
+</svg>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<span class="font-semibold text-[13px] text-[#f8faff]">MIT_6.824_Raft_Lecture_Notes.pdf</span>
+<span class="text-[12px] text-[#64748b] shrink-0">Nov 20 · 2h ago</span>
+</div>
+<p class="text-[12px] text-[#94a3b8] mt-0.5">Extracted concepts &amp; auto-generated <strong class="font-semibold text-[#f8faff]">24 new flashcards</strong>.</p>
+</div>
+</div>
+<!-- Row 2: Quiz Icon -->
+<div class="flex items-start gap-3">
+<div class="w-8 h-8 rounded-lg bg-[#111520] text-[#94a3b8] border border-[#2a3044] flex items-center justify-center shrink-0">
+<svg class="w-4 h-4 fill-current" viewbox="0 0 24 24">
+<path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14h-2v-2h2v2zm1.07-4.75l-.9.92C11.45 13.9 11 14.3 11 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H7c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"></path>
+</svg>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<span class="font-semibold text-[13px] text-[#f8faff]">Op-Amp Slew Rate &amp; Frequency Response</span>
+<span class="text-[12px] text-[#64748b] shrink-0">Nov 19 · 4h ago</span>
+</div>
+<p class="text-[12px] text-[#94a3b8] mt-0.5">Quiz completed · Score: <strong class="font-semibold text-emerald-400">92%</strong></p>
+</div>
+</div>
+<!-- Row 3: Gold Star Icon & Badge -->
+<div class="flex items-start gap-3">
+<div class="w-8 h-8 rounded-lg bg-[rgba(245,158,11,0.15)] text-amber-400 border border-[rgba(245,158,11,0.3)] flex items-center justify-center shrink-0">
+<svg class="w-4 h-4 fill-current" viewbox="0 0 24 24">
+<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+</svg>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<span class="font-semibold text-[13px] text-[#f8faff]">Nyquist Stability Criterion</span>
+<span class="text-[12px] text-[#64748b] shrink-0">Nov 19</span>
+</div>
+<div class="mt-1">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[rgba(245,158,11,0.15)] text-[#fbbf24] border border-[rgba(245,158,11,0.3)] text-[12px] font-semibold">
+<svg class="w-3 h-3 fill-current text-amber-400" viewbox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
+<span>Gold question mastered: Nyquist Stability Criterion</span>
+</span>
+</div>
+</div>
+</div>
+<!-- Row 4: Review Icon -->
+<div class="flex items-start gap-3">
+<div class="w-8 h-8 rounded-lg bg-[rgba(99,102,241,0.15)] text-[#818cf8] border border-[rgba(99,102,241,0.3)] flex items-center justify-center shrink-0">
+<svg class="w-4 h-4 fill-current" viewbox="0 0 24 24">
+<path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z"></path>
+</svg>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<span class="font-semibold text-[13px] text-[#f8faff]">Spaced Repetition Review (18 items)</span>
+<span class="text-[12px] text-[#64748b] shrink-0">Nov 18</span>
+</div>
+<p class="text-[12px] text-[#94a3b8] mt-0.5">100% on target recall · Mean response latency 4.2s.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Weak Topics / Needs Attention -->
+<div class="p-5 rounded-xl bg-[#171b26] border border-[#23293b] shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center gap-2">
+<h2 class="text-[17px] font-bold text-[#f8faff]">Weak topics</h2>
+<span class="text-[12px] font-semibold px-2 py-0.5 rounded bg-[rgba(244,63,94,0.15)] text-[#fb7185] border border-[rgba(244,63,94,0.3)]">Needs attention</span>
+</div>
+<span class="text-[12px] text-[#64748b]">Pre-test review</span>
+</div>
+<p class="text-[13px] text-[#94a3b8] mb-4">Gaps identified before upcoming final tests</p>
+<div class="space-y-3">
+<!-- Weak Topic 1: Byzantine Fault Tolerance (BFT) -->
+<div class="p-3.5 rounded-lg bg-[#111520] border border-[#262c3e] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+<div class="space-y-1 min-w-0">
+<span class="font-bold text-[14px] text-[#f8faff] block">Byzantine Fault Tolerance (BFT)</span>
+<div class="flex items-center gap-2 text-[12px]">
+<span class="text-[#94a3b8]">Distributed Systems</span>
+<span class="w-1 h-1 rounded-full bg-[#64748b]"></span>
+<span class="font-semibold text-rose-400">54% Accuracy (Weak)</span>
+</div>
+</div>
+<button class="self-start sm:self-center h-8 px-3 rounded-lg border border-[#2a3044] bg-[#171b26] hover:bg-[#1f2538] text-[#cbd5e1] font-semibold text-[12px] flex items-center gap-1 shadow-xs transition-colors shrink-0" type="button">
+<span>Practice</span>
+<svg class="w-3.5 h-3.5 text-[#818cf8] fill-current" viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
+</button>
+</div>
+<!-- Weak Topic 2: Phase Margin & Bode plots -->
+<div class="p-3.5 rounded-lg bg-[#111520] border border-[#262c3e] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+<div class="space-y-1 min-w-0">
+<span class="font-bold text-[14px] text-[#f8faff] block">Phase Margin &amp; Gain Margin Bode plots</span>
+<div class="flex items-center gap-2 text-[12px]">
+<span class="text-[#94a3b8]">Linear Electronics</span>
+<span class="w-1 h-1 rounded-full bg-[#64748b]"></span>
+<span class="font-semibold text-amber-400">61% Accuracy (Needs review)</span>
+</div>
+</div>
+<button class="self-start sm:self-center h-8 px-3 rounded-lg border border-[#2a3044] bg-[#171b26] hover:bg-[#1f2538] text-[#cbd5e1] font-semibold text-[12px] flex items-center gap-1 shadow-xs transition-colors shrink-0" type="button">
+<span>Practice</span>
+<svg class="w-3.5 h-3.5 text-[#818cf8] fill-current" viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
+</button>
+</div>
+<!-- Weak Topic 3: Cross-Entropy Loss -->
+<div class="p-3.5 rounded-lg bg-[#111520] border border-[#262c3e] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+<div class="space-y-1 min-w-0">
+<span class="font-bold text-[14px] text-[#f8faff] block">Cross-Entropy Loss in Multi-Class Classification</span>
+<div class="flex items-center gap-2 text-[12px]">
+<span class="text-[#94a3b8]">Machine Learning</span>
+<span class="w-1 h-1 rounded-full bg-[#64748b]"></span>
+<span class="font-semibold text-amber-400">68% Accuracy (Needs review)</span>
+</div>
+</div>
+<button class="self-start sm:self-center h-8 px-3 rounded-lg border border-[#2a3044] bg-[#171b26] hover:bg-[#1f2538] text-[#cbd5e1] font-semibold text-[12px] flex items-center gap-1 shadow-xs transition-colors shrink-0" type="button">
+<span>Practice</span>
+<svg class="w-3.5 h-3.5 text-[#818cf8] fill-current" viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
+</button>
+</div>
+</div>
+</div>
+<div class="pt-4 border-t border-[#262c3e] flex items-center justify-between text-[12px] text-[#94a3b8]">
+<span class="text-[#64748b]">Calculated from recent quiz responses</span>
+<span class="font-semibold text-[#818cf8]">3 topics flagged</span>
+</div>
+</div>
+</section>
+</main>
+</div>
+</body></html>

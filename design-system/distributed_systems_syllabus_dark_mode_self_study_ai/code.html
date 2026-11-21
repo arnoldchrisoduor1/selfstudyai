@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="web_dashboard" name="shell-type"/>
+<title>Subjects &amp; Curricula - Self-Study AI</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+    @layer base {
+      html, body { margin: 0; padding: 0; }
+      body { overscroll-behavior: none; }
+      main > :first-child { margin-top: 0 !important; }
+      main > :last-child { margin-bottom: 0 !important; }
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    ::-webkit-scrollbar { display: none; }
+  </style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#6366f1",
+            "primary-hover": "#4f46e5",
+            "primary-subtle": "rgba(99, 102, 241, 0.15)",
+            "primary-border": "rgba(99, 102, 241, 0.3)",
+            background: "#0a0e18",
+            surface: "#171b26",
+            "surface-dim": "#111520",
+            "surface-elevated": "#232838",
+            "surface-border": "#262c3e",
+            "text-main": "#f8faff",
+            "text-muted": "#94a3b8",
+            "text-subtle": "#64748b",
+            emerald: {
+              400: "#34d399",
+              500: "#10b981",
+              900: "#064e3b",
+              950: "rgba(6, 78, 59, 0.3)"
+            },
+            amber: {
+              400: "#fbbf24",
+              500: "#f59e0b",
+              900: "#78350f",
+              950: "rgba(120, 53, 15, 0.3)"
+            },
+            rose: {
+              400: "#fb7185",
+              500: "#f43f5e",
+              900: "#881337",
+              950: "rgba(136, 19, 55, 0.3)"
+            }
+          },
+          fontFamily: {
+            sans: ["Inter", "sans-serif"]
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-[#0a0e18] font-sans text-[#f8faff] text-[14px] leading-relaxed antialiased flex min-h-screen">
+<!-- Left Sidebar (Full Viewport Height & Sticky) -->
+<aside class="sticky top-0 h-screen w-64 bg-[#0d111a] border-r border-[#1e2333] z-50 flex flex-col justify-between flex-shrink-0 select-none">
+<div class="flex flex-col">
+<!-- App Header / Logo strictly one line -->
+<div class="h-16 px-6 flex items-center border-b border-[#1e2333]">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-[#6366f1] flex items-center justify-center text-white shrink-0 shadow-sm">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24">
+<path d="M19 2H6c-1.2 0-2 .8-2 2v16c0 1.2.8 2 2 2h13a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1zm-1 18H6a1 1 0 0 1-1-1V5c0-.6.4-1 1-1h12v16zm-3-8H8V10h7v2zm-2 4H8v-2h5v2z"></path>
+</svg>
+</div>
+<span class="font-bold text-[17px] text-[#f8faff] tracking-tight whitespace-nowrap">Self-Study AI</span>
+</div>
+</div>
+<!-- Navigation Links -->
+<div class="px-3 py-4">
+<div class="text-[12px] font-semibold text-[#64748b] uppercase tracking-wider px-3 mb-2">Workspace</div>
+<nav class="space-y-1">
+<a class="flex items-center justify-between px-3 py-2 rounded-lg text-[#94a3b8] hover:bg-[#171b26] hover:text-[#f8faff] font-medium transition-colors" data-path="overview" href="#">
+<div class="flex items-center gap-3">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24">
+<path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"></path>
+</svg>
+<span>Overview</span>
+</div>
+</a>
+<!-- Active State: Subjects -->
+<a class="flex items-center justify-between px-3 py-2 rounded-lg text-[#94a3b8] hover:bg-[#171b26] hover:text-[#f8faff] font-medium transition-colors" data-path="subjects" href="#">
+<div class="flex items-center gap-3">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24">
+<path d="M12 2l-5.5 9h11L12 2zm0 3.84L13.93 9h-3.87L12 5.84zM17.5 13c-2.49 0-4.5 2.01-4.5 4.5s2.01 4.5 4.5 4.5 4.5-2.01 4.5-4.5-2.01-4.5-4.5-4.5zm0 7c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5zM3 21.5h8v-8H3v8zm2-6h4v4H5v-4z"></path>
+</svg>
+<span>Subjects</span>
+</div>
+<span class="w-1.5 h-1.5 rounded-full bg-[#818cf8]"></span>
+</a>
+<a class="flex items-center justify-between px-3 py-2 rounded-lg text-[#94a3b8] hover:bg-[#171b26] hover:text-[#f8faff] font-medium transition-colors" data-path="library" href="#">
+<div class="flex items-center gap-3">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24">
+<path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z"></path>
+</svg>
+<span>Library</span>
+</div>
+</a>
+<a class="flex items-center justify-between px-3 py-2 rounded-lg text-[#94a3b8] hover:bg-[#171b26] hover:text-[#f8faff] font-medium transition-colors" data-path="quizzes" href="#">
+<div class="flex items-center gap-3">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24">
+<path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14h-2v-2h2v2zm1.07-4.75l-.9.92C11.45 13.9 11 14.3 11 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H7c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"></path>
+</svg>
+<span>Quizzes</span>
+</div>
+<span class="text-[12px] font-semibold px-2 py-0.5 rounded-full bg-[#1c2130] text-[#94a3b8] border border-[#2a3044]">12</span>
+</a>
+<a class="flex items-center justify-between px-3 py-2 rounded-lg text-[#94a3b8] hover:bg-[#171b26] hover:text-[#f8faff] font-medium transition-colors" data-path="reviews" href="#">
+<div class="flex items-center gap-3">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24">
+<path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"></path>
+</svg>
+<span>Reviews</span>
+</div>
+<span class="text-[12px] font-semibold px-2 py-0.5 rounded-full bg-[rgba(245,158,11,0.15)] text-[#fbbf24] border border-[rgba(245,158,11,0.3)]">28</span>
+</a>
+<a class="flex items-center justify-between px-3 py-2 rounded-lg text-[#94a3b8] hover:bg-[#171b26] hover:text-[#f8faff] font-medium transition-colors" data-path="final-tests" href="#">
+<div class="flex items-center gap-3">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24">
+<path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-9 14l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"></path>
+</svg>
+<span>Final Tests</span>
+</div>
+</a>
+<a class="flex items-center justify-between px-3 py-2 rounded-lg text-[#94a3b8] hover:bg-[#171b26] hover:text-[#f8faff] font-medium transition-colors" data-path="analytics" href="#">
+<div class="flex items-center gap-3">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24">
+<path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-5h2v5zm4 0h-2v-9h2v9zm4 0h-2V7h2v10z"></path>
+</svg>
+<span>Analytics</span>
+</div>
+</a>
+<a class="flex items-center justify-between px-3 py-2 rounded-lg text-[#94a3b8] hover:bg-[#171b26] hover:text-[#f8faff] font-medium transition-colors" data-path="settings" href="#">
+<div class="flex items-center gap-3">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24">
+<path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"></path>
+</svg>
+<span>Settings</span>
+</div>
+</a>
+</nav>
+</div>
+</div>
+<!-- Sidebar Footer -->
+<div class="p-4 border-t border-[#1e2333] space-y-3">
+<!-- Sync Status -->
+<div class="flex items-center justify-between px-3 py-1.5 rounded-lg bg-[#111520] border border-[#262c3e] text-[12px]">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.5)]"></span>
+<span class="font-medium text-[#94a3b8]">Synced</span>
+</div>
+<span class="text-[12px] text-[#64748b]">Local safe</span>
+</div>
+<!-- AI Status -->
+<div class="flex items-center justify-between px-3 py-1.5 rounded-lg bg-[#111520] border border-[#262c3e] text-[12px]">
+<span class="font-medium text-[#94a3b8]">Cloud AI · 420 credits</span>
+<svg class="w-3.5 h-3.5 text-[#818cf8]" fill="currentColor" viewbox="0 0 24 24">
+<path d="M21 10.12h-6.78l2.74-2.82c.86-.86.86-2.27 0-3.14s-2.27-.86-3.14 0L7.54 10.45c-.39.39-.62.92-.62 1.48s.23 1.09.62 1.48l6.28 6.29c.86.86 2.27.86 3.14 0s.86-2.27 0-3.14l-2.74-2.82H21c1.1 0 2-.9 2-2s-.9-1.62-2-1.62z"></path>
+</svg>
+</div>
+<!-- User Profile -->
+<div class="flex items-center justify-between pt-1">
+<div class="flex items-center gap-2.5">
+<img alt="Arnold Avatar" class="w-8 h-8 rounded-full object-cover ring-1 ring-[#262c3e] shrink-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKJHH-5GPTzvjZFf_Yh3XaiRwrU_tjeglAwqLUfr48vdqWQ1GN0YnES4yi6_sf3Z-dXzP-QzGyA4soL-6akImGzRfJyew7HINbVghPnWKCY4-r5hmQwSmzkw8L3rKq5TdK0ghrEWNIKVTqmZPPylnT2qP0545OGuGTg8bcj-51PNRkEYPghEkWvSEtUP5pwL42jTqBdzpgS-tjiYrmOjW71d_m2uxJxsl9pmt-i9Ms"/>
+<div class="flex flex-col">
+<span class="font-semibold text-[13px] text-[#f8faff] leading-tight">Arnold</span>
+<span class="text-[12px] text-[#64748b] leading-tight">arnold@linear.app</span>
+</div>
+</div>
+<button class="p-1 rounded text-[#64748b] hover:text-[#f8faff] transition-colors" title="Switch profile" type="button">
+<svg class="w-4 h-4 fill-current" viewbox="0 0 24 24">
+<path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z"></path>
+</svg>
+</button>
+</div>
+</div>
+</aside>
+<!-- Main Content Wrapper -->
+<div class="flex-1 flex flex-col min-w-0">
+<!-- Top Sticky Header -->
+<header class="sticky top-0 z-40 h-16 bg-[#0d111a]/90 backdrop-blur-md border-b border-[#1e2333] flex items-center justify-between px-8">
+<!-- Search Input -->
+<div class="flex-1 max-w-xl">
+<div class="relative flex items-center">
+<svg class="w-4 h-4 absolute left-3.5 text-[#64748b] fill-current pointer-events-none" viewbox="0 0 24 24">
+<path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+</svg>
+<input class="w-full h-9 pl-10 pr-14 rounded-lg bg-[#161b26] border border-[#2a3044] text-[13px] text-[#f8faff] placeholder:text-[#64748b] focus:outline-none focus:border-[#6366f1] focus:ring-1 focus:ring-[#6366f1] shadow-sm transition-colors" placeholder="Search your notes and books... (Cmd+K)" type="text"/>
+<span class="text-[12px] font-medium text-[#94a3b8] bg-[#111520] border border-[#2a3044] px-1.5 py-0.5 rounded absolute right-2.5 pointer-events-none">Cmd+K</span>
+</div>
+</div>
+<!-- Action Items on Right -->
+<div class="flex items-center gap-3">
+<!-- Add Material CTA -->
+<button class="h-9 px-3.5 rounded-lg border border-[#2a3044] bg-[#171b26] text-[#cbd5e1] hover:bg-[#1f2538] hover:text-white font-medium text-[13px] flex items-center gap-2 shadow-sm transition-colors" onclick="document.getElementById('bulk-upload-input').click()" type="button">
+<svg class="w-4 h-4 text-[#94a3b8] fill-current" viewbox="0 0 24 24">
+<path d="M9 16h6v-6h4l-7-7-7 7h4v6zm-4 2h14v2H5v-2z"></path>
+</svg>
+<span>Add material</span>
+</button>
+<!-- Notification Bell with Red Badge -->
+<button class="relative p-2 rounded-lg border border-[#2a3044] bg-[#171b26] text-[#94a3b8] hover:text-[#f8faff] hover:bg-[#1f2538] shadow-sm transition-colors" title="Notifications" type="button">
+<svg class="w-4 h-4 fill-current" viewbox="0 0 24 24">
+<path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"></path>
+</svg>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-[#f43f5e] shadow-[0_0_6px_rgba(244,63,94,0.6)]"></span>
+</button>
+<!-- Start Review Button (Ghost / Secondary) -->
+<button class="h-9 px-3.5 rounded-lg border border-[#2a3044] bg-[#171b26] text-[#cbd5e1] hover:bg-[#1f2538] hover:text-white font-medium text-[13px] flex items-center gap-2 shadow-sm transition-colors" type="button">
+<svg class="w-4 h-4 text-[#818cf8] fill-current" viewbox="0 0 24 24">
+<path d="M8 5v14l11-7z"></path>
+</svg>
+<span>Start review</span>
+</button>
+</div>
+</header>
+<!-- Page Body -->
+<main class="w-full px-8 py-7 pb-20 max-w-7xl mx-auto space-y-6"><div class="flex flex-col w-full">
+<!-- Breadcrumb & Top Bar Clearance -->
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-2 font-body-sm text-text-muted">
+<a class="hover:text-text-primary transition-colors" href="#">Subjects</a>
+<span>/</span>
+<span class="text-text-primary font-label-md">Distributed Systems</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-raised font-mono-sm text-text-secondary">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+        FSRS v4.5 Adaptive
+      </span>
+</div>
+</div>
+<!-- Subject Title & Action Bar -->
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-6">
+<div>
+<h1 class="font-headline-lg text-text-primary tracking-tight">Distributed Systems</h1>
+<p class="font-body-md text-text-muted mt-0.5">MIT 6.824 &amp; Designing Data-Intensive Applications</p>
+</div>
+<div class="flex flex-wrap items-center gap-2.5">
+<button class="h-9 px-4 rounded-lg bg-surface-elevated hover:bg-surface-highlight text-text-primary font-label-md transition-colors shadow-sm flex items-center gap-2" type="button">
+<span class="material-symbols-outlined text-[16px] text-text-secondary">upload_file</span>
+<span>Add material</span>
+</button>
+<button class="h-9 px-4 rounded-lg bg-surface-elevated hover:bg-surface-highlight text-text-primary font-label-md transition-colors shadow-sm flex items-center gap-2" type="button">
+<span class="material-symbols-outlined text-[16px] text-text-secondary">add</span>
+<span>Add chapter</span>
+</button>
+<button class="h-9 px-4 rounded-lg bg-surface-elevated hover:bg-surface-highlight text-text-primary font-label-md transition-colors shadow-sm flex items-center gap-2" type="button">
+<span class="material-symbols-outlined text-[16px] text-text-secondary">quiz</span>
+<span>Take test</span>
+</button>
+<button class="h-9 px-5 rounded-lg bg-inverse-primary hover:bg-on-secondary-fixed-variant text-text-primary font-label-md shadow-md transition-all flex items-center gap-2" type="button">
+<span class="material-symbols-outlined text-[18px]">play_circle</span>
+<span>Study all due (14 cards)</span>
+</button>
+</div>
+</div>
+<!-- Metric Strip (4 Stat Cards) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+<div class="p-4 rounded-xl bg-surface-container-low shadow-sm relative overflow-hidden">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-text-muted uppercase tracking-wider">Overall Mastery</span>
+<span class="material-symbols-outlined text-[18px] text-emerald-400">verified</span>
+</div>
+<div class="mt-2 flex items-baseline gap-2">
+<span class="font-headline-md text-text-primary">72%</span>
+<span class="font-body-sm text-success-text font-medium flex items-center">
+<span class="material-symbols-outlined text-[14px]">trending_up</span>
+          +4.2% vs last week
+        </span>
+</div>
+<div class="w-full bg-surface-overlay h-1 rounded-full mt-3 overflow-hidden">
+<div class="bg-emerald-400 h-full rounded-full" style="width: 72%"></div>
+</div>
+</div>
+<div class="p-4 rounded-xl bg-surface-container-low shadow-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-text-muted uppercase tracking-wider">Curriculum Depth</span>
+<span class="material-symbols-outlined text-[18px] text-text-secondary">layers</span>
+</div>
+<div class="mt-2 flex items-baseline gap-2">
+<span class="font-headline-md text-text-primary">6 Chapters</span>
+<span class="font-body-sm text-text-muted">24 subtopics</span>
+</div>
+<div class="mt-3 font-body-sm text-text-secondary">
+        4 core · 2 supplementary
+      </div>
+</div>
+<div class="p-4 rounded-xl bg-surface-container-low shadow-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-text-muted uppercase tracking-wider">Total Deck Cards</span>
+<span class="material-symbols-outlined text-[18px] text-primary">style</span>
+</div>
+<div class="mt-2 flex items-baseline gap-2">
+<span class="font-headline-md text-text-primary">65</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-elevated font-label-sm text-warning-text">14 due today</span>
+</div>
+<div class="mt-3 font-body-sm text-text-muted">
+        FSRS adaptive schedule
+      </div>
+</div>
+<div class="p-4 rounded-xl bg-surface-container-low shadow-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-text-muted uppercase tracking-wider">Predicted Retention</span>
+<span class="material-symbols-outlined text-[18px] text-primary">psychology</span>
+</div>
+<div class="mt-2 flex items-baseline gap-2">
+<span class="font-headline-md text-text-primary">88%</span>
+<span class="font-body-sm text-success-text font-medium flex items-center">
+<span class="material-symbols-outlined text-[14px]">north_east</span>
+          At current pace
+        </span>
+</div>
+<div class="mt-3 font-body-sm text-text-secondary">
+        Target threshold: 85%
+      </div>
+</div>
+</div>
+<!-- AI Recommendation Banner -->
+<div class="p-4 sm:p-5 rounded-xl bg-surface-container-low shadow-md mb-6 relative overflow-hidden">
+<div class="absolute -right-8 -top-8 w-48 h-48 bg-primary-container/10 rounded-full blur-2xl pointer-events-none"></div>
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 relative z-10">
+<div class="flex items-start gap-3.5">
+<div class="w-9 h-9 rounded-lg bg-surface-elevated text-primary flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
+<span class="material-symbols-outlined text-[20px]">auto_awesome</span>
+</div>
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="px-2 py-0.5 rounded-md bg-surface-elevated text-primary font-label-sm uppercase tracking-wider">
+              AI Study Recommendation
+            </span>
+<span class="w-1.5 h-1.5 rounded-full bg-warning-text"></span>
+<span class="font-label-sm text-warning-text font-medium">Optimal Yield Window</span>
+</div>
+<p class="font-body-md text-on-surface max-w-3xl leading-relaxed">
+            Priority focus: <span class="text-text-primary font-medium">Byzantine Fault Tolerance</span> &amp; <span class="text-text-primary font-medium">Raft Log Compaction</span> recall probability has dipped below your 85% stability target. Reviewing these 6 critical cards will restore course-wide recall to 91% in ~12 minutes.
+          </p>
+</div>
+</div>
+<div class="flex items-center gap-2.5 shrink-0 self-start md:self-center">
+<button class="h-8 px-3 rounded-lg text-text-muted hover:text-text-primary hover:bg-surface-elevated font-label-md transition-colors" type="button">
+          Dismiss
+        </button>
+<button class="h-8 px-3.5 rounded-lg bg-inverse-primary hover:bg-on-secondary-fixed-variant text-text-primary font-label-md transition-all shadow-sm flex items-center gap-1.5" type="button">
+<span>Start Target Session</span>
+<span class="font-mono-sm text-primary">(12 min)</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Retention Distribution Bar -->
+<div class="p-5 rounded-xl bg-surface-container-low shadow-sm mb-6">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+<div class="flex items-center gap-2">
+<h2 class="font-headline-sm text-text-primary">Knowledge Retention Distribution</h2>
+<span class="font-body-sm text-text-muted">· 65 flashcards</span>
+</div>
+<div class="flex items-center gap-4 font-body-sm text-text-muted">
+<span>Average interval: <strong class="text-text-primary font-medium">19.4 days</strong></span>
+<span>Next cycle: <strong class="text-text-primary font-medium">Tomorrow, 08:00</strong></span>
+</div>
+</div>
+<!-- Segmented Track -->
+<div class="w-full h-3 rounded-full bg-surface-overlay flex overflow-hidden mb-3.5">
+<div class="h-full bg-emerald-500 transition-all" style="width: 38%" title="Mastered: 38% (25 cards)"></div>
+<div class="h-full bg-primary transition-all" style="width: 34%" title="Stable: 34% (22 cards)"></div>
+<div class="h-full bg-amber-400 transition-all" style="width: 20%" title="In Review: 20% (13 cards)"></div>
+<div class="h-full bg-rose-500 transition-all" style="width: 8%" title="Weak: 8% (5 cards)"></div>
+</div>
+<!-- Segment Legend -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-1">
+<div class="flex items-center gap-2 font-body-sm">
+<span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+<span class="text-text-muted">Mastered</span>
+<span class="text-text-primary font-medium">38% (25)</span>
+</div>
+<div class="flex items-center gap-2 font-body-sm">
+<span class="w-2.5 h-2.5 rounded-full bg-primary"></span>
+<span class="text-text-muted">Stable</span>
+<span class="text-text-primary font-medium">34% (22)</span>
+</div>
+<div class="flex items-center gap-2 font-body-sm">
+<span class="w-2.5 h-2.5 rounded-full bg-amber-400"></span>
+<span class="text-text-muted">In Review</span>
+<span class="text-text-primary font-medium">20% (13)</span>
+</div>
+<div class="flex items-center gap-2 font-body-sm">
+<span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span>
+<span class="text-text-muted">Weak</span>
+<span class="text-text-primary font-medium">8% (5)</span>
+</div>
+</div>
+</div>
+<!-- Main Split Layout: Syllabus (Left) + Utility & Priority Sidebar (Right) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- Left Column: Syllabus & Modules (8 Cols) -->
+<div class="lg:col-span-8 flex flex-col gap-4">
+<!-- Module Filters -->
+<div class="flex items-center justify-between pb-1">
+<div class="flex items-center gap-2">
+<button class="px-3 py-1.5 rounded-lg bg-surface-elevated text-primary font-label-md" type="button">
+            All Modules (6)
+          </button>
+<button class="px-3 py-1.5 rounded-lg text-text-muted hover:text-text-primary hover:bg-surface-elevated font-label-md transition-colors flex items-center gap-1.5" type="button">
+<span>Due for Review</span>
+<span class="px-1.5 py-0.2 rounded-full bg-surface-elevated text-warning-text font-mono-sm">3</span>
+</button>
+<button class="px-3 py-1.5 rounded-lg text-text-muted hover:text-text-primary hover:bg-surface-elevated font-label-md transition-colors flex items-center gap-1.5" type="button">
+<span>Weak Areas</span>
+<span class="px-1.5 py-0.2 rounded-full bg-alert-bg text-alert-text font-mono-sm">2</span>
+</button>
+</div>
+<span class="font-body-sm text-text-muted hidden sm:inline">Sorted by syllabus order</span>
+</div>
+<!-- Chapter 01 (Collapsed) -->
+<div class="p-4 rounded-xl bg-surface-container-low hover:bg-surface-container transition-colors shadow-sm flex items-center justify-between cursor-pointer">
+<div class="flex items-center gap-3.5 min-w-0">
+<span class="font-label-md text-text-muted w-6 text-center">01</span>
+<div class="truncate">
+<h3 class="font-label-md text-text-primary truncate">Foundations &amp; RPC Systems</h3>
+<p class="font-body-sm text-text-muted">12 cards · 0 due</p>
+</div>
+</div>
+<div class="flex items-center gap-3 shrink-0">
+<span class="px-2.5 py-1 rounded-md bg-success-bg text-success-text font-label-sm">
+            94% Strong
+          </span>
+<span class="material-symbols-outlined text-[18px] text-text-muted">expand_more</span>
+</div>
+</div>
+<!-- Chapter 02 (Collapsed) -->
+<div class="p-4 rounded-xl bg-surface-container-low hover:bg-surface-container transition-colors shadow-sm flex items-center justify-between cursor-pointer">
+<div class="flex items-center gap-3.5 min-w-0">
+<span class="font-label-md text-text-muted w-6 text-center">02</span>
+<div class="truncate">
+<h3 class="font-label-md text-text-primary truncate">Consistency Models &amp; Logical Time</h3>
+<p class="font-body-sm text-text-muted">16 cards · 3 due</p>
+</div>
+</div>
+<div class="flex items-center gap-3 shrink-0">
+<span class="px-2.5 py-1 rounded-md bg-success-bg text-success-text font-label-sm">
+            88% Strong
+          </span>
+<span class="material-symbols-outlined text-[18px] text-text-muted">expand_more</span>
+</div>
+</div>
+<!-- Chapter 03 (EXPANDED ACTIVE FOCUS) -->
+<div class="rounded-xl bg-surface-container-low shadow-md overflow-hidden">
+<!-- Chapter Header -->
+<div class="p-4 sm:p-5 bg-surface-container flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+<div class="flex items-center gap-3 min-w-0">
+<span class="font-label-md text-primary font-bold w-6 text-center">03</span>
+<div class="min-w-0">
+<div class="flex items-center gap-2 flex-wrap">
+<h3 class="font-headline-sm text-text-primary truncate">Fault-Tolerant Consensus &amp; Raft</h3>
+<span class="px-2 py-0.5 rounded-md bg-surface-elevated text-primary font-label-sm">Current Focus</span>
+<span class="px-2.5 py-0.5 rounded-md bg-warning-bg text-warning-text font-label-sm">68% Needs Review</span>
+</div>
+<p class="font-body-sm text-text-muted mt-0.5">18 Flashcards (8 due) · 3 Linked Docs</p>
+</div>
+</div>
+<div class="flex items-center gap-2 shrink-0">
+<button class="h-8 px-3 rounded-lg bg-surface-elevated hover:bg-surface-highlight text-text-primary font-label-md transition-colors flex items-center gap-1.5 shadow-sm" type="button">
+<span class="material-symbols-outlined text-[16px] text-primary">play_arrow</span>
+<span>Study chapter</span>
+</button>
+<button class="p-1 rounded-lg text-text-muted hover:text-text-primary hover:bg-surface-elevated transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]">expand_less</span>
+</button>
+</div>
+</div>
+<!-- Chapter Subtopics / Lessons List -->
+<div class="p-3 sm:p-4 space-y-2.5 bg-surface-container-low">
+<!-- Lesson 3.1 -->
+<div class="p-3 rounded-lg bg-surface-raised flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:bg-surface-elevated transition-colors">
+<div class="min-w-0">
+<div class="flex items-center gap-2">
+<span class="font-mono-sm text-text-muted">3.1</span>
+<h4 class="font-label-md text-text-primary truncate">Leader Election &amp; Randomized Timers</h4>
+</div>
+<p class="font-body-sm text-text-muted truncate mt-0.5">Split votes prevention, term monotonically increasing invariant</p>
+</div>
+<div class="flex items-center gap-3 shrink-0 self-end sm:self-center">
+<span class="font-body-sm text-warning-text font-medium">2 cards due</span>
+<div class="w-16 bg-surface-overlay h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 78%"></div>
+</div>
+<span class="font-mono-sm text-text-secondary w-8 text-right">78%</span>
+<button class="font-label-md text-primary hover:text-text-primary transition-colors px-2 py-1" type="button">
+                Practice
+              </button>
+</div>
+</div>
+<!-- Lesson 3.2 -->
+<div class="p-3 rounded-lg bg-surface-raised flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:bg-surface-elevated transition-colors">
+<div class="min-w-0">
+<div class="flex items-center gap-2">
+<span class="font-mono-sm text-text-muted">3.2</span>
+<h4 class="font-label-md text-text-primary truncate">Log Replication &amp; Commitment Safety</h4>
+</div>
+<p class="font-body-sm text-text-muted truncate mt-0.5">Leader completeness property, matchIndex vs nextIndex tracking</p>
+</div>
+<div class="flex items-center gap-3 shrink-0 self-end sm:self-center">
+<span class="font-body-sm text-warning-text font-medium">4 cards due</span>
+<div class="w-16 bg-surface-overlay h-1.5 rounded-full overflow-hidden">
+<div class="bg-amber-400 h-full rounded-full" style="width: 64%"></div>
+</div>
+<span class="font-mono-sm text-text-secondary w-8 text-right">64%</span>
+<button class="font-label-md text-primary hover:text-text-primary transition-colors px-2 py-1" type="button">
+                Practice
+              </button>
+</div>
+</div>
+<!-- Lesson 3.3 (Weak Red Badge) -->
+<div class="p-3 rounded-lg bg-surface-raised flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:bg-surface-elevated transition-colors">
+<div class="min-w-0">
+<div class="flex items-center gap-2">
+<span class="font-mono-sm text-text-muted">3.3</span>
+<h4 class="font-label-md text-text-primary truncate">Log Compaction &amp; Snapshotting</h4>
+<span class="px-2 py-0.2 rounded bg-alert-bg text-alert-text font-label-sm">58% Weak</span>
+</div>
+<p class="font-body-sm text-text-muted truncate mt-0.5">InstallSnapshot RPC, disc discard boundaries</p>
+</div>
+<div class="flex items-center gap-3 shrink-0 self-end sm:self-center">
+<span class="font-body-sm text-alert-text font-medium">2 cards due</span>
+<div class="w-16 bg-surface-overlay h-1.5 rounded-full overflow-hidden">
+<div class="bg-rose-500 h-full rounded-full" style="width: 58%"></div>
+</div>
+<span class="font-mono-sm text-text-secondary w-8 text-right">58%</span>
+<button class="font-label-md text-primary hover:text-text-primary transition-colors px-2 py-1" type="button">
+                Practice
+              </button>
+</div>
+</div>
+<!-- Lesson 3.4 -->
+<div class="p-3 rounded-lg bg-surface-raised flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:bg-surface-elevated transition-colors">
+<div class="min-w-0">
+<div class="flex items-center gap-2">
+<span class="font-mono-sm text-text-muted">3.4</span>
+<h4 class="font-label-md text-text-primary truncate">Joint Consensus &amp; Membership Changes</h4>
+</div>
+<p class="font-body-sm text-text-muted truncate mt-0.5">Single-server transitions, Cold,new overlap quorums</p>
+</div>
+<div class="flex items-center gap-3 shrink-0 self-end sm:self-center">
+<span class="font-body-sm text-text-muted font-medium">0 cards due</span>
+<div class="w-16 bg-surface-overlay h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 72%"></div>
+</div>
+<span class="font-mono-sm text-text-secondary w-8 text-right">72%</span>
+<button class="font-label-md text-primary hover:text-text-primary transition-colors px-2 py-1" type="button">
+                Practice
+              </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Chapter 04 (Collapsed - Weak Red Badge) -->
+<div class="p-4 rounded-xl bg-surface-container-low hover:bg-surface-container transition-colors shadow-sm flex items-center justify-between cursor-pointer">
+<div class="flex items-center gap-3.5 min-w-0">
+<span class="font-label-md text-text-muted w-6 text-center">04</span>
+<div class="truncate">
+<h3 class="font-label-md text-text-primary truncate">Byzantine Fault Tolerance (BFT)</h3>
+<p class="font-body-sm text-text-muted">10 cards · 6 due</p>
+</div>
+</div>
+<div class="flex items-center gap-3 shrink-0">
+<span class="px-2.5 py-1 rounded-md bg-alert-bg text-alert-text font-label-sm">
+            54% Weak
+          </span>
+<span class="material-symbols-outlined text-[18px] text-text-muted">expand_more</span>
+</div>
+</div>
+<!-- Chapter 05 (Collapsed - Needs Review) -->
+<div class="p-4 rounded-xl bg-surface-container-low hover:bg-surface-container transition-colors shadow-sm flex items-center justify-between cursor-pointer">
+<div class="flex items-center gap-3.5 min-w-0">
+<span class="font-label-md text-text-muted w-6 text-center">05</span>
+<div class="truncate">
+<h3 class="font-label-md text-text-primary truncate">Distributed Storage &amp; Partitioning</h3>
+<p class="font-body-sm text-text-muted">9 cards · 0 due</p>
+</div>
+</div>
+<div class="flex items-center gap-3 shrink-0">
+<span class="px-2.5 py-1 rounded-md bg-warning-bg text-warning-text font-label-sm">
+            82% Needs Review
+          </span>
+<span class="material-symbols-outlined text-[18px] text-text-muted">expand_more</span>
+</div>
+</div>
+<!-- Chapter 06 (Collapsed - Scheduled) -->
+<div class="p-4 rounded-xl bg-surface-container-low hover:bg-surface-container transition-colors shadow-sm flex items-center justify-between cursor-pointer opacity-80">
+<div class="flex items-center gap-3.5 min-w-0">
+<span class="font-label-md text-text-muted w-6 text-center">06</span>
+<div class="truncate">
+<h3 class="font-label-md text-text-primary truncate">Distributed Transactions &amp; 2PC</h3>
+<p class="font-body-sm text-text-muted">4 cards drafted</p>
+</div>
+</div>
+<div class="flex items-center gap-3 shrink-0">
+<span class="px-2.5 py-1 rounded-md bg-surface-elevated text-text-secondary font-label-sm">
+            Scheduled
+          </span>
+<span class="material-symbols-outlined text-[18px] text-text-muted">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Right Column: Priority Drilling, Study Tools & Linked Sources (4 Cols) -->
+<div class="lg:col-span-4 flex flex-col gap-5">
+<!-- Streak Status Card -->
+<div class="p-4 rounded-xl bg-surface-container-low shadow-sm flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-warning-bg flex items-center justify-center text-warning-text shadow-sm">
+<span class="material-symbols-outlined text-[24px]">local_fire_department</span>
+</div>
+<div>
+<div class="font-headline-sm text-text-primary">14-Day Streak</div>
+<p class="font-body-sm text-text-muted">Active pace in Distributed Systems</p>
+</div>
+</div>
+<span class="font-label-sm text-emerald-400 font-semibold">+2 today</span>
+</div>
+<!-- Weakest Topics / Priority Drill -->
+<div class="p-5 rounded-xl bg-surface-container-low shadow-sm">
+<div class="flex items-center justify-between mb-3.5">
+<h3 class="font-headline-sm text-text-primary">Weakest Topics</h3>
+<span class="font-label-sm text-text-muted uppercase">Priority Drill</span>
+</div>
+<div class="space-y-3.5">
+<div>
+<div class="flex justify-between font-body-sm mb-1">
+<span class="text-text-primary truncate">Byzantine Fault Tolerance (BFT)</span>
+<span class="font-mono-sm text-alert-text font-medium">54%</span>
+</div>
+<div class="w-full bg-surface-overlay h-1.5 rounded-full overflow-hidden">
+<div class="bg-rose-500 h-full rounded-full" style="width: 54%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between font-body-sm mb-1">
+<span class="text-text-primary truncate">Log Compaction &amp; Snapshotting</span>
+<span class="font-mono-sm text-alert-text font-medium">58%</span>
+</div>
+<div class="w-full bg-surface-overlay h-1.5 rounded-full overflow-hidden">
+<div class="bg-rose-500 h-full rounded-full" style="width: 58%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between font-body-sm mb-1">
+<span class="text-text-primary truncate">Linearizable Register vs Causality</span>
+<span class="font-mono-sm text-warning-text font-medium">66%</span>
+</div>
+<div class="w-full bg-surface-overlay h-1.5 rounded-full overflow-hidden">
+<div class="bg-amber-400 h-full rounded-full" style="width: 66%"></div>
+</div>
+</div>
+</div>
+<button class="w-full mt-4 h-9 rounded-lg bg-surface-elevated hover:bg-surface-highlight text-text-primary font-label-md transition-colors flex items-center justify-center gap-2 shadow-sm" type="button">
+<span class="material-symbols-outlined text-[16px] text-alert-text">bolt</span>
+<span>Practice weak concepts</span>
+</button>
+</div>
+<!-- Study Tools -->
+<div class="p-5 rounded-xl bg-surface-container-low shadow-sm">
+<h3 class="font-headline-sm text-text-primary mb-3">Study Tools</h3>
+<div class="space-y-2">
+<a class="p-3 rounded-lg bg-surface-raised hover:bg-surface-elevated transition-colors flex items-center justify-between group" href="#">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[18px] text-primary">chat</span>
+<div>
+<div class="font-label-md text-text-primary group-hover:text-primary transition-colors">Ask your notes</div>
+<div class="font-body-sm text-text-muted">Ask questions about course notes</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-[16px] text-text-muted group-hover:text-text-primary transition-colors">arrow_forward</span>
+</a>
+<a class="p-3 rounded-lg bg-surface-raised hover:bg-surface-elevated transition-colors flex items-center justify-between group" href="#">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[18px] text-primary">quiz</span>
+<div>
+<div class="font-label-md text-text-primary group-hover:text-primary transition-colors">Generate quiz</div>
+<div class="font-body-sm text-text-muted">Create custom practice questions</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-[16px] text-text-muted group-hover:text-text-primary transition-colors">arrow_forward</span>
+</a>
+<a class="p-3 rounded-lg bg-surface-raised hover:bg-surface-elevated transition-colors flex items-center justify-between group" href="#">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[18px] text-primary">ios_share</span>
+<div>
+<div class="font-label-md text-text-primary group-hover:text-primary transition-colors">Export cards</div>
+<div class="font-body-sm text-text-muted">Export flashcards to mobile or desktop</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-[16px] text-text-muted group-hover:text-text-primary transition-colors">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Sources / Knowledge Base -->
+<div class="p-5 rounded-xl bg-surface-container-low shadow-sm">
+<div class="flex items-center justify-between mb-3">
+<h3 class="font-headline-sm text-text-primary">Sources</h3>
+<span class="font-body-sm text-text-muted">Manage 3</span>
+</div>
+<div class="space-y-2.5 mb-3.5">
+<div class="p-3 rounded-lg bg-surface-raised flex items-center justify-between gap-2">
+<div class="flex items-center gap-2.5 min-w-0">
+<span class="material-symbols-outlined text-[18px] text-text-secondary">description</span>
+<div class="min-w-0">
+<div class="font-label-md text-text-primary truncate">MIT-6.824-Lectures.pdf</div>
+<div class="font-body-sm text-text-muted truncate">1.4 MB · 42 cards generated</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-[16px] text-emerald-400 shrink-0" title="Synced">check_circle</span>
+</div>
+<div class="p-3 rounded-lg bg-surface-raised flex items-center justify-between gap-2">
+<div class="flex items-center gap-2.5 min-w-0">
+<span class="material-symbols-outlined text-[18px] text-text-secondary">article</span>
+<div class="min-w-0">
+<div class="font-label-md text-text-primary truncate">DDIA-Chapters.md</div>
+<div class="font-body-sm text-text-muted truncate">340 KB · 23 cards generated</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-[16px] text-emerald-400 shrink-0" title="Synced">check_circle</span>
+</div>
+<div class="p-3 rounded-lg bg-surface-raised flex items-center justify-between gap-2">
+<div class="flex items-center gap-2.5 min-w-0">
+<span class="material-symbols-outlined text-[18px] text-text-secondary">slideshow</span>
+<div class="min-w-0">
+<div class="font-label-md text-text-primary truncate">Raft-Lecture-Slides.pdf</div>
+<div class="font-body-sm text-text-muted truncate">890 KB · 18 cards generated</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-[16px] text-emerald-400 shrink-0" title="Synced">check_circle</span>
+</div>
+</div>
+<!-- Dropzone -->
+<div class="p-4 rounded-lg bg-surface-raised hover:bg-surface-elevated transition-colors text-center cursor-pointer">
+<span class="material-symbols-outlined text-[24px] text-text-muted mb-1">cloud_upload</span>
+<div class="font-label-md text-text-primary">Add course material</div>
+<div class="font-body-sm text-text-muted mt-0.5">Drop PDF, Markdown, or Slides</div>
+</div>
+</div>
+</div>
+</div>
+</div></main>
+</div>
+<!-- Interactive Modal for "New Subject" -->
+<div class="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm hidden opacity-0 transition-opacity duration-200" id="new-subject-modal">
+<div class="w-full max-w-lg p-6 bg-[#171b26] rounded-xl shadow-2xl flex flex-col gap-5 transform scale-95 transition-transform duration-200 border border-[#262c3e]" id="modal-card">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<div class="h-8 w-8 rounded-lg bg-[rgba(99,102,241,0.15)] flex items-center justify-center text-[#818cf8]">
+<span class="material-symbols-outlined text-[18px]">add_circle</span>
+</div>
+<h3 class="text-lg font-bold text-[#f8faff]">Create New Subject</h3>
+</div>
+<button class="p-1 rounded-lg text-[#64748b] hover:text-[#f8faff] hover:bg-[#111520] transition-colors" id="modal-close-trigger">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<div class="space-y-4">
+<div>
+<label class="block text-[12px] uppercase tracking-wider text-[#94a3b8] mb-1.5 font-semibold">Subject Title</label>
+<input class="w-full h-10 px-3.5 rounded-lg bg-[#111520] text-[13.5px] text-[#f8faff] placeholder:text-[#64748b] border border-[#262c3e] focus:outline-none focus:ring-1 focus:ring-[#6366f1] focus:border-[#6366f1]" placeholder="e.g. Statistical Mechanics &amp; Thermodynamics" type="text"/>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<div>
+<label class="block text-[12px] uppercase tracking-wider text-[#94a3b8] mb-1.5 font-semibold">Discipline / Tag</label>
+<input class="w-full h-10 px-3.5 rounded-lg bg-[#111520] text-[13.5px] text-[#f8faff] placeholder:text-[#64748b] border border-[#262c3e] focus:outline-none focus:ring-1 focus:ring-[#6366f1] focus:border-[#6366f1]" placeholder="e.g. Physics" type="text"/>
+</div>
+<div>
+<label class="block text-[12px] uppercase tracking-wider text-[#94a3b8] mb-1.5 font-semibold">Proficiency Level</label>
+<select class="w-full h-10 px-3 rounded-lg bg-[#111520] text-[13.5px] text-[#f8faff] border border-[#262c3e] focus:outline-none focus:ring-1 focus:ring-[#6366f1] focus:border-[#6366f1]">
+<option class="bg-[#171b26]">Beginner · Foundational</option>
+<option class="bg-[#171b26]" selected="">Intermediate</option>
+<option class="bg-[#171b26]">Advanced · Graduate</option>
+</select>
+</div>
+</div>
+<div>
+<label class="block text-[12px] uppercase tracking-wider text-[#94a3b8] mb-1.5 font-semibold">Initial Reference (PDF, Syllabus URL, or Book Title)</label>
+<input class="w-full h-10 px-3.5 rounded-lg bg-[#111520] text-[13.5px] text-[#f8faff] placeholder:text-[#64748b] border border-[#262c3e] focus:outline-none focus:ring-1 focus:ring-[#6366f1] focus:border-[#6366f1]" placeholder="Paste link or drop document" type="text"/>
+</div>
+</div>
+<div class="flex items-center justify-end gap-2.5 pt-2">
+<button class="h-9 px-4 rounded-lg bg-[#111520] hover:bg-[#1f2538] text-[#cbd5e1] font-semibold text-[13px] border border-[#2a3044] transition-colors" id="modal-cancel-btn">
+          Cancel
+        </button>
+<button class="h-9 px-4 rounded-lg bg-[#6366f1] hover:bg-[#4f46e5] text-white font-semibold text-[13px] transition-colors shadow-sm">
+          Initialize Deck
+        </button>
+</div>
+</div>
+</div>
+<script>
+    // Search filtering
+    const searchInput = document.getElementById('subject-search-input');
+    const cardsContainer = document.getElementById('subject-cards-container');
+    const articles = cardsContainer.querySelectorAll('article');
+    const filterTabs = document.getElementById('filter-tabs');
+
+    searchInput.addEventListener('input', (e) => {
+      const val = e.target.value.toLowerCase().trim();
+      articles.forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(val) ? 'flex' : 'none';
+      });
+    });
+
+    // Category Tabs Selection
+    filterTabs.querySelectorAll('button').forEach(tab => {
+      tab.addEventListener('click', () => {
+        filterTabs.querySelectorAll('button').forEach(b => {
+          b.className = 'px-3.5 py-1.5 rounded-lg text-[#94a3b8] hover:bg-[#171b26] hover:text-[#f8faff] font-medium text-[13px] border border-transparent transition-all';
+        });
+        tab.className = 'px-3.5 py-1.5 rounded-lg bg-[#1f2538] text-[#818cf8] font-semibold text-[13px] border border-[rgba(99,102,241,0.25)] transition-all';
+      });
+    });
+
+    // Modal Interaction
+    const openModalBtn = document.getElementById('modal-open-trigger');
+    const closeModalBtn = document.getElementById('modal-close-trigger');
+    const cancelModalBtn = document.getElementById('modal-cancel-btn');
+    const modal = document.getElementById('new-subject-modal');
+    const modalCard = document.getElementById('modal-card');
+
+    function openModal() {
+      modal.classList.remove('hidden');
+      setTimeout(() => {
+        modal.classList.remove('opacity-0');
+        modalCard.classList.remove('scale-95');
+      }, 10);
+    }
+
+    function closeModal() {
+      modal.classList.add('opacity-0');
+      modalCard.classList.add('scale-95');
+      setTimeout(() => {
+        modal.classList.add('hidden');
+      }, 200);
+    }
+
+    openModalBtn.addEventListener('click', openModal);
+    closeModalBtn.addEventListener('click', closeModal);
+    cancelModalBtn.addEventListener('click', closeModal);
+
+    // Grid / List View Toggle
+    const gridBtn = document.getElementById('view-grid-btn');
+    const listBtn = document.getElementById('view-list-btn');
+
+    listBtn.addEventListener('click', () => {
+      cardsContainer.classList.remove('xl:grid-cols-3');
+      cardsContainer.classList.add('grid-cols-1');
+      listBtn.classList.add('bg-[#232838]', 'text-white', 'shadow-xs');
+      listBtn.classList.remove('text-[#94a3b8]');
+      gridBtn.classList.remove('bg-[#232838]', 'text-white', 'shadow-xs');
+      gridBtn.classList.add('text-[#94a3b8]');
+    });
+
+    gridBtn.addEventListener('click', () => {
+      cardsContainer.classList.add('xl:grid-cols-3');
+      cardsContainer.classList.remove('grid-cols-1');
+      gridBtn.classList.add('bg-[#232838]', 'text-white', 'shadow-xs');
+      gridBtn.classList.remove('text-[#94a3b8]');
+      listBtn.classList.remove('bg-[#232838]', 'text-white', 'shadow-xs');
+      listBtn.classList.add('text-[#94a3b8]');
+    });
+  </script>
+</body></html>

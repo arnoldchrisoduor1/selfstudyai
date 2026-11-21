@@ -1,0 +1,39 @@
+---
+description: Flat reusable UI for the product app, the landing page, and the shared package
+globs: apps/web/**,apps/landing/**,packages/ui/**
+alwaysApply: false
+---
+
+# UI structure
+
+Static export only (`output: 'export'`). No `getServerSideProps`, no `getInitialProps`, no `pages/api`, no server-only Next APIs. Brand tokens come from `packages/ui/tailwind.preset.ts`, which mirrors `design-system/self-study-ai/MASTER.md`. Landing page rules in `design-system/self-study-ai/pages/landing.md` override the master for that app. No raw hex in components. No invented marketing copy.
+
+## Where files go
+
+- `packages/ui/src/` — shared controls. Flat. No subfolders. No `index.ts` barrel. Import `@self-study/ui/Button`.
+- `apps/web/src/components/` and `apps/landing/src/components/` — app-specific controls. Flat. No subfolders.
+- `sections/` — page blocks that compose components. Flat. A section does not import another section.
+- `pages/` — Next.js routes. Thin. Set the title and render sections.
+- `hooks/` — data and behavior. `apps/web` API access goes through `lib/api-client.ts` only.
+- `lib/` — client, logger, small helpers.
+
+`apps/web` and `apps/landing` never import each other. They share a component only by moving it into `packages/ui`. Do not copy a component from one app into the other.
+
+## Direction
+
+`pages -> sections -> components`. Components do not import sections, pages, or data hooks. If two sections need the same thing, extract a component.
+
+## Components
+
+- One component per file. PascalCase file name. Named export. Props interface `<Component>Props`.
+- Presentational. Text and handlers come in through props. Accept `className` and forward `data-testid`. Form controls use `forwardRef`.
+- Variants are props, not duplicate components.
+- Search the flat folder before adding a file. Extend an existing component with a prop when it fits.
+- Accessible by default: visible label, keyboard support, visible focus, 44px minimum target. Cursor pointer on clickable elements. Hover uses opacity or color, not a transform that shifts layout. Respect `prefers-reduced-motion`.
+- No raw `<button>`, `<input>`, `<select>`, `<textarea>`, or `<table>` in a section or page.
+
+Shared controls that must stay reusable: Button, Input, Select, Textarea, Toggle, Modal, DataTable, StatusChip, EmptyState, ErrorState, ToastProvider, Loader, Sidebar, AppShell. Toast is custom (no toast library), mounted once in `pages/_app.tsx`, triggered with `useToast()`. Tones: success, error, warning, info. Loader is the loading state. ErrorState and EmptyState are the failure and empty states.
+
+## Design system
+
+Create or edit `design-system/self-study-ai/pages/<page>.md` or `components/<component>.md` before changing that UI. Landing overrides live in `pages/landing.md`.

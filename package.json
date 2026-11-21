@@ -1,0 +1,23 @@
+{
+  "name": "self-study-ai",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:web": "npm run dev -w @self-study/web",
+    "dev:landing": "npm run dev -w @self-study/landing",
+    "build:web": "npm run build -w @self-study/web",
+    "build:landing": "npm run build -w @self-study/landing",
+    "lint:web": "npm run lint -w @self-study/web",
+    "lint:landing": "npm run lint -w @self-study/landing",
+    "typecheck": "npm run typecheck -w @self-study/web && npm run typecheck -w @self-study/landing",
+    "test:e2e": "playwright test",
+    "test:e2e:phase5": "playwright test e2e/phase5.spec.ts"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.49.0",
+    "@axe-core/playwright": "^4.10.1"
+  }
+}

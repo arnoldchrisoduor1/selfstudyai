@@ -1,0 +1,17 @@
+[package]
+name = "core"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+description = "Domain types only. No I/O and no dependency on other workspace crates."
+
+[lib]
+name = "study_core"
+path = "src/lib.rs"
+
+[dependencies]
+serde = { workspace = true }
+serde_json = { workspace = true }
+chrono = { workspace = true }
+uuid = { workspace = true }

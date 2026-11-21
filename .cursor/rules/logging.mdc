@@ -1,0 +1,28 @@
+---
+description: Clear structured logs for the API and the product app
+globs: crates/**/*.rs,apps/web/**,apps/landing/**
+alwaysApply: false
+---
+
+# Logging
+
+Every line helps someone diagnose a failure. No noise, no dumps.
+
+## Rust (`tracing` only)
+
+- No `println!`, `dbg!`, or `eprintln!`.
+- Message is a fixed short phrase. Data goes in fields.
+- One completion line per request: `request_id`, method, path, status, `latency_ms`. Also return `x-request-id`.
+- `GET /healthz` is debug only. Other 2xx is info. 4xx is warn. 5xx is error.
+- Log an error once, at the boundary that handles it. Include the cause chain. Do not log and also return the same error at every layer.
+- Never log database URLs, tokens, request bodies, or provider prompts.
+- No per-row logs. Summarize counts and duration.
+- Pretty format when `APP_ENV` is not `production`. JSON in production. Level from `RUST_LOG`.
+
+## Web
+
+- Do not call `console` outside `apps/web/src/lib/logger.ts`.
+- Production builds emit warn and error only.
+- Log a failed API call once, inside `api-client`: method, path, status, `x-request-id`, duration. Never log payloads or tokens.
+- Do not log renders, successful fetches, or navigation.
+- Show a toast for a failure the user needs to see. The log is for developers.
