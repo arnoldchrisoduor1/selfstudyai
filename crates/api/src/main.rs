@@ -14,6 +14,22 @@ async fn main() -> anyhow::Result<()> {
     dotenvy::dotenv().ok();
 
     let config = Config::from_env()?;
+    let seed = std::env::args().any(|arg| arg == "--seed");
+    let prepared_seed = if seed {
+        if let Err(message) = api::seed::refuse_if_production(&config.app_env) {
+            eprintln!("{message}");
+            std::process::exit(1);
+        }
+        match api::seed::prepare_file(&api::seed::fixture_path()) {
+            Ok(prepared) => Some(prepared),
+            Err(message) => {
+                eprintln!("{message}");
+                std::process::exit(1);
+            }
+        }
+    } else {
+        None
+    };
     init_tracing(&config.app_env);
     config.log_summary();
 
@@ -22,7 +38,23 @@ async fn main() -> anyhow::Result<()> {
     let (clock, fake_clock) = build_clock_handle(&config.app_env);
     let store = storage::connect_with_clock(&config.database_url, clock).await?;
     store.ping().await?;
+    api::sweep(&store).await;
     ensure_mock_provider(&store).await?;
+    enable_all_flags(&store).await?;
+    if let Some(prepared) = prepared_seed {
+        match api::seed::apply(&store, prepared).await {
+            Ok(counts) => {
+                println!(
+                    "profiles={} subjects={} sources={} questions={}",
+                    counts.profiles, counts.subjects, counts.sources, counts.questions
+                );
+            }
+            Err(message) => {
+                eprintln!("{message}");
+                std::process::exit(1);
+            }
+        }
+    }
 
     let state = AppState::with_scheduler(
         store,
@@ -42,6 +74,19 @@ async fn main() -> anyhow::Result<()> {
         .with_graceful_shutdown(shutdown_signal())
         .await?;
 
+    Ok(())
+}
+
+async fn enable_all_flags(store: &storage::Store) -> Result<(), storage::StorageError> {
+    if std::env::var("FLAGS_ENABLE_ALL").ok().as_deref() != Some("1") {
+        return Ok(());
+    }
+    for name in api::flags::REGISTRY {
+        if let Err(err) = store.set_install_flag(name, true).await {
+            tracing::warn!(name, error = %err, "could not enable feature flag");
+        }
+    }
+    tracing::info!("feature flags enabled");
     Ok(())
 }
 

@@ -1,0 +1,34 @@
+# Production edge is the host Nginx on the droplet.
+# Containers bind loopback only.
+#   ssai.digital-wilderness.org    -> 127.0.0.1:18281 (web)
+#   ssaiapi.digital-wilderness.org -> 127.0.0.1:18280 (api)
+
+services:
+  api:
+    image: selfstudy-api:prod
+    container_name: ssai-api
+    environment:
+      APP_ENV: production
+      RUST_LOG: info
+      API_HOST: 0.0.0.0
+      API_PORT: "8080"
+      DATABASE_URL: sqlite:///data/selfstudy.db?mode=rwc
+      FILES_DIR: /data/files
+      MAX_UPLOAD_BYTES: "52428800"
+      FLAGS_ENABLE_ALL: "1"
+      CORS_ORIGINS: https://ssai.digital-wilderness.org
+    ports:
+      - "127.0.0.1:18280:8080"
+    volumes:
+      - ssai_data:/data
+    restart: unless-stopped
+
+  web:
+    image: selfstudy-web:prod
+    container_name: ssai-web
+    ports:
+      - "127.0.0.1:18281:80"
+    restart: unless-stopped
+
+volumes:
+  ssai_data:
