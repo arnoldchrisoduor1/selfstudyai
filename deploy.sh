@@ -48,7 +48,30 @@ check_ssl() {
     | openssl x509 -noout -subject -ext subjectAltName 2>/dev/null || echo "no tls yet for $API_DOMAIN"
 }
 
+build_on_server() {
+  echo "pack source (no target, node_modules, git, data)"
+  local pack="${TMPDIR:-/tmp}/selfstudy-src.tgz"
+  tar -C "$ROOT" \
+    --exclude=target \
+    --exclude=node_modules \
+    --exclude=.git \
+    --exclude=data \
+    --exclude=.next \
+    --exclude=out \
+    --exclude=test-results \
+    --exclude=playwright-report \
+    --exclude=tmp-phase4-data \
+    --exclude=target-ingest \
+    -czf "$pack" .
+  ssh_cmd "mkdir -p '$REMOTE_DIR/src'"
+  scp -o BatchMode=yes "$pack" "$SSH_HOST:$REMOTE_DIR/src.tgz"
+  ssh_cmd "tar -xzf '$REMOTE_DIR/src.tgz' -C '$REMOTE_DIR/src'"
+  echo "docker build on server"
+  ssh_cmd "cd '$REMOTE_DIR/src' && docker build -f infra/Dockerfile.api -t '$API_IMAGE' . && docker build -f infra/Dockerfile.web --build-arg NEXT_PUBLIC_API_BASE_URL='https://${API_DOMAIN}' --build-arg NEXT_PUBLIC_BASE_PATH= -t '$WEB_IMAGE' ."
+}
+
 transfer_and_up() {
+  if [[ "${DEPLOY_BUILD:-server}" == "local" ]]; then
   need_docker
   echo "save images"
   docker save -o "$TAR" "$API_IMAGE" "$WEB_IMAGE"
@@ -59,6 +82,12 @@ transfer_and_up() {
   scp -o BatchMode=yes "$ROOT/deploy/nginx/ssai.conf" "$SSH_HOST:/etc/nginx/sites-available/ssai"
   echo "load + compose up"
   ssh_cmd "docker load -i '$REMOTE_DIR/images.tar' && cd '$REMOTE_DIR' && docker compose -f docker-compose.prod.yml up -d"
+  else
+  build_on_server
+  scp -o BatchMode=yes "$ROOT/docker-compose.prod.yml" "$SSH_HOST:$REMOTE_DIR/docker-compose.prod.yml"
+  scp -o BatchMode=yes "$ROOT/deploy/nginx/ssai.conf" "$SSH_HOST:/etc/nginx/sites-available/ssai"
+  ssh_cmd "cd '$REMOTE_DIR' && docker compose -f docker-compose.prod.yml up -d"
+  fi
   echo "nginx site"
   ssh_cmd 'ln -sfn /etc/nginx/sites-available/ssai /etc/nginx/sites-enabled/ssai && nginx -t && systemctl reload nginx'
   issue_certs
@@ -69,7 +98,7 @@ issue_certs() {
   if [[ -z "$email" ]]; then
     email="$(ssh_cmd 'python3 - <<"PY"
 import json, glob
-for path in glob.glob("/etc/letsencrypt/accounts/*/regr.json"):
+for path in glob.glob("/etc/letsencrypt/accounts/**/regr.json", recursive=True):
     try:
         data = json.load(open(path, encoding="utf-8"))
     except Exception:
@@ -83,7 +112,9 @@ for path in glob.glob("/etc/letsencrypt/accounts/*/regr.json"):
 PY' || true)"
   fi
   if [[ -z "$email" ]]; then
-    echo "no CERTBOT_EMAIL and no existing account email; skip cert issue"
+    echo "no CERTBOT_EMAIL; certbot without account email"
+    ssh_cmd "certbot --nginx -d '$WEB_DOMAIN' -d '$API_DOMAIN' --non-interactive --agree-tos --register-unsafely-without-email --redirect" \
+      || echo "certbot failed; http sites still up"
     return 0
   fi
   echo "certbot for $WEB_DOMAIN $API_DOMAIN"
@@ -105,7 +136,9 @@ verify_remote() {
 
 do_all() {
   test_ssh
-  build_local
+  if [[ "${DEPLOY_BUILD:-server}" == "local" ]]; then
+    build_local
+  fi
   transfer_and_up
   verify_remote
 }
@@ -122,7 +155,7 @@ Self Study deploy
   3  check ssl certificates
   4  transfer, start containers, nginx, certs
   5  verify containers, ssh, certs, http
-  6  everything (1-5)
+  6  everything (ssh, build on server, start, nginx, certs, verify)
   q  quit
 EOF
   read -r -p "> " choice
@@ -146,5 +179,6 @@ case "${1:-menu}" in
   up) transfer_and_up ;;
   verify) verify_remote ;;
   all) do_all ;;
-  *) echo "use: deploy.sh [menu|build|ssh|ssl|up|verify|all]"; exit 1 ;;
+  server) test_ssh; transfer_and_up; verify_remote ;;
+  *) echo "use: deploy.sh [menu|build|ssh|ssl|up|verify|all|server]"; exit 1 ;;
 esac

@@ -3,6 +3,9 @@ WORKDIR /src
 COPY Cargo.toml Cargo.lock rustfmt.toml clippy.toml ./
 COPY crates ./crates
 COPY apps/desktop/src-tauri ./apps/desktop/src-tauri
+# LTO + one codegen unit OOMs a 1 GB droplet. Keep release opts, skip fat LTO.
+ENV CARGO_PROFILE_RELEASE_LTO=false \
+    CARGO_PROFILE_RELEASE_CODEGEN_UNITS=8
 RUN cargo build --release -p api
 
 FROM debian:bookworm-slim
