@@ -2,6 +2,7 @@ FROM rust:1.90-bookworm AS build
 WORKDIR /src
 COPY Cargo.toml Cargo.lock rustfmt.toml clippy.toml ./
 COPY crates ./crates
+COPY apps/desktop/src-tauri ./apps/desktop/src-tauri
 RUN cargo build --release -p api
 
 FROM debian:bookworm-slim
